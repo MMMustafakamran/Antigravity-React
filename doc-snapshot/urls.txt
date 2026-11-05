@@ -1,0 +1,17 @@
+google-antigravity
+google-antigravity/build-with-agents
+google-antigravity/community-frameworks
+google-antigravity/frontend-tools
+google-antigravity/generative-ui
+google-antigravity/human-in-the-loop
+google-antigravity/intelligence/analytics
+google-antigravity/intelligence/channels
+google-antigravity/intelligence/memories
+google-antigravity/intelligence/overview
+google-antigravity/intelligence/standalone-collector
+google-antigravity/intelligence/trajectories
+google-antigravity/learning
+google-antigravity/multi-agent/subagents
+google-antigravity/quickstart
+google-antigravity/telemetry
+google-antigravity/webmcp
