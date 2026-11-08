@@ -477,7 +477,7 @@
      "text": "Not Working",
      "clip": "ANTIGRAVITY-react-12-SubAgents",
      "loom": null,
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-react-12-SubAgents.json"
     }
    ],
    "review": {

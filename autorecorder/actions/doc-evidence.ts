@@ -68,12 +68,23 @@ export async function showDocEvidence(page: Page, config: PageRecordConfig, item
 
 async function wheelIntoView(page: Page, target: Locator, text?: string): Promise<void> {
   await humanGlide(page, 760, 520);
+  // A code box with its own scrollbar eats the wheel while the cursor is over it and scrolls the
+  // snippet out of view instead of the page: wheel from the page margin left of such a box.
+  const ownScroll = await target
+    .evaluate((el) => {
+      for (let e: HTMLElement | null = el as HTMLElement; e && e !== document.body; e = e.parentElement) {
+        const oy = getComputedStyle(e).overflowY;
+        if ((oy === 'auto' || oy === 'scroll') && e.scrollHeight > e.clientHeight + 4) return true;
+      }
+      return false;
+    })
+    .catch(() => false);
   for (let i = 0; i < 50; i++) {
     const box = await target.boundingBox().catch(() => null);
     if (!box) break;
     const textY = text ? await textCentreY(target, text) : null;
     const centre = textY ?? box.y + Math.min(box.height, 120) / 2;
-    const overX = box.x + Math.min(box.width / 2, 260);
+    const overX = ownScroll ? Math.max(box.x - 28, 8) : box.x + Math.min(box.width / 2, 260);
     const overY = Math.min(Math.max(box.y + 40, 160), Math.min(box.y + box.height - 20, 900));
     const { x, y } = getGlobalCursorPos();
     if (Math.abs(x - overX) > 60 || Math.abs(y - overY) > 60) await humanGlide(page, overX, overY);

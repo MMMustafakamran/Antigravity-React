@@ -243,10 +243,22 @@ export const runSubagentsAction: PageActionHandler = async (page, config, root, 
 const runSubagentsTake: PageActionHandler = async (page, config, _root, ctx) => {
   const msgCount = await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
   const entries = page.locator('[data-testid="delegation-entry"]');
-  const appeared = await entries.first().waitFor({ state: 'visible', timeout: 180000 }).then(() => true).catch(() => false);
-  if (!appeared) {
+  // Stop waiting as soon as the run errors (e.g. "fetch failed" when the sub-agents server is
+  // down, FINDINGS.md #49): minutes of a frozen chat explain nothing.
+  const runError = page.locator('[data-testid="copilot-error-banner"]').or(page.getByText(/fetch failed|Agent error/i)).first();
+  const outcome = await Promise.race([
+    entries.first().waitFor({ state: 'visible', timeout: 180000 }).then(() => 'delegated' as const),
+    runError.waitFor({ state: 'visible', timeout: 180000 }).then(() => 'error' as const),
+  ]).catch(() => 'timeout' as const);
+  if (outcome !== 'delegated') {
     mark('error');
-    ctx.fail('No delegation ever reached the log (agent.state.delegations stayed empty).');
+    if (outcome === 'error') await glideTo(page, runError, 2500).catch(() => {});
+    await sleep(3000);
+    ctx.fail(
+      outcome === 'error'
+        ? 'The run failed before any delegation (error shown in the chat).'
+        : 'No delegation ever reached the log (agent.state.delegations stayed empty).',
+    );
     return;
   }
   mark('action', 'first delegation in the log');

@@ -1,0 +1,43 @@
+{
+ "clip": "ANTIGRAVITY-react-12-SubAgents",
+ "finding": "antigravity-react 49",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the sub-agents page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the exact sub-agents file from the doc, CopilotKit one point eighty-five."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked the supervisor to research, draft and critique a short blog post."
+  },
+  {
+   "at": "error",
+   "text": "And uh, the run just fails with fetch failed. The sub-agents server never started, so nothing gets delegated."
+  },
+  {
+   "at": "evidence#1",
+   "text": "Back on the doc, the install step is just pip install ag-ui antigravity and google antigravity. No h t t p x."
+  },
+  {
+   "at": "evidence#2",
+   "text": "But the sub-agents file starts with import h t t p x."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, h t t p x used to come in with google genai two point x, but google genai three dropped it. So on today's versions, umm, the server crashes on start."
+  },
+  {
+   "at": "notepad-closed",
+   "text": "That's the problem here, please have a look."
+  },
+  {
+   "at": "failure",
+   "text": "And this is the server log, module not found, no module named h t t p x."
+  }
+ ]
+}
