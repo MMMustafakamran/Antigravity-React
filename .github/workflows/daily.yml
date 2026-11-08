@@ -192,6 +192,11 @@ jobs:
           printf 'GEMINI_API_KEY=%s\n' "$GEMINI_API_KEY" > backend/.env
           printf 'AGENT_URL=http://localhost:8040\n' > frontend/.env.local
 
+      - name: Make the doc's agent workspace path writable
+        # The doc's main.py hardcodes workspaces=["/srv/agents/w1"]; /srv needs root on Linux.
+        # Created here so the published code runs unchanged (FINDINGS minor note).
+        run: sudo mkdir -p /srv/agents/w1 && sudo chown -R "$USER" /srv/agents
+
       - name: Start servers (start-all.sh)
         run: |
           set -euo pipefail
