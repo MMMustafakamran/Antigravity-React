@@ -1,0 +1,551 @@
+{
+ "framework": "Google Antigravity",
+ "ui": "react",
+ "repo": "Antigravity-react",
+ "docBase": "https://docs.copilotkit.ai/google-antigravity/",
+ "versions": {
+  "@copilotkit/react-core": "1.84.1",
+  "@copilotkit/runtime": "1.84.1",
+  "@ag-ui/client": "1.0.2",
+  "next": "16.4.5",
+  "react": "19.3.0",
+  "google-antigravity": "0.1.23",
+  "ag-ui-antigravity": "0.2.1",
+  "fastapi": "0.162.0",
+  "uvicorn": "0.54.0",
+  "copilotkit": "4.33.1"
+ },
+ "testedContext": {
+  "os": "Microsoft Windows 11 Pro",
+  "packageManager": "npm 11 (Node 26.7.0)"
+ },
+ "report": {
+  "style": "status",
+  "h1": "Google Antigravity",
+  "title": "Google Antigravity status",
+  "quickstartHeading": "Quickstart",
+  "quickstartHeader": [
+   "Frontend",
+   "Quickstart"
+  ],
+  "clipsToUpload": false,
+  "columns": [
+   "Page/Section",
+   "Results"
+  ],
+  "resultColumn": 1,
+  "guidesHeading": "Guides (React)"
+ },
+ "sections": [
+  {
+   "label": "App Control",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Human in the Loop",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Shared State",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Generative UI",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Multi-Agent",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Debugging",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Browser Agents",
+   "cells": [
+    "Section"
+   ]
+  }
+ ],
+ "pages": [
+  {
+   "id": "quickstart-cli",
+   "label": "CLI / Start from Scratch",
+   "kind": "quickstart",
+   "group": null,
+   "child": false,
+   "docPath": "quickstart",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    40
+   ],
+   "notes": [
+    "Note: `copilotkit init --framework antigravity` fails (unsupported framework); copying the starter from the CopilotKit repo works"
+   ],
+   "block": null,
+   "links": [],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "quickstart",
+   "label": "React",
+   "kind": "quickstart",
+   "group": null,
+   "child": false,
+   "docPath": "quickstart",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    40
+   ],
+   "notes": [
+    "Note: `main.py` reads GEMINI_API_KEY but nothing loads `.env`; start with `uv run --env-file .env`"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-01-Quickstart",
+     "loom": "https://www.loom.com/share/6eda786663ec4f648d1cda170c55b103",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "frontend-tools",
+   "label": "Frontend Tools",
+   "kind": "guide",
+   "group": "App Control",
+   "child": false,
+   "docPath": "frontend-tools",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "notes": [
+    "Note: `page.tsx` snippet has no \"use client\", no export, and imports `./background` and `./suggestions` that aren't shown"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-02-FrontendTools",
+     "loom": "https://www.loom.com/share/93288e1a4b734c3e9d4e7a8aff917dae",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "human-in-the-loop",
+   "label": "HITL Overview",
+   "kind": "guide",
+   "group": "Human in the Loop",
+   "child": false,
+   "docPath": "human-in-the-loop",
+   "reachable": "none",
+   "status": "✅",
+   "findings": [
+    12
+   ],
+   "notes": [
+    "Note: page uses agent hitl-in-chat, which no step registers in route.ts; ./time-picker-card not shown"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-03-HumanInTheLoop",
+     "loom": "https://www.loom.com/share/8f258bd3516e437da9db8f6efb967eec",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "human-in-the-loop-useinterrupt",
+   "label": "useInterrupt",
+   "kind": "guide",
+   "group": "Human in the Loop",
+   "child": false,
+   "docPath": "human-in-the-loop/useInterrupt",
+   "reachable": "sidebar",
+   "status": "⚠️",
+   "findings": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    48
+   ],
+   "notes": [
+    "Note: backend example is LangGraph; frontend reads `event.value`, so the card shows \"a call\" instead of the topic"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-04-UseInterrupt",
+     "loom": "https://www.loom.com/share/13a69a4cd33f478e9f15824a1e3aed39",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "human-in-the-loop-headless",
+   "label": "Headless Interrupts",
+   "kind": "guide",
+   "group": "Human in the Loop",
+   "child": false,
+   "docPath": "human-in-the-loop/headless",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    30,
+    31,
+    32
+   ],
+   "notes": [
+    "Note: `AppSurface` is undefined; the hook listens for the old `on_interrupt` event, so Antigravity's interrupt never shows"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
+     "loom": "https://www.loom.com/share/39accb4afd0c4b12aaa431eda7a0cb56",
+     "narration": "narration/scripts/ANTIGRAVITY-react-05-HeadlessInterrupts.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "shared-state",
+   "label": "Shared State",
+   "kind": "guide",
+   "group": "Shared State",
+   "child": false,
+   "docPath": "shared-state",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    24,
+    25,
+    26
+   ],
+   "notes": [
+    "Note: `set_notes` uses `experimental_get_state`/`experimental_set_state` without importing them from `ag_ui_antigravity`; `build()` undefined"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-06-SharedState",
+     "loom": "https://www.loom.com/share/904652144c004cdf89152d63608e977e",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "shared-state-streaming",
+   "label": "State Streaming",
+   "kind": "guide",
+   "group": "Shared State",
+   "child": false,
+   "docPath": "shared-state/streaming",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    26
+   ],
+   "notes": [
+    "Note: the whole page is LangGraph code (`StateStreamingMiddleware`); no Antigravity version"
+   ],
+   "block": null,
+   "links": [],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "generative-ui-tool-rendering",
+   "label": "Tool Rendering",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/tool-rendering",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    36,
+    37,
+    38
+   ],
+   "notes": [
+    "Note: `search_flights`, `get_stock_price`, `roll_d20` and `CustomCatchallRenderer` are used but never shown"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-08-ToolRendering",
+     "loom": "https://www.loom.com/share/e4bc17c4727d43198d609d356005c4eb",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "generative-ui-state-rendering",
+   "label": "State Rendering",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/state-rendering",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    39
+   ],
+   "notes": [
+    "Note: `set_steps` works once imports are added; the streaming example is LangGraph code"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-07-StateRendering",
+     "loom": "https://www.loom.com/share/eea37e5a8d984aada80a6dbb551d77b7",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "generative-ui-components",
+   "label": "Components and Surfaces",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    41,
+    42
+   ],
+   "notes": [
+    "Note: `standardUI` import needs `maplibre-gl` (not installed); on Antigravity the agent replies with a Markdown table, no component"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-10-Components",
+     "loom": "https://www.loom.com/share/5fd7ea91c68e4d6a9cbbfc232424d634",
+     "narration": "narration/scripts/ANTIGRAVITY-react-10-Components.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "generative-ui-mcp-apps",
+   "label": "MCP Apps",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/mcp-apps",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    43,
+    44
+   ],
+   "notes": [
+    "Note: `mcpAppsAgent` is used in the runtime but never defined"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-11-McpApps",
+     "loom": "https://www.loom.com/share/d620ab104ea4460295753e836bae43bd",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "multi-agent-subagents",
+   "label": "Sub-Agents",
+   "kind": "guide",
+   "group": "Multi-Agent",
+   "child": false,
+   "docPath": "multi-agent/subagents",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    27,
+    28
+   ],
+   "notes": [
+    "Note: `subagents.py` imports `MODEL`, `build` etc. from `agents._common`, which isn't published"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-12-SubAgents",
+     "loom": "https://www.loom.com/share/49e48967f8734865965130edcbe8a2bc",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "inspector",
+   "label": "Inspector",
+   "kind": "guide",
+   "group": "Debugging",
+   "child": false,
+   "docPath": "inspector",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    34,
+    35
+   ],
+   "notes": [
+    "Note: Agent pane says \"No agent selected\" although the agent is connected"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-14-Inspector",
+     "loom": "https://www.loom.com/share/2720a1a5bd1a4992a89f136bf8e1fde3",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  },
+  {
+   "id": "webmcp",
+   "label": "WebMCP",
+   "kind": "guide",
+   "group": "Browser Agents",
+   "child": false,
+   "docPath": "webmcp",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    33,
+    46
+   ],
+   "notes": [
+    "Note: `searchOrders()` isn't defined; tool only appears with Chrome's experimental web platform flag, which the page doesn't name"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-13-WebMCP",
+     "loom": "https://www.loom.com/share/36b459b909d94eb4b46cbfbe743bd903",
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   }
+  }
+ ]
+}

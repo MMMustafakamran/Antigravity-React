@@ -1,0 +1,9 @@
+{
+ "text": "This is my project, with the exact page and hook from the doc. And uh, since App Surface isn't defined anywhere in the doc, I added a small harness App Surface, so the page can load.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 13.189,
+ "file": "c8c7e35f818b0a12cf6338d7b02edd05.mp3",
+ "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
+ "at": "ide"
+}

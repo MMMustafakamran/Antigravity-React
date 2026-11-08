@@ -1,0 +1,9 @@
+{
+ "text": "So pending just stays null the whole time. Nothing is rendered, and there's no way to approve or resume the run either. The conversation is basically stuck.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 11.006,
+ "file": "b52b33b02f3210976edbd61417196c11.mp3",
+ "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
+ "at": "wait#3"
+}

@@ -1,0 +1,9 @@
+{
+ "text": "So noting it down. One, App Surface is not defined, so the page crashes. Two, even with a surface added, the hook listens for the old on interrupt event, so umm, Antigravity's interrupt never shows. And the interrupt headless agent is also never registered.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 17.926,
+ "file": "1bf0a9732c8b6c4cb5d2f9a2296b301c.mp3",
+ "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
+ "at": "notepad"
+}

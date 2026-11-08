@@ -1,0 +1,42 @@
+{
+ "clip": "ANTIGRAVITY-react-10-Components",
+ "source": "frames",
+ "marks": [
+  {
+   "t": 0,
+   "label": "doc"
+  },
+  {
+   "t": 24,
+   "label": "ide"
+  },
+  {
+   "t": 32,
+   "label": "demo"
+  },
+  {
+   "t": 50,
+   "label": "wait"
+  },
+  {
+   "t": 72,
+   "label": "result"
+  },
+  {
+   "t": 84,
+   "label": "evidence"
+  },
+  {
+   "t": 100,
+   "label": "evidence"
+  },
+  {
+   "t": 108,
+   "label": "notepad"
+  },
+  {
+   "t": 138,
+   "label": "notepad-closed"
+  }
+ ]
+}

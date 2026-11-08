@@ -1,0 +1,9 @@
+{
+ "text": "The agent is still thinking here. The doc says the runtime gives the run a render UI tool, umm, when the provider sends a catalog. So the reply should be a rendered component, not just text. Let's see what comes back.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 14.768,
+ "file": "0dc8bfed6022dcca17b4c56eccbd8a71.mp3",
+ "clip": "ANTIGRAVITY-react-10-Components",
+ "at": "wait"
+}

@@ -1,0 +1,9 @@
+{
+ "text": "Back on the doc. So this import of standard UI needs maplibre GL, which isn't in the page's install step, so the build breaks until you add it yourself.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 11.749,
+ "file": "983d1b8aa2bf042ea54c0704abb62445.mp3",
+ "clip": "ANTIGRAVITY-react-10-Components",
+ "at": "evidence"
+}

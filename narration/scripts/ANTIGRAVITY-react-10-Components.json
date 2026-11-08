@@ -1,0 +1,41 @@
+{
+ "clip": "ANTIGRAVITY-react-10-Components",
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the components and surfaces page in the CopilotKit docs, for Google Antigravity with React, and umm, I have implemented this page in my project. So let's go through the page first, and then the code and the demo."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, with the doc's provider and standard UI, as on the page."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I sent the doc's own prompt, compare the starter, team and enterprise plans in a table. And uh, with standard UI on the provider, we should get a proper component back."
+  },
+  {
+   "at": "+",
+   "text": "The agent is still thinking here. The doc says the runtime gives the run a render UI tool, umm, when the provider sends a catalog. So the reply should be a rendered component, not just text. Let's see what comes back."
+  },
+  {
+   "at": "+",
+   "text": "So the reply is just a markdown table, as text. No standard UI component at all, and ahh, the header cells are even shifted."
+  },
+  {
+   "at": "evidence",
+   "text": "Back on the doc. So this import of standard UI needs maplibre GL, which isn't in the page's install step, so the build breaks until you add it yourself."
+  },
+  {
+   "at": "evidence#2",
+   "text": "And here it says, do step three only. But on Antigravity, umm, nothing renders."
+  },
+  {
+   "at": "notepad",
+   "text": "So noting it. Importing standard UI breaks the build, because maplibre GL isn't installed. And with Antigravity, the agent just replies with a markdown table, and uh, no component is rendered at all. The page's actual walkthrough is a built in agent with OpenAI, not Antigravity, so there's no working Antigravity path on this page."
+  },
+  {
+   "at": "notepad-closed",
+   "text": "That's the problem here, please have a look."
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
+ "source": "frames",
+ "marks": [
+  {
+   "t": 0,
+   "label": "doc"
+  },
+  {
+   "t": 20,
+   "label": "ide"
+  },
+  {
+   "t": 36,
+   "label": "demo"
+  },
+  {
+   "t": 62,
+   "label": "wait"
+  },
+  {
+   "t": 86,
+   "label": "wait"
+  },
+  {
+   "t": 108,
+   "label": "wait"
+  },
+  {
+   "t": 126,
+   "label": "wait"
+  },
+  {
+   "t": 144,
+   "label": "evidence"
+  },
+  {
+   "t": 156,
+   "label": "evidence"
+  },
+  {
+   "t": 168,
+   "label": "notepad"
+  },
+  {
+   "t": 191,
+   "label": "console"
+  }
+ ]
+}
