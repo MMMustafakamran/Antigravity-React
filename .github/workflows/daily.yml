@@ -130,6 +130,10 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      # The agents' own overrides (backend/agents/_common.py): the defaults live under /data,
+      # which a GitHub runner can't write. Not a doc change.
+      ANTIGRAVITY_WORKSPACE: /tmp/antigravity/ws
+      ANTIGRAVITY_SAVE_DIR: /tmp/antigravity/sessions
     steps:
       - uses: actions/checkout@v4
 
