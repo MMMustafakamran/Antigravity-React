@@ -47,6 +47,11 @@ Stack: `@copilotkit/react-core`/`runtime` 1.84.1, `@ag-ui/client` 1.0.2, `next` 
 - **Doc:** `const raw = event.value ?? {};` then `payload.topic ?? "a call"` and `payload.slots … : generateFallbackSlots()`.
 - **Result:** with the page's own `experimental_interrupt("schedule_meeting", metadata={"topic", "attendee"})` backend, the interrupt arrives as a standard AG-UI interrupt (payload on `interrupt.metadata`). The card renders "a call" with fallback slots, and the topic and attendee are dropped. Resolve and resume do work: the agent confirms "scheduled for Tomorrow 2:00 PM". The page's own prose says standard interrupts carry the payload on `interrupt`, but the code reads `event.value`.
 
+### [Sub-Agents](https://docs.copilotkit.ai/google-antigravity/multi-agent/subagents)
+**#49 The sub-agents server crashes on start: `httpx` is imported but never installed.**
+- **Doc:** the install step is `pip install ag-ui-antigravity google-antigravity`; the published `subagents.py` starts with `import httpx` and calls `generateContent` through `httpx.AsyncClient`.
+- **Error:** `ModuleNotFoundError: No module named 'httpx'` when uvicorn imports the app (CI run of 2026-11-08 on today's versions). `httpx` used to arrive only as a dependency of `google-genai` 2.x; `google-genai` 3.0.0 (pulled in by `google-antigravity` 0.1.23 today) no longer depends on it, so a reader installing the page's packages now gets the crash. Still starts on the 2026-11-04 lockfile (`google-genai` 2.34.0).
+
 ## Minor notes
 - #2 Quickstart: `npx copilotkit@latest init --framework antigravity` fails on CLI 4.33.1 with `Unsupported framework "antigravity"` (`copilotkit framework list` has no entry). The page's callout anticipates this.
 - #3 `/google-antigravity` serves the same content as `/google-antigravity/quickstart` (byte-identical `.md`).

@@ -40,6 +40,16 @@ export const FINDING_NOTES: Record<string, string> = {
     'on antigravity no component renders at all',
     'the agent just answers with a markdown table as plain text',
   ].join('\n'),
+  subagents: [
+    'sub-agents - finding #49',
+    '',
+    'install step is only pip install ag-ui-antigravity google-antigravity',
+    'but subagents.py starts with import httpx',
+    'httpx used to come in with google-genai 2.x, google-genai 3.0.0 dropped it',
+    'so on todays versions the server crashes on start',
+    'ModuleNotFoundError: No module named httpx',
+    'the page never tells you to install httpx',
+  ].join('\n'),
 };
 
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
@@ -56,6 +66,10 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
   components: [
     { text: 'npm install @copilotkit/react-core @copilotkit/runtime @tanstack/ai', caption: 'No maplibre-gl, but standardUI needs it' },
     { text: 'Already have CopilotKit running? Do step 3 only.', caption: 'Step 3 alone renders no component on Antigravity' },
+  ],
+  subagents: [
+    { text: 'pip install ag-ui-antigravity google-antigravity', caption: 'Install step: no httpx' },
+    { text: 'import httpx', caption: 'The code needs httpx (FINDINGS.md #49)' },
   ],
 };
 
@@ -217,7 +231,16 @@ export const runStateRenderingAction: PageActionHandler = async (page, config, _
 };
 
 /** Sub-Agents: the supervisor delegates; each sub-agent call lands in the delegation log mid-run. */
-export const runSubagentsAction: PageActionHandler = async (page, config, _root, ctx) => {
+export const runSubagentsAction: PageActionHandler = async (page, config, root, ctx) => {
+  try {
+    await runSubagentsTake(page, config, root, ctx);
+  } finally {
+    // FINDINGS.md #49: on today's versions the sub-agents server never starts.
+    await writeFinding(page, config.id, config);
+  }
+};
+
+const runSubagentsTake: PageActionHandler = async (page, config, _root, ctx) => {
   const msgCount = await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
   const entries = page.locator('[data-testid="delegation-entry"]');
   const appeared = await entries.first().waitFor({ state: 'visible', timeout: 180000 }).then(() => true).catch(() => false);

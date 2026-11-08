@@ -462,18 +462,19 @@
    "child": false,
    "docPath": "multi-agent/subagents",
    "reachable": "sidebar",
-   "status": "✅",
+   "status": "❌",
    "findings": [
     27,
-    28
+    28,
+    49
    ],
    "notes": [
-    "Note: `subagents.py` imports `MODEL`, `build` etc. from `agents._common`, which isn't published"
+    "Issue: the sub-agents server won't start: `subagents.py` imports `httpx`, which the page's install step never installs (`ModuleNotFoundError: No module named 'httpx'` since google-genai 3.0)."
    ],
    "block": null,
    "links": [
     {
-     "text": null,
+     "text": "Not Working",
      "clip": "ANTIGRAVITY-react-12-SubAgents",
      "loom": null,
      "narration": null
