@@ -32,12 +32,12 @@
    "text": "So basically, h t t p x used to come in with google genai two point x, but google genai three dropped it. So on today's versions, umm, the server crashes on start."
   },
   {
-   "at": "notepad-closed",
-   "text": "That's the problem here, please have a look."
-  },
-  {
    "at": "failure",
    "text": "And this is the server log, module not found, no module named h t t p x."
+  },
+  {
+   "at": "+",
+   "text": "That's the problem here, please have a look."
   }
  ]
 }
