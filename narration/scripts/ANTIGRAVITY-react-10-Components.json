@@ -3,11 +3,11 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the components and surfaces page in the CopilotKit docs, for Google Antigravity with React, and umm, I have implemented this page in my project. So let's go through the page first, and then the code and the demo."
+   "text": "Ok so, this is the components and surfaces page in the CopilotKit docs, for Google Antigravity with React, and umm, I have implemented this page in my project."
   },
   {
    "at": "ide",
-   "text": "This is my project, with the doc's provider and standard UI, as on the page."
+   "text": "This is my project, with the doc's code."
   },
   {
    "at": "demo",
@@ -23,7 +23,7 @@
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. So this import of standard UI needs maplibre GL, which isn't in the page's install step, so the build breaks until you add it yourself."
+   "text": "Back on the doc. This standard UI import needs maplibre GL, and the install step doesn't add it, so the build breaks."
   },
   {
    "at": "evidence#2",
@@ -31,11 +31,7 @@
   },
   {
    "at": "notepad",
-   "text": "So noting it. Importing standard UI breaks the build, because maplibre GL isn't installed. And with Antigravity, the agent just replies with a markdown table, and uh, no component is rendered at all. The page's actual walkthrough is a built in agent with OpenAI, not Antigravity, so there's no working Antigravity path on this page."
-  },
-  {
-   "at": "notepad-closed",
-   "text": "That's the problem here, please have a look."
+   "text": "So noting it. Importing standard UI breaks the build, because maplibre GL isn't installed. And with Antigravity, the agent just replies with a markdown table, and uh, no component is rendered at all. The page's actual walkthrough is a built in agent with OpenAI, not Antigravity. That's the problem here, please have a look."
   }
  ]
 }

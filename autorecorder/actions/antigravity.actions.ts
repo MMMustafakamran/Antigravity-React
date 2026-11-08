@@ -187,3 +187,58 @@ export const runUseInterruptAction: PageActionHandler = async (page, config, roo
   await pickSlot(page, config, root, ctx);
   await writeFinding(page, config.id, config);
 };
+
+/** State Rendering: set_steps streams the plan into agent state; the steps panel re-renders mid-run. */
+export const runStateRenderingAction: PageActionHandler = async (page, config, _root, ctx) => {
+  await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
+  const firstStep = page.locator('[data-testid="step-item"]').first();
+  const appeared = await firstStep.waitFor({ state: 'visible', timeout: 120000 }).then(() => true).catch(() => false);
+  if (!appeared) {
+    mark('error');
+    ctx.fail('set_steps never rendered: the steps panel stayed empty.');
+    return;
+  }
+  mark('action', 'steps rendered from agent state');
+  await glideTo(page, page.locator('[data-testid="steps-panel"]'), 2000);
+  // The agent mostly talks through set_steps tool calls, not chat text, so the chat-reply wait
+  // gives up early. Follow the run itself: the LIVE badge (OnRunStatusChanged) goes away at the end.
+  const finished = await page
+    .locator('[data-testid="live-badge"]')
+    .waitFor({ state: 'detached', timeout: 240000 })
+    .then(() => true)
+    .catch(() => false);
+  if (!finished) ctx.warn('Run still LIVE after 4 minutes.');
+  await sleep(2000);
+  const statuses = await page.locator('[data-testid="step-item"]').evaluateAll((els) => els.map((e) => e.getAttribute('data-status')));
+  if (!statuses.length || statuses.some((s) => s !== 'completed')) {
+    ctx.warn(`Run ended with steps not all completed: ${statuses.join(', ')}`);
+  }
+  await glideTo(page, page.locator('[data-testid="steps-progress"]'), 2500);
+};
+
+/** Sub-Agents: the supervisor delegates; each sub-agent call lands in the delegation log mid-run. */
+export const runSubagentsAction: PageActionHandler = async (page, config, _root, ctx) => {
+  const msgCount = await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
+  const entries = page.locator('[data-testid="delegation-entry"]');
+  const appeared = await entries.first().waitFor({ state: 'visible', timeout: 180000 }).then(() => true).catch(() => false);
+  if (!appeared) {
+    mark('error');
+    ctx.fail('No delegation ever reached the log (agent.state.delegations stayed empty).');
+    return;
+  }
+  mark('action', 'first delegation in the log');
+  await glideTo(page, entries.first(), 2000);
+  await settle(page, msgCount, ctx);
+  const fired = await page
+    .locator('[data-testid="subagent-indicators"] [data-fired="true"]')
+    .evaluateAll((els) => els.map((e) => e.getAttribute('data-role')));
+  if (fired.length < 3) ctx.warn(`Supervisor called only: ${fired.join(', ') || 'none'} (doc: research, write, critique).`);
+  await glideTo(page, page.locator('[data-testid="delegation-count"]'), 1500);
+  // Scroll the log (the wheel scrolls what is under the cursor) so every delegation is seen.
+  await glideTo(page, entries.first(), 500);
+  for (let i = 0; i < 4; i++) {
+    await page.mouse.wheel(0, 250);
+    await sleep(700);
+  }
+  await sleep(1500);
+};

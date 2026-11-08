@@ -14,6 +14,8 @@ import {
   runInspectorAction,
   runSharedStateAction,
   runStandardWithFinding,
+  runStateRenderingAction,
+  runSubagentsAction,
   runUseInterruptAction,
 } from './antigravity.actions';
 
@@ -26,6 +28,8 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   'shared-state': runSharedStateAction,
   inspector: runInspectorAction,
   components: runStandardWithFinding,
+  'state-rendering': runStateRenderingAction,
+  subagents: runSubagentsAction,
 };
 
 export async function executePageAction(

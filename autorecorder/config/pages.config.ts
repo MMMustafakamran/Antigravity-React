@@ -5,8 +5,8 @@
  * Every demo route is served from the root of the app (demoSuffix is ''), because this harness
  * puts each doc page on its own route rather than a `/demo-chat` sub-page.
  *
- * Pages with no frontend to drive (State Rendering, Sub-Agents) are `docOnly`: their backends
- * were tested over AG-UI directly (see FINDINGS.md), and the clip is the doc read on camera.
+ * State Rendering and Sub-Agents publish only frontend fragments, so their routes are harness
+ * pages around the doc's verbatim snippets (see the HARNESS headers in those page files).
  *
  * Not registered: premium/Intelligence pages and Threads (owner instruction, 2026-11-04).
  */
@@ -101,12 +101,13 @@ export const PAGES = definePages([
     name: 'Generative UI - State Rendering',
     videoName: 'StateRendering',
     docPath: 'generative-ui/state-rendering',
-    route: '',
+    route: 'generative-ui/state-rendering',
     ideFile: 'backend/state_rendering_main.py',
     startLine: 6,
     endLine: 16,
-    docOnly: true,
-    prompt: '',
+    extraTabs: [{ filePath: 'frontend/app/generative-ui/state-rendering/page.tsx', startLine: 20, endLine: 28 }],
+    prompt: 'Plan a weekend trip to Lisbon in 3 steps and work through each one.',
+    waitAfterPromptMs: 4000,
   },
   {
     id: 'tool-rendering',
@@ -165,12 +166,14 @@ export const PAGES = definePages([
     name: 'Multi-Agent - Sub-Agents',
     videoName: 'SubAgents',
     docPath: 'multi-agent/subagents',
-    route: '',
+    route: 'multi-agent/subagents',
     ideFile: 'backend/agents/subagents.py',
     startLine: 1,
     endLine: 40,
-    docOnly: true,
-    prompt: '',
+    extraTabs: [{ filePath: 'frontend/app/multi-agent/subagents/delegation-log.tsx', startLine: 49, endLine: 90 }],
+    prompt: 'Write a short blog post about why tide pools matter. Research it, draft it, then critique it.',
+    waitAfterPromptMs: 4000,
+    timeouts: { replyStartMs: 180000 },
   },
   {
     id: 'webmcp',

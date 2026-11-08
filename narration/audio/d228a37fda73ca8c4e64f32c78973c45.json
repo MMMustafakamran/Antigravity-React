@@ -1,0 +1,9 @@
+{
+ "text": "So noting it. Importing standard UI breaks the build, because maplibre GL isn't installed. And with Antigravity, the agent just replies with a markdown table, and uh, no component is rendered at all. The page's actual walkthrough is a built in agent with OpenAI, not Antigravity. That's the problem here, please have a look.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 23.25,
+ "file": "d228a37fda73ca8c4e64f32c78973c45.mp3",
+ "clip": "ANTIGRAVITY-react-10-Components",
+ "at": "notepad"
+}

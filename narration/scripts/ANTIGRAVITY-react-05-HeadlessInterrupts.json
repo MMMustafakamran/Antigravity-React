@@ -3,11 +3,11 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the headless interrupts page in the CopilotKit docs, for Google Antigravity with React. And umm, I have implemented this page in my project, so let's go through it step by step and see what happens."
+   "text": "Ok so, this is the headless interrupts page in the CopilotKit docs, for Google Antigravity with React, and I've implemented it in my project."
   },
   {
    "at": "ide",
-   "text": "This is my project, with the exact page and hook from the doc. And uh, since App Surface isn't defined anywhere in the doc, I added a small harness App Surface, so the page can load."
+   "text": "My project, with the exact page and hook from the doc. App Surface isn't defined anywhere, so I added a small harness one."
   },
   {
    "at": "demo",
@@ -15,34 +15,30 @@
   },
   {
    "at": "+",
-   "text": "But the surface never picks it up. It still says no pending interrupt. So basically, the backend side is fine, the interrupt is actually sent, and uh, the problem is on the frontend."
+   "text": "But the surface never picks it up, it still says no pending interrupt. So the backend is fine, and uh, the problem is on the frontend."
   },
   {
    "at": "+",
-   "text": "The hook is still waiting for the old on interrupt custom event, and it reads event dot value. But Antigravity sends the standard interrupt at the end of the run, umm, so the hook never sees it."
+   "text": "The hook waits for the old on interrupt event, but Antigravity sends the standard interrupt, umm, so the hook never sees it."
   },
   {
    "at": "+",
-   "text": "So pending just stays null the whole time. Nothing is rendered, and there's no way to approve or resume the run either. The conversation is basically stuck."
-  },
-  {
-   "at": "+",
-   "text": "I waited quite a while here, and ahh, nothing changes. It's still no pending interrupt on the left."
+   "text": "So pending stays null, nothing renders, and the run is just stuck."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. So in the browser, this page shows not supported on Google Antigravity, but the markdown export still ships this code."
+   "text": "Back on the doc. The browser page says not supported on Google Antigravity, but the markdown export still ships this code."
   },
   {
    "at": "evidence#2",
-   "text": "And uh, the page code renders App Surface, which is never defined. So as written, it crashes with App Surface is not defined."
+   "text": "And the page renders App Surface, which is never defined, so as written it crashes."
   },
   {
    "at": "notepad",
    "text": "So noting it down. One, App Surface is not defined, so the page crashes. Two, even with a surface added, the hook listens for the old on interrupt event, so umm, Antigravity's interrupt never shows. And the interrupt headless agent is also never registered."
   },
   {
-   "at": "console",
+   "at": "failure",
    "text": "And this is the console, with the errors from the run. So yeah, please take a look and fix this."
   }
  ]

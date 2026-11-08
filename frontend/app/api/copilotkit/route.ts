@@ -18,6 +18,10 @@ const runtime = new CopilotRuntime({
     "interrupt-headless": new HttpAgent({ url: "http://localhost:8041" }),
     // HARNESS: the tool-rendering page uses agent "tool-rendering", never registered. Backed by backend/tool_rendering_main.py on :8044.
     "tool-rendering": new HttpAgent({ url: "http://localhost:8044" }),
+    // HARNESS: the State Rendering page uses agent "shared-state-streaming", never registered (FINDINGS.md #39). Backed by the doc's set_steps agent, backend/state_rendering_main.py on :8045.
+    "shared-state-streaming": new HttpAgent({ url: "http://localhost:8045" }),
+    // HARNESS: the Sub-Agents page shows no frontend agent id or registration. "subagents" (showcase id) is backed by backend/subagents_main.py on :8043.
+    subagents: new HttpAgent({ url: "http://localhost:8043" }),
     // HARNESS: the HITL page uses agent "hitl-in-chat" but never shows registering it. FINDINGS.md
     "hitl-in-chat": new HttpAgent({
       url: process.env.AGENT_URL ?? "http://localhost:8000",
