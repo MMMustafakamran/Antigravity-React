@@ -27,3 +27,6 @@ narration/**/*.fit.json
 reference-*.wav
 ref16k.wav
 sample-full.wav
+
+# generated after install by autorecorder/scripts/write-versions.mjs
+frontend/VERSIONS.md
