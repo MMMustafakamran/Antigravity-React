@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. So the time picker does show up, but the card just says a call, not the topic. The interrupt payload is lost, even with my own backend wiring.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 11.703,
+ "file": "4b02f8cef4a881a8e720c3df02d14f4b.mp3",
+ "clip": "ANTIGRAVITY-react-04-UseInterrupt",
+ "at": "demo"
+}

@@ -73,9 +73,16 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
   ],
 };
 
+/**
+ * Level 2 pages (QA-RULES §8a): already reported in the team doc and failing the same way.
+ * Short clip: the take ends after the demo (no doc highlight, no Notepad); the voice-over says it.
+ */
+export const KNOWN_ISSUE = new Set<string>(['use-interrupt']);
+
 /** Type a page's finding into Notepad at the end of its take, after showing it on the doc. */
 export async function writeFinding(page: Page, id: string, config?: PageRecordConfig): Promise<void> {
   if (!FINDING_NOTES[id] || !config) return;
+  if (KNOWN_ISSUE.has(id)) return;
   await showFinding(page, config, FINDING_EVIDENCE[id], FINDING_NOTES[id]);
 }
 
@@ -121,6 +128,9 @@ export const runFrontendToolsAction: PageActionHandler = async (page, config, _r
   await sleep(2500);
 };
 
+/** Topic the last picker card showed (read before the slot is clicked; the card then collapses). */
+let lastTopic: string | null = null;
+
 /** HITL and useInterrupt: a picker appears in the chat, the user picks a slot, the run resumes. */
 function pickSlotAction(slotLabel: string): PageActionHandler {
   return async (page: Page, config: PageRecordConfig, _root, ctx) => {
@@ -133,6 +143,7 @@ function pickSlotAction(slotLabel: string): PageActionHandler {
     }
     // Show the card's header first: on the useInterrupt page it reads "a call" (payload lost, FINDINGS.md #20).
     await glideTo(page, page.getByText('Book a call', { exact: false }).first(), 2500);
+    lastTopic = (await page.locator('[data-testid="time-picker-card"] h3').first().textContent().catch(() => null))?.trim() ?? null;
     await glideClick(page, slot);
     await sleep(1500);
     await settle(page, msgCount, ctx);
@@ -197,8 +208,18 @@ export const runInspectorAction: PageActionHandler = async (page, config, _root,
 
 export const runHitlAction = pickSlotAction('Tomorrow 2:00 PM');
 const pickSlot = pickSlotAction('Tomorrow 2:00 PM');
+/**
+ * useInterrupt (level 2, ❌): runs only on harness wiring (the page's backend is LangGraph, #19, and
+ * `gen-ui-interrupt` is never registered, #22). Even then the card reads "a call": the doc's
+ * frontend reads `event.value`, empty for an Antigravity interrupt (#20).
+ */
 export const runUseInterruptAction: PageActionHandler = async (page, config, root, ctx) => {
+  lastTopic = null;
   await pickSlot(page, config, root, ctx);
+  if (lastTopic === 'a call') {
+    mark('error', 'card header reads "a call": interrupt payload lost (event.value)');
+    ctx.fail('The card shows "a call" instead of the topic: event.value is empty for Antigravity (FINDINGS.md #20). Backend on the page is LangGraph (#19).');
+  }
   await writeFinding(page, config.id, config);
 };
 

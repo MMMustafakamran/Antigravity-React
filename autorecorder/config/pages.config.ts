@@ -13,7 +13,10 @@
 import { definePages } from '../core/types';
 
 /** Registered but not recorded, with the reason printed on every run. */
-export const SKIP_RECORDING: Record<string, string> = {};
+export const SKIP_RECORDING: Record<string, string> = {
+  'tool-rendering-default':
+    'Not a separate doc page: the default catch-all is a section of generative-ui/tool-rendering, whose row links the ToolRendering clip (no assignment.json row for this clip).',
+};
 
 export const PAGES = definePages([
   {
@@ -160,6 +163,10 @@ export const PAGES = definePages([
     extraTabs: [{ filePath: 'frontend/app/generative-ui/mcp-apps/page.tsx', startLine: 10, endLine: 23 }],
     prompt: 'Draw a simple flowchart with three boxes: Idea, Build, Ship.',
     waitAfterPromptMs: 8000,
+    // The agent calls the Excalidraw tools (read_me, create_view) before any text, which can take
+    // longer than the 30 s default (CI 2026-11-09 gave up at 30 s; probes 2026-11-09: 6 runs, 5 drew
+    // the diagram in 28-40 s on both google-genai 2.34.0 and 3.0.0, 1 model-output error).
+    timeouts: { replyStartMs: 120000, replyStreamMs: 90000 },
   },
   {
     id: 'subagents',

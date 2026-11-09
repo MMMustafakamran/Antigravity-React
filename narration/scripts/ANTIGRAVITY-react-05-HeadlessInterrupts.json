@@ -11,19 +11,19 @@
   },
   {
    "at": "demo",
-   "text": "Moving on to the demo. So the page loads, and on the left the harness App Surface says no pending interrupt. In the chat I asked the agent to book a call with the sales team. And umm, the agent does call the schedule meeting tool, and the run stops on the interrupt, like it should."
+   "text": "Moving on to the demo. So the page loads, and the harness App Surface says no pending interrupt. In the chat I asked the agent to book a call with the sales team."
   },
   {
    "at": "+",
-   "text": "But the surface never picks it up, it still says no pending interrupt. So the backend is fine, and uh, the problem is on the frontend."
+   "text": "And umm, nothing comes up. No reply, no time picker, and the surface still says no pending interrupt."
   },
   {
    "at": "+",
-   "text": "The hook waits for the old on interrupt event, but Antigravity sends the standard interrupt, umm, so the hook never sees it."
+   "text": "The hook waits for the old on interrupt event, so uh, it never sees Antigravity's interrupt."
   },
   {
    "at": "+",
-   "text": "So pending stays null, nothing renders, and the run is just stuck."
+   "text": "So the chat just hangs, and you can never answer it."
   },
   {
    "at": "evidence",
@@ -35,11 +35,11 @@
   },
   {
    "at": "notepad",
-   "text": "So noting it down. One, App Surface is not defined, so the page crashes. Two, even with a surface added, the hook listens for the old on interrupt event, so umm, Antigravity's interrupt never shows. And the interrupt headless agent is also never registered."
+   "text": "So noting it down. One, App Surface is not defined, so the page crashes. Two, even with a surface added, the hook listens for the old on interrupt event, so umm, the chat just hangs."
   },
   {
    "at": "failure",
-   "text": "And this is the console, with the errors from the run. So yeah, please take a look and fix this."
+   "text": "And this is the terminal with the server logs from the run, umm, no real error there, it just hangs. So yeah, please take a look and fix this."
   }
  ]
 }

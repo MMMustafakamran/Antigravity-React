@@ -161,7 +161,7 @@
     11
    ],
    "notes": [
-    "Note: `page.tsx` snippet has no \"use client\", no export, and imports `./background` and `./suggestions` that aren't shown"
+    "Note: the doc's `Chat()` stops mid-function with no export and no \"use client\"; the harness completed it and copied the unshown `./background` and `./suggestions` from the showcase"
    ],
    "block": null,
    "links": [
@@ -216,7 +216,7 @@
    "child": false,
    "docPath": "human-in-the-loop/useInterrupt",
    "reachable": "sidebar",
-   "status": "⚠️",
+   "status": "❌",
    "findings": [
     19,
     20,
@@ -226,7 +226,7 @@
     48
    ],
    "notes": [
-    "Note: backend example is LangGraph; frontend reads `event.value`, so the card shows \"a call\" instead of the topic"
+    "Issue: the backend example is a LangGraph agent (no Antigravity code), and the frontend reads event.value, so even with an Antigravity backend wired in the card shows \"a call\" instead of the topic"
    ],
    "block": null,
    "links": [
@@ -234,7 +234,7 @@
      "text": null,
      "clip": "ANTIGRAVITY-react-04-UseInterrupt",
      "loom": "https://www.loom.com/share/13a69a4cd33f478e9f15824a1e3aed39",
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-react-04-UseInterrupt.json"
     }
    ],
    "review": {

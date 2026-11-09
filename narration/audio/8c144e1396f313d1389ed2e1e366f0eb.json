@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. So the page loads, and the harness App Surface says no pending interrupt. In the chat I asked the agent to book a call with the sales team.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 11.006,
+ "file": "8c144e1396f313d1389ed2e1e366f0eb.mp3",
+ "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
+ "at": "demo"
+}
