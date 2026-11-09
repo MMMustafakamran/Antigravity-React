@@ -4,9 +4,9 @@
  "repo": "Antigravity-react",
  "docBase": "https://docs.copilotkit.ai/google-antigravity/",
  "versions": {
-  "@copilotkit/react-core": "1.84.1",
-  "@copilotkit/runtime": "1.84.1",
-  "@ag-ui/client": "1.0.2",
+  "@copilotkit/react-core": "1.85.0",
+  "@copilotkit/runtime": "1.85.0",
+  "@ag-ui/client": "1.0.4",
   "next": "16.4.5",
   "react": "19.3.0",
   "google-antigravity": "0.1.23",

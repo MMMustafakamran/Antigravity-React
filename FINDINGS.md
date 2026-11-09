@@ -1,6 +1,6 @@
 # Findings — Antigravity-react
 Open doc defects only. A finding is proposed first and added only after the owner approves it (Claude Code proposes after the daily review and the owner approves locally: `.qa/instructions/QA-RULES.md` section 6). The entries from the 2026-11-04 Antigravity assignment were logged directly and reviewed by the owner at the end, a one-off exception that does not apply to new findings. Numbers are stable IDs (code cites `FINDINGS.md #N`), so gaps are removed findings.
-Stack: `@copilotkit/react-core`/`runtime` 1.84.1, `@ag-ui/client` 1.0.2, `next` 16.4.5, `react` 19.3.0, `google-antigravity` 0.1.23, `ag-ui-antigravity` 0.2.1, `fastapi` 0.162.0, `uvicorn` 0.54.0, CLI `copilotkit` 4.33.1. Python 3.13.15, Windows 11. Docs: https://docs.copilotkit.ai/google-antigravity (snapshot 2026-11-04)
+Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 16.4.5, `react` 19.3.0, `google-antigravity` 0.1.23, `ag-ui-antigravity` 0.2.1, `fastapi` 0.162.0, `uvicorn` 0.54.0, CLI `copilotkit` 4.33.1. Python 3.13.15, Windows 11. Docs: https://docs.copilotkit.ai/google-antigravity (snapshot 2026-11-04)
 
 ## Dev blockers (seen with `npm run dev` and normal use of the page)
 
