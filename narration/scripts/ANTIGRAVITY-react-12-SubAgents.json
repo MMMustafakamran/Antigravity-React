@@ -9,7 +9,7 @@
   },
   {
    "at": "ide",
-   "text": "This is my project, this is the exact sub-agents file from the doc, CopilotKit one point eighty-five."
+   "text": "This is my project, this is the exact sub-agents file from the doc."
   },
   {
    "at": "demo",
@@ -29,7 +29,7 @@
   },
   {
    "at": "notepad",
-   "text": "So basically, h t t p x used to come in with google genai two point x, but google genai three dropped it. So on today's versions, umm, the server crashes on start."
+   "text": "So basically, h t t p x used to come in with the old google genai, but the new one dropped it. So today, umm, the server crashes on start."
   },
   {
    "at": "failure",
