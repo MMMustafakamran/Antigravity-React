@@ -162,10 +162,10 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 - #62 Multimodal Attachments: Quick start uses agentId="my-agent" placeholder with no note to swap in your own agent id; snippet is a bare JSX fragment
 - #65 Reasoning: page.tsx tab has no import lines
 - #66 Reasoning: CopilotChatReasoningMessage used in a cast but never imported
-- #67 Threads Drawer: needs CopilotKit Intelligence (CPK_INTELLIGENCE_API_KEY) or a license token; without it the drawer shows the locked view
-- #68 Headless Threads: App passes onSelectThread to ThreadSidebar, which takes no props and never calls it, so a thread can never be selected (build-only TS error; would be a blocker once Intelligence is on)
+- #67 Threads Drawer: page shows no runtime code for the Intelligence connection it needs (only a signup link); works with CPK_INTELLIGENCE_API_KEY on the headless page's server.ts runtime (lists, switches, New Conversation)
+- #68 Headless Threads: App passes onSelectThread to ThreadSidebar, which takes no props and never calls it, so no row can be selected; with a one-line onClick (harness) switching works
 - #69 Headless Threads: server.ts calls verifyAppSession, never defined
-- #70 Headless Threads: useThreads({ agentId: "my-agent" }) placeholder
+- #70 Headless Threads: useThreads({ agentId: "my-agent" }) placeholder; the chat runs as the app's agent (antigravity_agent), so the list would show another agent's threads
 - #74 JSON Render: install step: @json-render/core, @json-render/react
 - #75 Hashbrown: @hashbrownai/* are beta (0.5.0-beta.4)
 - #76 Components as Tools: useComponent snippet uses barChartPropsSchema and BarChart but the page never shows them
