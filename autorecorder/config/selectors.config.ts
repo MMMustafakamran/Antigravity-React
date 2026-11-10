@@ -65,7 +65,8 @@ export const SELECTORS: SelectorContract = {
     '.copilotKitAssistantMessage, [data-message-role="assistant"], .copilotKitMessage:not(:first-child), [class*="assistant"]',
 
   chatReady:
-    'textarea, input[type="text"], input, [contenteditable="true"], .copilotKitChat, [class*="copilotKit"]',
+    // input:not(file): with attachments enabled CopilotChat mounts a hidden file input first, which never turns visible.
+    'textarea, input[type="text"], input:not([type="file"]):not([type="hidden"]), [contenteditable="true"], .copilotKitChat, [class*="copilotKit"]',
 
   docContentReady: 'h1, article, main, [class*="content"], pre',
 

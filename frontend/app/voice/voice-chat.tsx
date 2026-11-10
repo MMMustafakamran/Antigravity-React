@@ -1,16 +1,15 @@
 "use client";
 // HARNESS: page.tsx imports ./voice-chat, which the Voice doc page never shows (FINDINGS.md #63).
-// A missing module is a global Turbopack build error that blanks EVERY route of the dev server,
-// so this placeholder moves the failure onto this page only: it throws the same "not shown" error
-// once the page is in the browser (not during SSR, so the route answers 200 and the recorder can
-// still reach the doc evidence afterwards). Nothing here implements voice; the page stays broken.
-import { useEffect, useState } from "react";
-
+// Without this file Next fails with "Module not found: Can't resolve './voice-chat'", a global
+// Turbopack build error that blanks EVERY route of the dev server, so the other pages could not be
+// recorded. This placeholder keeps that failure on this page only: it implements nothing and just
+// prints the error a reader gets, so the clip shows the page is unusable as published.
+// (The class name lets the recorder see the page has loaded and go on to the doc evidence.)
 export function VoiceChat() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (mounted) {
-    throw new Error("[HARNESS placeholder] ./voice-chat is imported by page.tsx but never shown on the Voice doc page");
-  }
-  return null;
+  return (
+    <div className="copilotKit-harness-missing-voice-chat" style={{ padding: 32, fontFamily: "monospace", color: "#b91c1c" }}>
+      <p>Module not found: Can&apos;t resolve &apos;./voice-chat&apos;</p>
+      <p>(./voice-chat is imported by page.tsx but never shown on the Voice doc page. Harness placeholder, no voice UI.)</p>
+    </div>
+  );
 }
