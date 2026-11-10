@@ -5,7 +5,7 @@ import { sleep } from '../core/overlays/cursor';
 import { glideClick, glideTo } from './glide-click';
 import { runStandardAction } from '../core/actions';
 import { type DocEvidence, showFinding } from './doc-evidence';
-import { mark } from '../core/timeline';
+import { checkpoint, mark, probeText } from '../core/timeline';
 
 /**
  * Finding clips: back to the doc, drag-select each cited text like a person, then the finding
@@ -436,4 +436,82 @@ export const runChatControlsAction: PageActionHandler = async (page, config, roo
     ctx.warn('No "Ask the assistant" button on the page.');
   }
   await runStandardAction(page, config, root, ctx);
+};
+
+// ---------------------------------------------------------------------------------------------
+// Threads pages, tested with the CopilotKit Intelligence key (2026-11-10). Runtime:
+// frontend/app/api/copilotkit-threads (the headless page's server.ts). Threads are per user
+// (antigravity-qa-user) and persist between runs, so older rows can already be listed.
+// ---------------------------------------------------------------------------------------------
+const DRAWER_ROW = 'copilotkit-threads-drawer li[role="option"][data-thread-id]';
+const promptHead = (config: PageRecordConfig) => config.prompt.slice(0, 24);
+
+/** Threads Drawer: chat once, the thread is listed, New Conversation resets the chat, the row replays it. */
+export const runThreadsDrawerAction: PageActionHandler = async (page, config, root, ctx) => {
+  await page.locator('copilotkit-threads-drawer').first().waitFor({ state: 'attached', timeout: 30000 }).catch(() => {});
+  await sleep(3000); // the drawer loads its list
+  const rowsBefore = await page.locator(DRAWER_ROW).count();
+  await runStandardAction(page, config, root, ctx);
+  const mine = page.locator(DRAWER_ROW).filter({ hasText: promptHead(config) });
+  const listed = await page
+    .waitForFunction((n) => (document.querySelector('copilotkit-threads-drawer')?.shadowRoot
+      ?.querySelectorAll('li[role="option"][data-thread-id]').length ?? 0) > n, rowsBefore, { timeout: 45000, polling: 500 })
+    .then(() => true)
+    .catch(() => false);
+  void checkpoint('thread', 'the new conversation is listed in the drawer', async () => `${await page.locator(DRAWER_ROW).count()} row(s), was ${rowsBefore}`, {
+    ok: () => listed,
+  });
+  if (!listed) {
+    ctx.fail('The Threads Drawer did not list the new conversation.');
+    return;
+  }
+  await sleep(4000); // the thread name fills in
+  await glideTo(page, page.locator(DRAWER_ROW).first(), 2000);
+  mark('click', 'New Conversation');
+  await glideClick(page, page.getByText('New Conversation', { exact: true }).first());
+  const userBubble = page.getByText(config.prompt, { exact: false }).first();
+  const reset = await userBubble.waitFor({ state: 'hidden', timeout: 15000 }).then(() => true).catch(() => false);
+  void checkpoint('new', '"New Conversation" clears the chat', async () => reset);
+  if (!reset) ctx.fail('"New Conversation" did not reset the chat.');
+  await sleep(2500);
+  mark('click', 'reopen thread');
+  const row = (await mine.count()) > 0 ? mine.first() : page.locator(DRAWER_ROW).first();
+  await glideClick(page, row);
+  const replayed = await userBubble.waitFor({ state: 'visible', timeout: 20000 }).then(() => true).catch(() => false);
+  void checkpoint('replay', 'selecting the thread replays its history', () => probeText(page.getByText(config.prompt, { exact: false })));
+  if (!replayed) ctx.fail('Selecting the thread in the drawer did not replay its conversation.');
+  await sleep(4000);
+};
+
+/** Headless Threads: chat once, the useThreads sidebar lists it, selecting another row switches the chat, and back. */
+export const runHeadlessThreadsAction: PageActionHandler = async (page, config, root, ctx) => {
+  await runStandardAction(page, config, root, ctx);
+  // The doc's ThreadSidebar: <div><span>{name}</span><button>Rename</button><button>Archive</button></div>
+  const rows = page.locator('div:has(> button:text-is("Rename")) > span');
+  const listed = await rows.first().waitFor({ state: 'visible', timeout: 45000 }).then(() => true).catch(() => false);
+  void checkpoint('thread', 'the useThreads sidebar lists the thread (Rename / Archive row)', async () => `${await rows.count()} row(s)`, {
+    ok: () => listed,
+  });
+  if (!listed) {
+    ctx.fail('The chat ran, but the useThreads sidebar lists no threads.');
+    return;
+  }
+  await sleep(4000); // the thread name fills in
+  const userBubble = page.getByText(config.prompt, { exact: false }).first();
+  const other = rows.filter({ hasNotText: promptHead(config) });
+  if ((await other.count()) > 0) {
+    mark('click', 'other thread');
+    await glideClick(page, other.first());
+    const switched = await userBubble.waitFor({ state: 'hidden', timeout: 20000 }).then(() => true).catch(() => false);
+    void checkpoint('switch', 'selecting another thread switches the chat away from this one', async () => switched);
+    if (!switched) ctx.fail('Selecting another thread in the sidebar did not switch the chat.');
+    await sleep(3000);
+  }
+  mark('click', 'reopen thread');
+  const mine = rows.filter({ hasText: promptHead(config) });
+  await glideClick(page, (await mine.count()) > 0 ? mine.first() : rows.first());
+  const replayed = await userBubble.waitFor({ state: 'visible', timeout: 20000 }).then(() => true).catch(() => false);
+  void checkpoint('replay', 'selecting the thread replays its history', () => probeText(page.getByText(config.prompt, { exact: false })));
+  if (!replayed) ctx.fail('Selecting the thread in the sidebar did not replay its conversation.');
+  await sleep(4000);
 };

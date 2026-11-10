@@ -18,6 +18,8 @@ import {
   runSubagentsAction,
   runChatControlsAction,
   runUseInterruptAction,
+  runThreadsDrawerAction,
+  runHeadlessThreadsAction,
 } from './antigravity.actions';
 
 /** Keys are page ids from `config/pages.config.ts`. Doctor flags any orphans. */
@@ -47,6 +49,9 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   'gui-transports': runStandardWithFinding,
   'gui-markdown-mode': runStandardWithFinding,
   'gui-from-a2ui': runStandardWithFinding,
+  // Threads pages with the Intelligence key (2026-11-10).
+  'threads-drawer': runThreadsDrawerAction,
+  'headless-threads': runHeadlessThreadsAction,
 };
 
 export async function executePageAction(

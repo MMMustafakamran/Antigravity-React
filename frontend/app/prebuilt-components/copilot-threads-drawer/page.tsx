@@ -12,7 +12,9 @@ import "@copilotkit/react-core/v2/styles.css";
 
 export default function Page() {
   return (
-    <CopilotKitProvider runtimeUrl="/api/copilotkit">
+    // HARNESS: doc runtimeUrl is "/api/copilotkit"; the harness main route runs without Intelligence, so this points at
+    // the Intelligence runtime (app/api/copilotkit-threads, the headless-threads page's server.ts). The page shows no runtime code.
+    <CopilotKitProvider runtimeUrl="/api/copilotkit-threads">
       <CopilotChatConfigurationProvider>
         <div style={{ display: "flex", height: "100dvh" }}>
           <CopilotThreadsDrawer />

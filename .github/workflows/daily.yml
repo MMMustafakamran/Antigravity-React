@@ -233,6 +233,7 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      CPK_INTELLIGENCE_API_KEY: ${{ secrets.CPK_INTELLIGENCE_API_KEY }}
       # The agents' own overrides (backend/agents/_common.py): the defaults live under /data,
       # which a GitHub runner can't write. Not a doc change.
       ANTIGRAVITY_WORKSPACE: /tmp/antigravity/ws
@@ -313,6 +314,8 @@ jobs:
           [ -n "${GEMINI_API_KEY:-}" ] || echo "::warning::secret GEMINI_API_KEY is not set; the doc agents will fail"
           printf 'GEMINI_API_KEY=%s\n' "$GEMINI_API_KEY" > backend/.env
           printf 'AGENT_URL=http://localhost:8040\n' > frontend/.env.local
+          # Threads pages (Intelligence, app/api/copilotkit-threads): without it they show the no-key behaviour.
+          if [ -n "${CPK_INTELLIGENCE_API_KEY:-}" ]; then printf 'CPK_INTELLIGENCE_API_KEY=%s\n' "$CPK_INTELLIGENCE_API_KEY" >> frontend/.env.local; else echo "::warning::secret CPK_INTELLIGENCE_API_KEY is not set; the Threads pages will show the locked view"; fi
 
       - name: Make the doc's agent workspace path writable
         # The doc's main.py hardcodes workspaces=["/srv/agents/w1"]; /srv needs root on Linux.
