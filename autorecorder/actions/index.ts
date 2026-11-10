@@ -16,6 +16,7 @@ import {
   runStandardWithFinding,
   runStateRenderingAction,
   runSubagentsAction,
+  runChatControlsAction,
   runUseInterruptAction,
 } from './antigravity.actions';
 
@@ -30,6 +31,7 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   components: runStandardWithFinding,
   'state-rendering': runStateRenderingAction,
   subagents: runSubagentsAction,
+  'chat-controls': runChatControlsAction,
   // 2026-11-10 pages (level 1): standard take, then doc evidence + Notepad.
   'clf-reasoning-messages': runStandardWithFinding,
   voice: runStandardWithFinding,

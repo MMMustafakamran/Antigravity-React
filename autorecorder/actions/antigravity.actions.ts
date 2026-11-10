@@ -424,3 +424,16 @@ const runSubagentsTake: PageActionHandler = async (page, config, _root, ctx) => 
   }
   await sleep(1500);
 };
+
+/** Open, close, and feedback: the sidebar starts closed, so open it with the page's own button first. */
+export const runChatControlsAction: PageActionHandler = async (page, config, root, ctx) => {
+  const open = page.getByRole('button', { name: 'Ask the assistant' }).first();
+  if (await open.isVisible({ timeout: 10000 }).catch(() => false)) {
+    mark('click', 'Ask the assistant');
+    await glideClick(page, open);
+    await sleep(1500);
+  } else {
+    ctx.warn('No "Ask the assistant" button on the page.');
+  }
+  await runStandardAction(page, config, root, ctx);
+};
