@@ -1,0 +1,35 @@
+{
+ "clip": "ANTIGRAVITY-react-29-Catalogs",
+ "finding": "antigravity-react 89",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the catalogs page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for two running shoes as product cards."
+  },
+  {
+   "at": "+",
+   "text": "The agent calls render UI, but no product card renders, the reply stays empty."
+  },
+  {
+   "at": "evidence#1",
+   "text": "This is where the catalog gets passed in."
+  },
+  {
+   "at": "notepad",
+   "text": "So yeah, the catalog is wired like the page says, but umm, on Antigravity nothing from it ever renders."
+  },
+  {
+   "at": "+",
+   "text": "Alright, that's the issue, kindly sort it out."
+  }
+ ]
+}

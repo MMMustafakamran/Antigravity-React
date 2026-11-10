@@ -1,0 +1,39 @@
+{
+ "clip": "ANTIGRAVITY-react-41-A2UI",
+ "finding": "antigravity-react 71",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the A two UI page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for a quick sales KPI dashboard."
+  },
+  {
+   "at": "+",
+   "text": "And the chat just never replies. Nothing comes back at all."
+  },
+  {
+   "at": "evidence#1",
+   "text": "On the doc, the catalog passed in here is never defined."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page only shows fragments. My catalog isn't defined and no agent is named, so umm, I had to guess the setup."
+  },
+  {
+   "at": "+",
+   "text": "And even with that, the chat never replied over two runs."
+  },
+  {
+   "at": "+",
+   "text": "So this needs a fix, kindly check it."
+  }
+ ]
+}

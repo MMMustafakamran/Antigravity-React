@@ -1,0 +1,43 @@
+{
+ "clip": "ANTIGRAVITY-react-25-Reasoning",
+ "finding": "antigravity-react 64",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the reasoning page under generative UI in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I gave it a small train problem and asked it to think step by step."
+  },
+  {
+   "at": "+",
+   "text": "The chat replies, but uh, no reasoning block ever renders."
+  },
+  {
+   "at": "evidence#1",
+   "text": "Back on the doc, this suggestions hook is never defined."
+  },
+  {
+   "at": "evidence#2",
+   "text": "And this agent ID is never registered."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page only shows the frontend. No imports, no backend, and no model that sends reasoning events for Antigravity."
+  },
+  {
+   "at": "+",
+   "text": "So umm, as written, you can't get the reasoning block to show."
+  },
+  {
+   "at": "+",
+   "text": "That's the problem here, please have a look."
+  }
+ ]
+}

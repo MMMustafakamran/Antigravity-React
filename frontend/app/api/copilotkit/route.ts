@@ -22,10 +22,25 @@ const runtime = new CopilotRuntime({
     "shared-state-streaming": new HttpAgent({ url: "http://localhost:8045" }),
     // HARNESS: the Sub-Agents page shows no frontend agent id or registration. "subagents" (showcase id) is backed by backend/subagents_main.py on :8043.
     subagents: new HttpAgent({ url: "http://localhost:8043" }),
+    // HARNESS (R2): the Headless UI page uses agent "headless-simple" and the Reasoning Messages page "reasoning-default"; neither is registered or given a backend on the page. Both use the quickstart agent.
+    "headless-simple": new HttpAgent({ url: process.env.AGENT_URL ?? "http://localhost:8000" }),
+    "reasoning-default": new HttpAgent({ url: process.env.AGENT_URL ?? "http://localhost:8000" }),
+    // HARNESS (R1): prebuilt-components chat/sidebar/popup use agents "agentic_chat", "prebuilt-sidebar", "prebuilt-popup", never shown registered. Backed by the quickstart agent on :8040.
+    agentic_chat: new HttpAgent({ url: "http://localhost:8040" }),
+    "prebuilt-sidebar": new HttpAgent({ url: "http://localhost:8040" }),
+    "prebuilt-popup": new HttpAgent({ url: "http://localhost:8040" }),
+    // HARNESS (R6): the tool-based page never shows registering "gen-ui-tool-based". Backed by backend/r6_main.py :8061/tool-based.
+    "gen-ui-tool-based": new HttpAgent({ url: "http://localhost:8061/tool-based" }),
+    // HARNESS (R6): the agent-readonly page uses agent "readonly-state-agent-context", never registered. backend/r6_main.py :8061/app-context.
+    "readonly-state-agent-context": new HttpAgent({ url: "http://localhost:8061/app-context" }),
     // HARNESS: the HITL page uses agent "hitl-in-chat" but never shows registering it. FINDINGS.md
     "hitl-in-chat": new HttpAgent({
       url: process.env.AGENT_URL ?? "http://localhost:8000",
     }),
+    // HARNESS (R3): multimodal-attachments and headless-threads use agentId "my-agent", reasoning uses "reasoning-custom", the threads drawer resolves "default"; none registered on the pages. Backed by the quickstart agent on :8040.
+    "my-agent": new HttpAgent({ url: "http://localhost:8040" }),
+    "reasoning-custom": new HttpAgent({ url: "http://localhost:8040" }),
+    default: new HttpAgent({ url: "http://localhost:8040" }),
   },
 });
 

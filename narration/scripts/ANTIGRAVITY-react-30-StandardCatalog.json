@@ -1,0 +1,35 @@
+{
+ "clip": "ANTIGRAVITY-react-30-StandardCatalog",
+ "finding": "antigravity-react 90",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the standard catalog page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked it to compare three plans in a table."
+  },
+  {
+   "at": "+",
+   "text": "And uh, no standard component renders, it just answers with a plain markdown table."
+  },
+  {
+   "at": "evidence#1",
+   "text": "This is the standard catalog, passed in like the page shows."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the agent never gets a real table component on Antigravity, only text comes back."
+  },
+  {
+   "at": "+",
+   "text": "So yeah, kindly check this and fix it."
+  }
+ ]
+}

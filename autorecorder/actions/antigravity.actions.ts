@@ -50,6 +50,103 @@ export const FINDING_NOTES: Record<string, string> = {
     'ModuleNotFoundError: No module named httpx',
     'the page never tells you to install httpx',
   ].join('\n'),
+  'clf-reasoning-messages': [
+    'page says models like gpt-6-luna emit reasoning tokens and copilotkit shows a reasoning card',
+    'but it only shows frontend code, agent reasoning-default is never registered anywhere',
+    'no antigravity backend or reasoning model on the page at all',
+    'pointed it at the quickstart agent, chat answers fine',
+    'but no reasoning message ever shows up,just the plain reply',
+  ].join('\n'),
+  voice: [
+    'page.tsx imports VoiceChat from ./voice-chat',
+    'that file is never shown anywhere on the page',
+    'next dev fails with module not found cant resolve ./voice-chat',
+    'and that build error blanks every route of the app not just voice',
+    'also no install step for @copilotkit/voice and no backend serving /voice',
+    'harness has a stub voice-chat so the other pages load,voice page still dead',
+  ].join('\n'),
+  reasoning: [
+    'reasoning page only shows the frontend',
+    'useReasoningCustomSuggestions is called but never defined',
+    'agent reasoning-custom never registered, no imports in page.tsx either',
+    'no backend or model that sends reasoning events for antigravity',
+    'with the quickstart agent the chat replies but no reasoning block renders',
+  ].join('\n'),
+  a2ui: [
+    'a2ui page passes catalog myCatalog to CopilotKit',
+    'myCatalog is never defined on the page and no agent is named',
+    'took the catalog from the dynamic schema page and the default agent',
+    'sent the prompt and the chat just never replies',
+    'waited 4 min over 2 runs,nothing',
+  ].join('\n'),
+  'a2ui-dynamic-schema': [
+    'dynamic schema page says thats all the default path needs',
+    'catalog + agent wired exactly like the page',
+    'asked for a sales kpi dashboard',
+    'no dashboard renders, chat shows a2ui render error',
+    'cannot read properties of undefined reading map',
+    'same thing on langgraph react',
+  ].join('\n'),
+  'a2ui-fixed-schema': [
+    'fixed schema page, flight card schema + agent streams the data',
+    'page says bound props get resolved against the data model',
+    'asked for a united flight sfo to jfk for 289',
+    'agent says here is the flight,card shows up',
+    'but its empty, no airline no airports no price,total blank',
+    'only flight details title and the book flight button',
+  ].join('\n'),
+  'gui-surfaces': [
+    "surfaces page, the agent is supposed to fill the featured products row",
+    "agent calls render_ui but nothing renders",
+    "not in the page target and not in the chat either",
+    "no renderer is registered for it on antigravity",
+    "same thing as the components and surfaces page",
+  ].join('\n'),
+  'gui-catalogs': [
+    "catalogs page,shopUI catalog passed in like the page shows",
+    "asked for 2 running shoes as product cards",
+    "agent calls render_ui, no catalog component renders",
+    "reply just stays empty,no renderer registered",
+  ].join('\n'),
+  'gui-standard-catalog': [
+    "standard catalog page,standardUI passed in",
+    "asked to compare starter team enterprise in a table",
+    "no standard component renders",
+    "agent just answers with a plain markdown table",
+    "same as components and surfaces page",
+  ].join('\n'),
+  'gui-state-and-actions': [
+    "state and actions page,product card with add to cart",
+    "asked for the trail runner card",
+    "no product card renders",
+    "run errors antigravityexecutionerror model produced invalid output",
+    "or the tab just crashes",
+  ].join('\n'),
+  'gui-theming': [
+    "theming page sets a2ui colors like the accent",
+    "asked for a card with a subscribe button",
+    "nothing renders,render_ui has no renderer",
+    "so u cant see the theme at all",
+  ].join('\n'),
+  'gui-transports': [
+    "transports page only shows langgraph setup copilotkitmiddleware",
+    "nothing for an antigravity agent",
+    "used the antigravity agent anyway",
+    "asked for the plans table,no ui renders",
+  ].join('\n'),
+  'gui-markdown-mode': [
+    "markdown mode page says any other agent just needs the context in its system prompt",
+    "doesnt say how to do that for antigravity",
+    "asked for a seat estimator with a slider",
+    "no a2ui block,no ui",
+    "agent writes html files instead",
+  ].join('\n'),
+  'gui-from-a2ui': [
+    "adopt from a2ui page, airport and arrow components",
+    "asked for my flight sfo to jfk",
+    "no airport or arrow ui renders",
+    "run ends in antigravityexecutionerror",
+  ].join('\n'),
 };
 
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
@@ -71,6 +168,35 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
     { text: 'pip install ag-ui-antigravity google-antigravity', caption: 'Install step: no httpx' },
     { text: 'import httpx', caption: 'The code needs httpx (FINDINGS.md #49)' },
   ],
+  'clf-reasoning-messages': [
+    { text: 'Some models (like gpt-6-luna) emit reasoning tokens', caption: 'Promises a reasoning card; no Antigravity backend/model shown' },
+    { text: 'const AGENT_ID = "reasoning-default";', caption: 'Agent never registered (FINDINGS.md #61)' },
+  ],
+  voice: [
+    { text: 'import { VoiceChat } from "./voice-chat";', caption: 'voice-chat.tsx never shown: Module not found (FINDINGS.md #63)' },
+    { text: 'import { TranscriptionServiceOpenAI } from "@copilotkit/voice";', caption: 'No install step for @copilotkit/voice' },
+  ],
+  reasoning: [
+    { text: 'useReasoningCustomSuggestions();', caption: 'Hook never defined (FINDINGS.md #64)' },
+    { text: 'const AGENT_ID = "reasoning-custom";', caption: 'Agent never registered, no reasoning backend shown' },
+  ],
+  a2ui: [
+    { text: 'a2ui={{ catalog: myCatalog }}', caption: 'myCatalog never defined, no agent named (FINDINGS.md #71)' },
+  ],
+  'a2ui-dynamic-schema': [
+    { text: 'That is all the default path needs.', caption: 'Wired as shown; A2UI render error instead of a dashboard (FINDINGS.md #72)' },
+  ],
+  'a2ui-fixed-schema': [
+    { text: 'resolved against the data model', caption: 'Card renders but no bound value shows (FINDINGS.md #73)' },
+  ],
+  'gui-surfaces': [{ text: "fallback={<ProductRow products={products} />}", caption: 'render_ui has no renderer (FINDINGS.md #87)' }],
+  'gui-catalogs': [{ text: "generativeUI={{ ui: shopUI }}", caption: 'render_ui has no renderer (FINDINGS.md #89)' }],
+  'gui-standard-catalog': [{ text: "generativeUI={{ ui: standardUI }}", caption: 'render_ui has no renderer (FINDINGS.md #90)' }],
+  'gui-state-and-actions': [{ text: "state: { cart: cartSchema },", caption: 'render_ui has no renderer (FINDINGS.md #91)' }],
+  'gui-theming': [{ text: "\"--a2ui-color-accent\": \"#d97706\",", caption: 'render_ui has no renderer (FINDINGS.md #94)' }],
+  'gui-transports': [{ text: "For a LangGraph Python agent, add CopilotKitMiddleware.", caption: 'render_ui has no renderer (FINDINGS.md #95)' }],
+  'gui-markdown-mode': [{ text: "Any other agent needs one thing: put the run's context entries into its system prompt.", caption: 'render_ui has no renderer (FINDINGS.md #97)' }],
+  'gui-from-a2ui': [{ text: "generativeUI={{ ui: appUI }}", caption: 'render_ui has no renderer (FINDINGS.md #99)' }],
 };
 
 /**

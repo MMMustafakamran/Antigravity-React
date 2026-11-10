@@ -1,0 +1,9 @@
+{
+ "text": "No product card renders. The run errors out with model produced invalid output.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 6.455,
+ "file": "53dd59e6a1f25275bca2575972216fc2.mp3",
+ "clip": "ANTIGRAVITY-react-31-StateAndActions",
+ "at": "+"
+}

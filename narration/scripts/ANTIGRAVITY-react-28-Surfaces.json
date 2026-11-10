@@ -1,0 +1,35 @@
+{
+ "clip": "ANTIGRAVITY-react-28-Surfaces",
+ "finding": "antigravity-react 87",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the surfaces page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for two cheap running shoes in the featured products row."
+  },
+  {
+   "at": "+",
+   "text": "The agent calls render UI, but uh, nothing renders, not in the page and not in the chat."
+  },
+  {
+   "at": "evidence#1",
+   "text": "This is the surface the products should land in."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, on Antigravity there's no renderer for render UI, so the surface just stays empty."
+  },
+  {
+   "at": "+",
+   "text": "So umm, this one needs fixing, please look into it."
+  }
+ ]
+}

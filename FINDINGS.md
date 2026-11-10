@@ -52,6 +52,62 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 - **Doc:** the install step is `pip install ag-ui-antigravity google-antigravity`; the published `subagents.py` starts with `import httpx` and calls `generateContent` through `httpx.AsyncClient`.
 - **Error:** `ModuleNotFoundError: No module named 'httpx'` when uvicorn imports the app (CI run of 2026-11-08 on today's versions). `httpx` used to arrive only as a dependency of `google-genai` 2.x; `google-genai` 3.0.0 (pulled in by `google-antigravity` 0.1.23 today) no longer depends on it, so a reader installing the page's packages now gets the crash. Still starts on the 2026-11-04 lockfile (`google-genai` 2.34.0).
 
+### [Reasoning Messages](https://docs.copilotkit.ai/google-antigravity/custom-look-and-feel/reasoning-messages)
+**#61 the chat answers but no reasoning message renders; the page shows no Antigravity backend or reasoning model, and agent "reasoning-default" is never registered.**
+- Doc: frontend only, agent "reasoning-default" with no backend/model shown (intro names model `gpt-6-luna`) / Result: NOT YET PROBED; expected no reasoning card from the quickstart Gemini agent. Confirm by probe.
+
+### [Voice](https://docs.copilotkit.ai/google-antigravity/voice)
+**#63 page.tsx imports ./voice-chat, which the page never shows; Next fails with "Module not found: Can't resolve './voice-chat'" and the build error blanks every route of the app.**
+- Doc: `import { VoiceChat } from "./voice-chat";` (file never shown; no install step for the voice package, no `/voice` backend) / Error: `Module not found: Can't resolve './voice-chat'` (Turbopack build error shown on every route of the dev server, not only /voice). Confirmed by harness: a placeholder voice-chat.tsx lets the other routes load again.
+
+### [Reasoning](https://docs.copilotkit.ai/google-antigravity/generative-ui/reasoning)
+**#64 no reasoning block ever renders; the page shows no backend or model that emits reasoning, and useReasoningCustomSuggestions / agent "reasoning-custom" are never defined.**
+- Doc: const AGENT_ID = "reasoning-custom"; ... useReasoningCustomSuggestions(); — page shows no imports, no suggestions hook, no agent registration and no Antigravity backend/model that emits REASONING_MESSAGE events. Result: unverified (probe blocked); expected no reasoning card on the gemini-2.5-flash quickstart agent. PROBE BEFORE FINALIZING: if the card shows on :8040, downgrade to level 3.
+
+### [A2UI](https://docs.copilotkit.ai/google-antigravity/generative-ui/a2ui)
+**#71 the page only shows fragments; myCatalog is never defined and no agent is named, and with the guessed setup the chat never replies.**
+- Doc: <CopilotKit ... a2ui={{ catalog: myCatalog }}> with myCatalog never defined and no agent named / Result: chat never replies (2 runs, 240 s)
+
+### [Dynamic Schema](https://docs.copilotkit.ai/google-antigravity/generative-ui/a2ui/dynamic-schema)
+**#72 no dashboard renders; the chat shows "A2UI render error: Cannot read properties of undefined (reading 'map')".**
+- Result: no dashboard renders; chat shows "A2UI render error: Cannot read properties of undefined (reading 'map')" (same as LangGraph React)
+
+### [Fixed Schema](https://docs.copilotkit.ai/google-antigravity/generative-ui/a2ui/fixed-schema)
+**#73 the flight card renders but stays empty: no airline, airports or price, only "Flight Details" and the Book button.**
+- Result: the flight card renders empty (no airline, airports or price; TOTAL blank), only 'Flight Details' and 'Book flight'
+
+### [Surfaces](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/surfaces)
+**#87 the agent calls render_ui but nothing renders, neither in the page target nor in the chat. Same problem as the Components and surfaces page.**
+- Doc: <GenerativeUISurface id="featured" ui={shopUI} ... components={["ProductGrid", "ProductCard"]} fallback={<ProductRow products={products} />} /> / Result: the Antigravity agent calls render_ui; console: [CopilotKit] The agent called the tool "render_ui", and no renderer is registered for it, so that message rendered nothing. The featured row keeps its fallback, the chat shows an empty assistant message.
+
+### [Catalogs](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/catalogs)
+**#89 the agent calls render_ui, but no catalog component renders, the reply stays empty.**
+- Doc: createGenerativeUI({ id: "acme/shop@1", components: { ProductGrid, ProductCard } }) + <CopilotKitProvider runtimeUrl="/api/copilotkit" generativeUI={{ ui: shopUI }}> / Result: the agent calls render_ui; [CopilotKit] The agent called the tool "render_ui", and no renderer is registered for it, so that message rendered nothing. No ProductGrid/ProductCard appears (empty assistant bubble, final.png).
+
+### [Standard catalog](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/standard-catalog)
+**#90 no standard component renders, the agent answers with a plain markdown table. Same as the Components and surfaces page.**
+- Doc: <CopilotKitProvider runtimeUrl="/api/copilotkit" generativeUI={{ ui: standardUI }}> (with the overrides: { Card: { component: MyCard } } example) / Result: "Compare the Starter, Team, and Enterprise plans in a table" gets a plain Markdown table from the chat's Markdown renderer; no standard Table/Card component renders.
+
+### [State and actions](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/state-and-actions)
+**#91 no product card renders; the run errors (AntigravityExecutionError: Model produced invalid output) or the tab crashes.**
+- Doc: shopUI with state: { cart: cartSchema }, bind: { inCart }, functions: { addToCart }, events: { onAddToCart: {} } + useGenerativeUIState / useGenerativeUIFunction / Result: no ProductCard renders. Run 1: the browser tab crashed after render_ui; run 2: AntigravityExecutionError: Model produced invalid output.
+
+### [Theming](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/theming)
+**#94 nothing renders (render_ui has no renderer), so the theme can't be seen.**
+- Doc: generativeUI={{ ui: standardUI, theme: { "--a2ui-color-accent": "#d97706", ... } }} / Result: the agent calls render_ui; no renderer is registered, nothing renders, so no themed component can be seen.
+
+### [Transports](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/transports)
+**#95 no Antigravity agent setup on the page (only LangGraph CopilotKitMiddleware); with the Antigravity agent no UI renders.**
+- Doc: "Your agent must use the tools and the context entries of the run. The built-in agent does this. For a LangGraph Python agent, add CopilotKitMiddleware." / Result: tool transport with the Antigravity agent gives a plain markdown table, no generated UI. The Antigravity page gives no Antigravity guidance.
+
+### [Markdown mode](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/markdown-mode)
+**#97 no a2ui block or UI; the Antigravity agent writes html files instead. The page doesn't say how to pass the context to an Antigravity agent.**
+- Doc: generativeUI={{ ui: standardUI, transport: "markdown" }}; "Any other agent needs one thing: put the run's context entries into its system prompt." / Result: the Antigravity agent writes index.html/style.css/script.js with edit_file and links them as [blocked]; no a2ui block, no surface. The page never shows how to do that for Antigravity.
+
+### [Adopt from A2UI](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/from-a2ui)
+**#99 no Airport/Arrow UI renders; the run ends in an AntigravityExecutionError.**
+- Doc: createGenerativeUI({ id: "acme/flights@1", extends: [standardUI], components: { Airport, Arrow } }) + generativeUI={{ ui: appUI }} / Result: no Airport/Arrow renders; the agent called generate_image and the run ended with AntigravityExecutionError ... Multimodal function responses are not supported for this model.
+
 ## Minor notes
 - #2 Quickstart: `npx copilotkit@latest init --framework antigravity` fails on CLI 4.33.1 with `Unsupported framework "antigravity"` (`copilotkit framework list` has no entry). The page's callout anticipates this.
 - #3 `/google-antigravity` serves the same content as `/google-antigravity/quickstart` (byte-identical `.md`).
@@ -93,5 +149,41 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 - #48 [useInterrupt](https://docs.copilotkit.ai/google-antigravity/human-in-the-loop/useInterrupt): the docs page itself throws `Minified React error #418` (hydration text mismatch) in Chromium on every load.
 - #40 Quickstart / every page: the quickstart's `AntigravityAgent(...)` leaves all of Antigravity's built-in tools on (web search, file and shell work, artifacts). The showcase turns them off with `CapabilitiesConfig(enabled_tools=[BuiltinTools.FINISH])`, but readers are only told that in the HITL callout. Seen on Windows: during a state-rendering run, the model called `search_web`, then wrote `C:\srv\agents\w1\picnic_checklist.md` as an artifact, and the run died with `RUN_ERROR AntigravityExecutionError: … is not a valid artifact path; artifacts must be in C:\Users\QS\.gemini\antigravity\brain\<id>/`.
 - #50 [Inspector](https://docs.copilotkit.ai/google-antigravity/inspector): the "Whether the Runtime answers" row links "Proving it works" to `/google-antigravity/react-native#proving-it-works`, which is a 404.
+- #51 CopilotChat: agent id agentic_chat never registered on the page
+- #52 CopilotChat: useAgenticChatSuggestions used, never defined or imported
+- #53 CopilotSidebar: MainContent, Suggestions never defined; agent prebuilt-sidebar never registered
+- #54 CopilotPopup: MainContent, Suggestions never defined; agent prebuilt-popup never registered
+- #55 Open, close, and feedback: analytics used in the feedback snippet, never defined or imported
+- #56 CSS Customization: CSS Variables snippet imports CopilotKitCSSProperties from @copilotkit/react-ui (v1), which the quickstart never installs; the rest of the page is v2
+- #57 CSS Customization: Custom Icons snippet uses undefined YourOpenIconComponent / YourCloseIconComponent
+- #58 CSS Customization: the component applying .chat-css-demo-scope is never shown
+- #59 Slots (Subcomponents): the three 'What it looks like in code' snippets are cut off mid-function and only declare CustomWelcomeScreen/CustomAssistantMessage/CustomDisclaimer; Two-levels snippet uses undefined CustomToolbar/CustomCopyButton/CustomUserMessage
+- #60 Headless UI: snippets are fragments: no component, `visible` undefined, bubbles need shadcn Avatar, cn, AttachmentChip, MultimodalPart never shown; agent "headless-simple" never registered; console.error label says langgraph-python
+- #62 Multimodal Attachments: Quick start uses agentId="my-agent" placeholder with no note to swap in your own agent id; snippet is a bare JSX fragment
+- #65 Reasoning: page.tsx tab has no import lines
+- #66 Reasoning: CopilotChatReasoningMessage used in a cast but never imported
+- #67 Threads Drawer: needs CopilotKit Intelligence (CPK_INTELLIGENCE_API_KEY) or a license token; without it the drawer shows the locked view
+- #68 Headless Threads: App passes onSelectThread to ThreadSidebar, which takes no props and never calls it, so a thread can never be selected (build-only TS error; would be a blocker once Intelligence is on)
+- #69 Headless Threads: server.ts calls verifyAppSession, never defined
+- #70 Headless Threads: useThreads({ agentId: "my-agent" }) placeholder
+- #74 JSON Render: install step: @json-render/core, @json-render/react
+- #75 Hashbrown: @hashbrownai/* are beta (0.5.0-beta.4)
+- #76 Components as Tools: useComponent snippet uses barChartPropsSchema and BarChart but the page never shows them
+- #77 Components as Tools: system prompt tells the model to call render_pie_chart, which the page never registers
+- #78 Components as Tools: gen_ui_tool_based.py imports agents._common.build, which is not published
+- #79 Render agent state in your app: page relies on an agent named "default"; the Antigravity quickstart registers antigravity_agent
+- #80 Render agent state in your app: with the quickstart agent the model can't see agent.state (no get_shared_state), so asking about the canvas makes it run shell commands; page defers to the shared-state setup
+- #81 Agent Read-Only Context: app_context.py calls build() with no import; agents._common is not published
+- #82 Agent Read-Only Context: page imports ./demo-layout and ./suggestions without showing them, and DemoContent is cut off before its return
+- #83 Agent Read-Only Context: text says entries are surfaced by CopilotKitMiddleware into message history, contradicting the Antigravity get_app_context step above
+- #84 Governed Action Approval UI: useInterrupt path needs a backend that raises an interrupt with metadata.action; no Antigravity backend code shown, so only the useHumanInTheLoop path is testable
+- #85 Governed Action Approval UI: handleApproval calls executeSideEffect, never defined
+- #86 Governed Action Approval UI: generic page with no Antigravity-specific code
+- #88 Surfaces: Product, ProductRow and ./catalog are used but never shown on the page
+- #92 State and actions: the page shows two different app/catalog.tsx and never the combined file; Cart never defined
+- #93 State and actions: bind selector params are implicitly any (tsc TS7006), build-only
+- #96 Transports: only built-in / LangGraph Python agent guidance on an Antigravity page
+- #98 Markdown mode: only built-in / LangGraph Python agent guidance
+- #100 Adopt from A2UI: Airport and Arrow components never shown
 
 ## Build-only (`tsc` / `next build`; `npm run dev` runs fine)

@@ -1,0 +1,35 @@
+{
+ "clip": "ANTIGRAVITY-react-35-FromA2UI",
+ "finding": "antigravity-react 99",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the adopt from A two UI page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for my flight from SFO to JFK with the airport components."
+  },
+  {
+   "at": "+",
+   "text": "No airport or arrow UI renders, the run ends in an execution error."
+  },
+  {
+   "at": "evidence#1",
+   "text": "This is where the app catalog is passed in."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the components are set up like the page says, but umm, none of them render on Antigravity."
+  },
+  {
+   "at": "+",
+   "text": "That's all for this one, please have it fixed."
+  }
+ ]
+}

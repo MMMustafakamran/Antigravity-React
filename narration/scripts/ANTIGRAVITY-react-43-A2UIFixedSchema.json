@@ -1,0 +1,39 @@
+{
+ "clip": "ANTIGRAVITY-react-43-A2UIFixedSchema",
+ "finding": "antigravity-react 73",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the A two UI fixed schema page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the exact code from the doc, the definitions and the agent."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for a United flight from SFO to JFK."
+  },
+  {
+   "at": "+",
+   "text": "The agent says here is the flight, and the card shows up, but umm, it's empty."
+  },
+  {
+   "at": "evidence#1",
+   "text": "The doc says bound props get resolved against the data model."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the card has no airline, no airports and no price. The total is blank too."
+  },
+  {
+   "at": "+",
+   "text": "Only the flight details title and the book button show."
+  },
+  {
+   "at": "+",
+   "text": "So yeah, please take a look and fix this."
+  }
+ ]
+}

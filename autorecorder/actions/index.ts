@@ -30,6 +30,21 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   components: runStandardWithFinding,
   'state-rendering': runStateRenderingAction,
   subagents: runSubagentsAction,
+  // 2026-11-10 pages (level 1): standard take, then doc evidence + Notepad.
+  'clf-reasoning-messages': runStandardWithFinding,
+  voice: runStandardWithFinding,
+  reasoning: runStandardWithFinding,
+  a2ui: runStandardWithFinding,
+  'a2ui-dynamic-schema': runStandardWithFinding,
+  'a2ui-fixed-schema': runStandardWithFinding,
+  'gui-surfaces': runStandardWithFinding,
+  'gui-catalogs': runStandardWithFinding,
+  'gui-standard-catalog': runStandardWithFinding,
+  'gui-state-and-actions': runStandardWithFinding,
+  'gui-theming': runStandardWithFinding,
+  'gui-transports': runStandardWithFinding,
+  'gui-markdown-mode': runStandardWithFinding,
+  'gui-from-a2ui': runStandardWithFinding,
 };
 
 export async function executePageAction(

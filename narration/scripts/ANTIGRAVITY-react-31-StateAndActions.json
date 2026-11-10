@@ -1,0 +1,35 @@
+{
+ "clip": "ANTIGRAVITY-react-31-StateAndActions",
+ "finding": "antigravity-react 91",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the state and actions page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for a product card for the trail runner shoe with an add to cart button."
+  },
+  {
+   "at": "+",
+   "text": "No product card renders. The run errors out with model produced invalid output."
+  },
+  {
+   "at": "evidence#1",
+   "text": "This is the cart state the card should use."
+  },
+  {
+   "at": "notepad",
+   "text": "So umm, the card never shows, so the state and the action can't be tried at all."
+  },
+  {
+   "at": "+",
+   "text": "That's what's breaking here, kindly have it fixed."
+  }
+ ]
+}

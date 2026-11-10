@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the voice chat file is never shown on the page. Next fails with module not found, and umm, that build error blanks every route of the app, not just this one.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 14.211,
+ "file": "4529d2e813763eeb8c823e505680f3d5.mp3",
+ "clip": "ANTIGRAVITY-react-24-Voice",
+ "at": "notepad"
+}

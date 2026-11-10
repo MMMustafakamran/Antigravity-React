@@ -1,0 +1,9 @@
+{
+ "text": "There's also no backend serving the voice endpoint. I only added a stub so the other pages load.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 6.641,
+ "file": "5e4f6184e952aec7f1a7f3f66ad75d16.mp3",
+ "clip": "ANTIGRAVITY-react-24-Voice",
+ "at": "+"
+}

@@ -38,6 +38,18 @@
  },
  "sections": [
   {
+   "label": "Chat",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
+   "label": "Threads",
+   "cells": [
+    "Section"
+   ]
+  },
+  {
    "label": "App Control",
    "cells": [
     "Section"
@@ -547,6 +559,988 @@
     "approvedAt": null,
     "by": null
    }
+  },
+  {
+   "id": "prebuilt-chat",
+   "label": "CopilotChat",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "prebuilt-components/chat",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    51,
+    52
+   ],
+   "notes": [
+    "Note: the snippet calls useAgenticChatSuggestions() and uses agent agentic_chat, neither is shown"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-15-CopilotChat",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "prebuilt-sidebar",
+   "label": "CopilotSidebar",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "prebuilt-components/sidebar",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    53
+   ],
+   "notes": [
+    "Note: MainContent and Suggestions are used but never shown"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-16-CopilotSidebar",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "prebuilt-popup",
+   "label": "CopilotPopup",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "prebuilt-components/popup",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    54
+   ],
+   "notes": [
+    "Note: MainContent and Suggestions are used but never shown"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-17-CopilotPopup",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "chat-controls",
+   "label": "Open, close, and feedback",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "prebuilt-components/chat-controls",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    55
+   ],
+   "notes": [
+    "Note: analytics.track in the feedback snippet is never defined"
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-18-ChatControls",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "clf-css",
+   "label": "CSS Customization",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "custom-look-and-feel/css",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    56,
+    57,
+    58
+   ],
+   "notes": [],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-36-CSSCustomization",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "clf-slots",
+   "label": "Slots (Subcomponents)",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "custom-look-and-feel/slots",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    59
+   ],
+   "notes": [],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-37-Slots",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "clf-markdown",
+   "label": "Markdown Rendering",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "custom-look-and-feel/markdown",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [],
+   "notes": [],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-38-MarkdownRendering",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "clf-headless-ui",
+   "label": "Headless UI",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "custom-look-and-feel/headless-ui",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    60
+   ],
+   "notes": [
+    "Note: the snippets are fragments (no component, `visible`, Avatar/cn/AttachmentChip never shown) and agent \"headless-simple\" is never registered; recorded with harness stand-ins."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-39-HeadlessUI",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "clf-reasoning-messages",
+   "label": "Reasoning Messages",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "custom-look-and-feel/reasoning-messages",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    61
+   ],
+   "notes": [
+    "Issue: the chat answers but no reasoning message renders; the page shows no Antigravity backend or reasoning model, and agent \"reasoning-default\" is never registered."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-40-ReasoningMessages",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-40-ReasoningMessages.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "multimodal-attachments",
+   "label": "Multimodal Attachments",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "multimodal-attachments",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    62
+   ],
+   "notes": [
+    "Note: the snippet uses agentId=\"my-agent\", u have to swap in your own agent id."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-23-MultimodalAttachments",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "voice",
+   "label": "Voice",
+   "kind": "guide",
+   "group": "Chat",
+   "child": false,
+   "docPath": "voice",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    63
+   ],
+   "notes": [
+    "Issue: page.tsx imports ./voice-chat, which the page never shows; Next fails with \"Module not found: Can't resolve './voice-chat'\" and the build error blanks every route of the app."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Not Working",
+     "clip": "ANTIGRAVITY-react-24-Voice",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-24-Voice.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "reasoning",
+   "label": "Reasoning",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/reasoning",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    64,
+    65,
+    66
+   ],
+   "notes": [
+    "Issue: no reasoning block ever renders; the page shows no backend or model that emits reasoning, and useReasoningCustomSuggestions / agent \"reasoning-custom\" are never defined."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-25-Reasoning",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-25-Reasoning.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "threads-drawer",
+   "label": "Threads Drawer",
+   "kind": "guide",
+   "group": "Threads",
+   "child": false,
+   "docPath": "prebuilt-components/copilot-threads-drawer",
+   "reachable": "sidebar",
+   "status": "N/A",
+   "findings": [
+    67
+   ],
+   "notes": [
+    "Note: needs the CopilotKit Intelligence platform (threads)."
+   ],
+   "block": null,
+   "links": [],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "headless-threads",
+   "label": "Headless Threads",
+   "kind": "guide",
+   "group": "Threads",
+   "child": false,
+   "docPath": "headless-threads",
+   "reachable": "sidebar",
+   "status": "N/A",
+   "findings": [
+    68,
+    69,
+    70
+   ],
+   "notes": [
+    "Note: needs the CopilotKit Intelligence platform (threads)."
+   ],
+   "block": null,
+   "links": [],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "a2ui",
+   "label": "A2UI",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/a2ui",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    71
+   ],
+   "notes": [
+    "Issue: the page only shows fragments; myCatalog is never defined and no agent is named, and with the guessed setup the chat never replies."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-41-A2UI",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-41-A2UI.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "a2ui-dynamic-schema",
+   "label": "Dynamic Schema",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/a2ui/dynamic-schema",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    72
+   ],
+   "notes": [
+    "Issue: no dashboard renders; the chat shows \"A2UI render error: Cannot read properties of undefined (reading 'map')\"."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-42-A2UIDynamicSchema",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-42-A2UIDynamicSchema.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "a2ui-fixed-schema",
+   "label": "Fixed Schema",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/a2ui/fixed-schema",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    73
+   ],
+   "notes": [
+    "Issue: the flight card renders but stays empty: no airline, airports or price, only \"Flight Details\" and the Book button."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-43-A2UIFixedSchema",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-43-A2UIFixedSchema.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "json-render",
+   "label": "JSON Render",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/json-render",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    74
+   ],
+   "notes": [],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-44-JSONRender",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "hashbrown",
+   "label": "Hashbrown",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/hashbrown",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    75
+   ],
+   "notes": [],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-45-Hashbrown",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "open-generative-ui",
+   "label": "Open Generative UI",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/open-generative-ui",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [],
+   "notes": [],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-46-OpenGenerativeUI",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gen-ui-tool-based",
+   "label": "Components as Tools",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/tool-based",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    76,
+    77,
+    78
+   ],
+   "notes": [
+    "Note: the snippet uses barChartPropsSchema and BarChart without showing them, had to write both."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-19-ComponentsAsTools",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "rendering-in-app",
+   "label": "Render agent state in your app",
+   "kind": "guide",
+   "group": "Shared State",
+   "child": false,
+   "docPath": "shared-state/rendering-in-app",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    79,
+    80
+   ],
+   "notes": [
+    "Note: canvas renders from agent.state as shown; page assumes an agent named default."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-20-RenderingInApp",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "agent-readonly",
+   "label": "Agent Read-Only Context",
+   "kind": "guide",
+   "group": "Shared State",
+   "child": false,
+   "docPath": "shared-state/agent-readonly",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    81,
+    82,
+    83
+   ],
+   "notes": [
+    "Note: app_context.py uses build() with no import, and demo-layout/suggestions are never shown."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-21-AgentReadonlyContext",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "governed-actions",
+   "label": "Governed Action Approval UI",
+   "kind": "guide",
+   "group": "Human in the Loop",
+   "child": false,
+   "docPath": "human-in-the-loop/governed-actions",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    84,
+    85,
+    86
+   ],
+   "notes": [
+    "Note: only the useHumanInTheLoop approval card can be tried; the useInterrupt variant has no backend shown for Antigravity."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": null,
+     "clip": "ANTIGRAVITY-react-22-GovernedActions",
+     "loom": null,
+     "narration": null
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-surfaces",
+   "label": "Surfaces",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/surfaces",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    87,
+    88
+   ],
+   "notes": [
+    "Issue: the agent calls render_ui but nothing renders, neither in the page target nor in the chat. Same problem as the Components and surfaces page."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-28-Surfaces",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-28-Surfaces.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-catalogs",
+   "label": "Catalogs",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/catalogs",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    89
+   ],
+   "notes": [
+    "Issue: the agent calls render_ui, but no catalog component renders, the reply stays empty."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-29-Catalogs",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-29-Catalogs.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-standard-catalog",
+   "label": "Standard catalog",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/standard-catalog",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    90
+   ],
+   "notes": [
+    "Issue: no standard component renders, the agent answers with a plain markdown table. Same as the Components and surfaces page."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-30-StandardCatalog",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-30-StandardCatalog.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-state-and-actions",
+   "label": "State and actions",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/state-and-actions",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    91,
+    92,
+    93
+   ],
+   "notes": [
+    "Issue: no product card renders; the run errors (AntigravityExecutionError: Model produced invalid output) or the tab crashes."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-31-StateAndActions",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-31-StateAndActions.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-theming",
+   "label": "Theming",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/theming",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    94
+   ],
+   "notes": [
+    "Issue: nothing renders (render_ui has no renderer), so the theme can't be seen."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-32-Theming",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-32-Theming.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-transports",
+   "label": "Transports",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/transports",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    95,
+    96
+   ],
+   "notes": [
+    "Issue: no Antigravity agent setup on the page (only LangGraph CopilotKitMiddleware); with the Antigravity agent no UI renders."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-33-Transports",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-33-Transports.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-markdown-mode",
+   "label": "Markdown mode",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/markdown-mode",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    97,
+    98
+   ],
+   "notes": [
+    "Issue: no a2ui block or UI; the Antigravity agent writes html files instead. The page doesn't say how to pass the context to an Antigravity agent."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-34-MarkdownMode",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-34-MarkdownMode.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
+  },
+  {
+   "id": "gui-from-a2ui",
+   "label": "Adopt from A2UI",
+   "kind": "guide",
+   "group": "Generative UI",
+   "child": false,
+   "docPath": "generative-ui/components/from-a2ui",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    99,
+    100
+   ],
+   "notes": [
+    "Issue: no Airport/Arrow UI renders; the run ends in an AntigravityExecutionError."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "ANTIGRAVITY-react-35-FromA2UI",
+     "loom": null,
+     "narration": "narration/scripts/ANTIGRAVITY-react-35-FromA2UI.json"
+    }
+   ],
+   "review": {
+    "verdict": null,
+    "approvedAt": null,
+    "by": null
+   },
+   "added": "2026-11-10"
   }
  ]
 }

@@ -1,0 +1,39 @@
+{
+ "clip": "ANTIGRAVITY-react-24-Voice",
+ "finding": "antigravity-react 63",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the voice page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the exact code from the doc, plus the voice route."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So the voice page doesn't load at all, it just errors out, because the voice chat file it imports doesn't exist."
+  },
+  {
+   "at": "evidence#1",
+   "text": "On the doc, page dot t s x imports voice chat from a local file."
+  },
+  {
+   "at": "evidence#2",
+   "text": "And this voice package has no install step either."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the voice chat file is never shown on the page. Next fails with module not found, and umm, that build error blanks every route of the app, not just this one."
+  },
+  {
+   "at": "+",
+   "text": "There's also no backend serving the voice endpoint. I only added a stub so the other pages load."
+  },
+  {
+   "at": "+",
+   "text": "So kindly look into it."
+  }
+ ]
+}

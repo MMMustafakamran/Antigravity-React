@@ -1,0 +1,43 @@
+{
+ "clip": "ANTIGRAVITY-react-40-ReasoningMessages",
+ "finding": "antigravity-react 61",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the reasoning messages page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked it to think step by step about a small multiplication."
+  },
+  {
+   "at": "+",
+   "text": "And yeah, the chat answers, but umm, no reasoning card ever shows up. Just the plain reply."
+  },
+  {
+   "at": "evidence#1",
+   "text": "On the doc, it says some models emit reasoning tokens."
+  },
+  {
+   "at": "evidence#2",
+   "text": "And this agent ID is never registered anywhere."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page only shows frontend code. There's no Antigravity backend or reasoning model on it at all."
+  },
+  {
+   "at": "+",
+   "text": "So uh, following the page, you never get a reasoning message."
+  },
+  {
+   "at": "+",
+   "text": "So yeah, this is the issue, kindly fix it."
+  }
+ ]
+}

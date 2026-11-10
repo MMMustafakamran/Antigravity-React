@@ -1,0 +1,35 @@
+{
+ "clip": "ANTIGRAVITY-react-34-MarkdownMode",
+ "finding": "antigravity-react 97",
+ "level": 1,
+ "segments": [
+  {
+   "at": "doc",
+   "text": "Ok so, this is the markdown mode page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, this is the code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. So I asked for a seat estimator with a slider."
+  },
+  {
+   "at": "+",
+   "text": "And uh, no UI shows up. The agent writes HTML files instead."
+  },
+  {
+   "at": "evidence#1",
+   "text": "The page just says put the context into the system prompt."
+  },
+  {
+   "at": "notepad",
+   "text": "So yeah, it never says how to do that for an Antigravity agent, so nothing renders."
+  },
+  {
+   "at": "+",
+   "text": "Kindly look into this one as well."
+  }
+ ]
+}

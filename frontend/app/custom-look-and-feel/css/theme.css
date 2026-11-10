@@ -1,0 +1,116 @@
+/* --- Doc: https://docs.copilotkit.ai/google-antigravity/custom-look-and-feel/css (every CSS block, verbatim, in page order) --- */
+/* src/app/demos/chat-customization-css/theme.css */
+/* HALCYON palette — a private library at golden hour. The whole theme is
+ * one warm parchment hue, one warm ink, and a deep copper ember used
+ * sparingly so it actually reads as a signal. */
+.chat-css-demo-scope {
+  --halcyon-paper: #f4efe6;
+  --halcyon-paper-soft: #ece6d9;
+  --halcyon-paper-elevated: #fbf8f2;
+  --halcyon-card: #ffffff;
+  --halcyon-rule: #d6cfbe;
+  --halcyon-rule-strong: #aea48a;
+  --halcyon-ink: #1a1714;
+  --halcyon-ink-soft: #3d362e;
+  --halcyon-ink-mute: #7a7468;
+  --halcyon-ember: #c44a1f;
+  --halcyon-ember-bright: #e45f2b;
+  --halcyon-ember-soft: #f3d7c5;
+  --halcyon-champagne: #98794a;
+
+  --halcyon-display:
+    "Instrument Serif", ui-serif, "Iowan Old Style", Georgia, serif;
+  --halcyon-serif:
+    "Fraunces", "Source Serif Pro", ui-serif, Georgia, "Times New Roman", serif;
+  --halcyon-sans:
+    "Inter Tight", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --halcyon-mono:
+    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --halcyon-shadow-soft:
+    0 1px 0 rgba(26, 23, 20, 0.04), 0 12px 32px -18px rgba(26, 23, 20, 0.18);
+  --halcyon-shadow-ember:
+    0 1px 0 rgba(196, 74, 31, 0.18), 0 14px 36px -16px rgba(196, 74, 31, 0.42);
+}
+
+/* globals.css (v2 design tokens) */
+[data-copilotkit] {
+  --primary: oklch(0.55 0.22 264); /* accent / action color */
+  --primary-foreground: oklch(0.99 0 0); /* text on primary */
+  --background: oklch(1 0 0); /* surface background */
+  --foreground: oklch(0.145 0 0); /* primary text */
+  --muted: oklch(0.97 0 0); /* subtle backgrounds */
+  --border: oklch(0.922 0 0); /* dividers, outlines */
+  --radius: 0.625rem; /* global corner radius */
+}
+
+/* Dark mode is keyed off a `.dark` ancestor */
+.dark [data-copilotkit] {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --border: oklch(0.269 0 0);
+}
+
+/* globals.css (Custom CSS) */
+.copilotKitButton {
+  border-radius: 0;
+}
+
+.copilotKitMessages {
+  padding: 2rem;
+}
+
+.copilotKitUserMessage {
+  background: #007AFF;
+}
+
+/* src/app/demos/chat-customization-css/theme.css */
+/* User message — a "transmission" in JetBrains Mono on a paper card. The
+ * outer wrapper is the right-aligning flex column; we leave it transparent
+ * and style the inner bubble (which uses cpk:bg-muted, hence we also
+ * target the substring class as a stable hook). */
+.chat-css-demo-scope .copilotKitMessage.copilotKitUserMessage {
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.chat-css-demo-scope
+  .copilotKitMessage.copilotKitUserMessage
+  > [class*="bg-muted"] {
+  font-family: var(--halcyon-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--halcyon-ink);
+  background: var(--halcyon-paper-elevated);
+  border: 1px solid var(--halcyon-rule);
+  border-left: 2px solid var(--halcyon-ember);
+  border-radius: 0;
+  padding: 12px 16px 12px 18px;
+  letter-spacing: -0.005em;
+  line-height: 1.55;
+  box-shadow: 0 1px 0 rgba(26, 23, 20, 0.03);
+  position: relative;
+}
+
+/* A mono "→" marker before the user's text to read like a CLI prompt. */
+.chat-css-demo-scope
+  .copilotKitMessage.copilotKitUserMessage
+  > [class*="bg-muted"]::before {
+  content: "→";
+  display: inline-block;
+  margin-right: 10px;
+  color: var(--halcyon-ember);
+  font-weight: 500;
+}
+
+/* globals.css (Custom Fonts) */
+.copilotKitMessages {
+  font-family: "Arial, sans-serif";
+}
+
+.copilotKitInput {
+  font-family: "Arial, sans-serif";
+}
