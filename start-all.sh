@@ -7,6 +7,9 @@
 # Backends use --env-file because the doc's .env is never loaded (FINDINGS.md #1).
 cd "$(dirname "$0")"
 mkdir -p logs
+# HARNESS: Gemini key/model pool on 8049 (copied from the Google ADK repo, tools/gemini_pool.py): the repo's
+# Gemini key is out of credit (402). backend/.env (CI) sets GOOGLE_GEMINI_BASE_URL to it; OpenAI is the fallback.
+(cd backend && PORT=8049 uv run --with httpx --with starlette python ../tools/gemini_pool.py > ../logs/gemini-pool-8049.log 2>&1) &
 (cd backend && uv run --env-file .env uvicorn main:app --port 8040 > ../logs/backend-8040.log 2>&1) &
 (cd backend && uv run --env-file .env uvicorn interrupt_main:app --port 8041 > ../logs/backend-8041.log 2>&1) &
 (cd backend && uv run --env-file .env uvicorn shared_state_main:app --port 8042 > ../logs/backend-8042.log 2>&1) &
