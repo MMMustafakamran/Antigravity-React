@@ -1,6 +1,6 @@
 {
  "root": "google-antigravity",
- "savedAt": "2026-11-08",
+ "savedAt": "2026-11-11",
  "pages": {
   "/google-antigravity/prebuilt-components/sidebar": [
    "/google-antigravity/custom-look-and-feel/slots",
@@ -117,6 +117,8 @@
    "/google-antigravity/generative-ui/components/surfaces"
   ],
   "/google-antigravity/generative-ui/a2ui": [
+   "/google-antigravity/generative-ui/a2ui/dynamic-schema",
+   "/google-antigravity/generative-ui/a2ui/fixed-schema",
    "/google-antigravity/generative-ui/components"
   ],
   "/google-antigravity/generative-ui/components/from-a2ui": [
@@ -125,14 +127,18 @@
    "/google-antigravity/generative-ui/components/state-and-actions",
    "/google-antigravity/generative-ui/components/surfaces"
   ],
-  "/google-antigravity/generative-ui/a2ui/dynamic-schema": [],
+  "/google-antigravity/generative-ui/a2ui/dynamic-schema": [
+   "/google-antigravity/generative-ui/a2ui/fixed-schema"
+  ],
   "/google-antigravity/generative-ui/json-render": [
    "/google-antigravity/generative-ui/hashbrown"
   ],
   "/google-antigravity/generative-ui/hashbrown": [
    "/google-antigravity/generative-ui/json-render"
   ],
-  "/google-antigravity/generative-ui/a2ui/fixed-schema": [],
+  "/google-antigravity/generative-ui/a2ui/fixed-schema": [
+   "/google-antigravity/generative-ui/a2ui/dynamic-schema"
+  ],
   "/google-antigravity/generative-ui/mcp-apps": [
    "/google-antigravity/intelligence/quickstart"
   ],
@@ -164,9 +170,19 @@
    "/google-antigravity/human-in-the-loop/useInterrupt",
    "/google-antigravity/inspector"
   ],
-  "/google-antigravity/human-in-the-loop/useInterrupt": [],
-  "/google-antigravity/human-in-the-loop/headless": [],
-  "/google-antigravity/human-in-the-loop/governed-actions": [],
+  "/google-antigravity/human-in-the-loop/useInterrupt": [
+   "/google-antigravity/human-in-the-loop",
+   "/google-antigravity/human-in-the-loop/headless"
+  ],
+  "/google-antigravity/human-in-the-loop/headless": [
+   "/google-antigravity/human-in-the-loop",
+   "/google-antigravity/human-in-the-loop/useInterrupt"
+  ],
+  "/google-antigravity/human-in-the-loop/governed-actions": [
+   "/google-antigravity/frontend-tools",
+   "/google-antigravity/human-in-the-loop",
+   "/google-antigravity/human-in-the-loop/useInterrupt"
+  ],
   "/google-antigravity/webmcp": [
    "/google-antigravity/frontend-tools"
   ],
@@ -294,6 +310,7 @@
    "/google-antigravity/generative-ui/mcp-apps"
   ],
   "/google-antigravity/agentic-protocols/ag-ui-middleware": [
+   "/google-antigravity/agentic-protocols/ag-ui",
    "/google-antigravity/backend/ag-ui",
    "/google-antigravity/backend/copilot-runtime"
   ],
@@ -315,8 +332,12 @@
    "/google-antigravity/backend/agent-runner",
    "/google-antigravity/backend/runtime-endpoints",
    "/google-antigravity/deploy/agentcore",
+   "/google-antigravity/inspector",
    "/google-antigravity/intelligence/self-hosting",
-   "/google-antigravity/model-selection"
+   "/google-antigravity/model-selection",
+   "/google-antigravity/quickstart",
+   "/google-antigravity/troubleshooting/error-debugging",
+   "/google-antigravity/troubleshooting/error-reference"
   ],
   "/google-antigravity/troubleshooting/error-reference": [
    "/google-antigravity/backend/runtime-endpoints",
@@ -329,7 +350,9 @@
    "/google-antigravity/migrate/v2",
    "/google-antigravity/troubleshooting/error-debugging"
   ],
-  "/google-antigravity/troubleshooting/error-debugging": [],
+  "/google-antigravity/troubleshooting/error-debugging": [
+   "/google-antigravity/inspector"
+  ],
   "/google-antigravity/troubleshooting/debug-mode": [
    "/google-antigravity/troubleshooting/error-debugging"
   ],
