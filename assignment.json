@@ -238,11 +238,10 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    51,
     52
    ],
    "notes": [
-    "Note: the snippet calls useAgenticChatSuggestions() and uses agent agentic_chat, neither is shown"
+    "Note: the page imports useAgenticChatSuggestions from ./suggestions, which it never shows."
    ],
    "block": null,
    "links": [
@@ -273,7 +272,7 @@
     53
    ],
    "notes": [
-    "Note: MainContent and Suggestions are used but never shown"
+    "Note: ./main-content and ./suggestions-mount are imported but never shown."
    ],
    "block": null,
    "links": [
@@ -304,7 +303,7 @@
     54
    ],
    "notes": [
-    "Note: MainContent and Suggestions are used but never shown"
+    "Note: ./main-content and ./suggestions-mount are imported but never shown."
    ],
    "block": null,
    "links": [
@@ -364,10 +363,11 @@
    "status": "✅",
    "findings": [
     56,
-    57,
-    58
+    57
    ],
-   "notes": [],
+   "notes": [
+    "Note: the CSS variables snippet imports from @copilotkit/react-ui (v1, never installed) and the icons snippet uses placeholder components."
+   ],
    "block": null,
    "links": [
     {
@@ -396,7 +396,9 @@
    "findings": [
     59
    ],
-   "notes": [],
+   "notes": [
+    "Note: the \"two levels\" snippet uses CustomToolbar and CustomCopyButton, defined nowhere."
+   ],
    "block": null,
    "links": [
     {
@@ -484,7 +486,7 @@
     61
    ],
    "notes": [
-    "Issue: the chat answers but no reasoning message renders; the page shows no Antigravity backend or reasoning model, and agent \"reasoning-default\" is never registered."
+    "Issue: no reasoning message renders; the page's backend (reasoning.py in the Code tab) takes its model from agents._common, which isn't published, so no reasoning model is named."
    ],
    "block": null,
    "links": [
@@ -546,7 +548,7 @@
     63
    ],
    "notes": [
-    "Issue: page.tsx imports ./voice-chat, which the page never shows; Next fails with \"Module not found: Can't resolve './voice-chat'\" and the build error blanks every route of the app."
+    "Issue: page.tsx imports ./voice-chat, which no tab shows; Next fails with \"Module not found: Can't resolve './voice-chat'\" and the build error blanks every route of the app."
    ],
    "block": null,
    "links": [
@@ -574,12 +576,10 @@
    "reachable": "sidebar",
    "status": "❌",
    "findings": [
-    64,
-    65,
-    66
+    64
    ],
    "notes": [
-    "Issue: no reasoning block ever renders; the page shows no backend or model that emits reasoning, and useReasoningCustomSuggestions / agent \"reasoning-custom\" are never defined."
+    "Issue: no reasoning block renders; useReasoningCustomSuggestions is never defined and the backend's reasoning model comes from the unpublished agents._common."
    ],
    "block": null,
    "links": [
@@ -664,7 +664,7 @@
     11
    ],
    "notes": [
-    "Note: the doc's `Chat()` stops mid-function with no export and no \"use client\"; the harness completed it and copied the unshown `./background` and `./suggestions` from the showcase"
+    "Note: ./background and ./suggestions are imported but never shown; the agent snippet imports the unpublished agents._common."
    ],
    "block": null,
    "links": [
@@ -691,12 +691,11 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    76,
-    77,
-    78
+    78,
+    101
    ],
    "notes": [
-    "Note: the snippet uses barChartPropsSchema and BarChart without showing them, had to write both."
+    "Note: ./pie-chart and ./suggestions are imported but never shown; the backend imports the unpublished agents._common."
    ],
    "block": null,
    "links": [
@@ -725,11 +724,10 @@
    "status": "✅",
    "findings": [
     36,
-    37,
     38
    ],
    "notes": [
-    "Note: `search_flights`, `get_stock_price`, `roll_d20` and `CustomCatchallRenderer` are used but never shown"
+    "Note: prose says roll_dice, the tool is roll_d20; the backend imports the unpublished agents._common."
    ],
    "block": null,
    "links": [
@@ -744,7 +742,8 @@
     "verdict": null,
     "approvedAt": null,
     "by": null
-   }
+   },
+   "recheck": "marked for re-check 2026-11-11 (finding unverifiable from saved evidence)"
   },
   {
    "id": "generative-ui-state-rendering",
@@ -759,7 +758,7 @@
     39
    ],
    "notes": [
-    "Note: `set_steps` works once imports are added; the streaming example is LangGraph code"
+    "Note: set_steps uses experimental_get_state/experimental_set_state without imports."
    ],
    "block": null,
    "links": [
@@ -790,7 +789,7 @@
     42
    ],
    "notes": [
-    "Note: `standardUI` import needs `maplibre-gl` (not installed); on Antigravity the agent replies with a Markdown table, no component"
+    "Issue: \"Do step 3 only\" with the Antigravity agent renders no component (latest run: empty reply). Re-check pending on the doc's own [[...slug]] runtime."
    ],
    "block": null,
    "links": [
@@ -805,7 +804,8 @@
     "verdict": null,
     "approvedAt": null,
     "by": null
-   }
+   },
+   "recheck": "marked for re-check 2026-11-11 (finding unverifiable from saved evidence)"
   },
   {
    "id": "gui-surfaces",
@@ -837,7 +837,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-catalogs",
@@ -868,7 +869,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-standard-catalog",
@@ -899,7 +901,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-state-and-actions",
@@ -912,8 +915,7 @@
    "status": "❌",
    "findings": [
     91,
-    92,
-    93
+    92
    ],
    "notes": [
     "Issue: no product card renders; the run errors (AntigravityExecutionError: Model produced invalid output) or the tab crashes."
@@ -932,7 +934,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-theming",
@@ -963,7 +966,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-transports",
@@ -995,7 +999,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-markdown-mode",
@@ -1027,7 +1032,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "gui-from-a2ui",
@@ -1059,7 +1065,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
   },
   {
    "id": "a2ui",
@@ -1152,7 +1159,8 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10"
+   "added": "2026-11-10",
+   "recheck": "marked for re-check 2026-11-11 (finding unverifiable from saved evidence)"
   },
   {
    "id": "json-render",
@@ -1222,11 +1230,10 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    43,
     44
    ],
    "notes": [
-    "Note: `mcpAppsAgent` is used in the runtime but never defined"
+    "Note: the \"with Intelligence\" example uses a BuiltInAgent with gpt-6-luna, not Antigravity."
    ],
    "block": null,
    "links": [
@@ -1281,11 +1288,10 @@
    "status": "✅",
    "findings": [
     24,
-    25,
-    26
+    25
    ],
    "notes": [
-    "Note: `set_notes` uses `experimental_get_state`/`experimental_set_state` without importing them from `ag_ui_antigravity`; `build()` undefined"
+    "Note: `set_notes` uses `experimental_get_state`/`experimental_set_state` without importing them from `ag_ui_antigravity`; `build()` comes from the unpublished agents._common."
    ],
    "block": null,
    "links": [
@@ -1342,12 +1348,10 @@
    "child": true,
    "docPath": "shared-state/streaming",
    "reachable": "sidebar",
-   "status": "❌",
-   "findings": [
-    26
-   ],
+   "status": "N/A",
+   "findings": [],
    "notes": [
-    "Note: the whole page is LangGraph code (`StateStreamingMiddleware`); no Antigravity version"
+    "Note: Not available for Google Antigravity (the page says \"Not supported on Google Antigravity: Google Antigravity doesn't support Shared State: Streaming\")"
    ],
    "block": null,
    "links": [],
@@ -1372,7 +1376,7 @@
     83
    ],
    "notes": [
-    "Note: app_context.py uses build() with no import, and demo-layout/suggestions are never shown."
+    "Note: app_context.py imports build from the unpublished agents._common, and ./demo-layout and ./suggestions are never shown."
    ],
    "block": null,
    "links": [
@@ -1400,10 +1404,17 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    12
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    47
    ],
    "notes": [
-    "Note: page uses agent hitl-in-chat, which no step registers in route.ts; ./time-picker-card not shown"
+    "Note: hitl.py imports build from the unpublished agents._common."
    ],
    "block": null,
    "links": [
@@ -1428,27 +1439,13 @@
    "child": true,
    "docPath": "human-in-the-loop/useInterrupt",
    "reachable": "sidebar",
-   "status": "❌",
-   "findings": [
-    19,
-    20,
-    21,
-    22,
-    23,
-    48
-   ],
+   "status": "N/A",
+   "findings": [],
    "notes": [
-    "Issue: the backend example is a LangGraph agent (no Antigravity code), and the frontend reads event.value, so even with an Antigravity backend wired in the card shows \"a call\" instead of the topic"
+    "Note: Not available for Google Antigravity (the page says \"Not supported on Google Antigravity: Google Antigravity doesn't support Human in the Loop: Interrupts\")"
    ],
    "block": null,
-   "links": [
-    {
-     "text": null,
-     "clip": "ANTIGRAVITY-react-04-UseInterrupt",
-     "loom": "https://www.loom.com/share/5ffc45bd078c4cdda31ec99c595f64d6",
-     "narration": "narration/scripts/ANTIGRAVITY-react-04-UseInterrupt.json"
-    }
-   ],
+   "links": [],
    "review": {
     "verdict": null,
     "approvedAt": null,
@@ -1463,24 +1460,13 @@
    "child": true,
    "docPath": "human-in-the-loop/headless",
    "reachable": "sidebar",
-   "status": "❌",
-   "findings": [
-    30,
-    31,
-    32
-   ],
+   "status": "N/A",
+   "findings": [],
    "notes": [
-    "Note: `AppSurface` is undefined; the hook listens for the old `on_interrupt` event, so Antigravity's interrupt never shows"
+    "Note: Not available for Google Antigravity (the page says \"Not supported on Google Antigravity: Google Antigravity doesn't support Human in the Loop: Headless Interrupts\")"
    ],
    "block": null,
-   "links": [
-    {
-     "text": null,
-     "clip": "ANTIGRAVITY-react-05-HeadlessInterrupts",
-     "loom": "https://www.loom.com/share/2ef0799fc2524494803fa83bf92705a7",
-     "narration": "narration/scripts/ANTIGRAVITY-react-05-HeadlessInterrupts.json"
-    }
-   ],
+   "links": [],
    "review": {
     "verdict": null,
     "approvedAt": null,
@@ -1530,11 +1516,10 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    33,
-    46
+    33
    ],
    "notes": [
-    "Note: `searchOrders()` isn't defined; tool only appears with Chrome's experimental web platform flag, which the page doesn't name"
+    "Note: `searchOrders()` isn't defined on the page."
    ],
    "block": null,
    "links": [
@@ -1562,7 +1547,6 @@
    "status": "❌",
    "findings": [
     27,
-    28,
     49
    ],
    "notes": [
@@ -1612,7 +1596,8 @@
     "verdict": null,
     "approvedAt": null,
     "by": null
-   }
+   },
+   "recheck": "marked for re-check 2026-11-11 (finding unverifiable from saved evidence)"
   }
  ]
 }

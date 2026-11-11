@@ -40,7 +40,7 @@ export default function Page() {
   return (
     // HARNESS: provider from the doc's "When a component fails" snippet + agentId="antigravity_agent" on CopilotChat (never named on the page).
     <CopilotKitProvider
-      runtimeUrl="/api/copilotkit"
+      runtimeUrl="/api/copilotkit-gui" /* HARNESS: doc says "/api/copilotkit"; the doc's own [[...slug]] runtime (GET+POST) is served at /api/copilotkit-gui, see app/api/copilotkit-gui */
       generativeUI={{
         ui: shopUI,
         errorBoundary: {

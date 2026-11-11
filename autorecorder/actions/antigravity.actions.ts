@@ -12,33 +12,12 @@ import { checkpoint, mark, probeText } from '../core/timeline';
  * typed into Notepad in casual words (REPOS.md Rule 6). No boxes or labels drawn on the page.
  */
 export const FINDING_NOTES: Record<string, string> = {
-  'headless-interrupts': [
-    'headless interrupts - findings #30 #31 #47',
-    '',
-    'the page in the browser says not supported on antigravity',
-    'but the .md export (what copy prompt gives an agent) still has the code',
-    'as written it crashes, AppSurface is never defined',
-    'with a stand-in AppSurface the hook still never gets the interrupt',
-    'it listens for the old on_interrupt event',
-    'so the chat just hangs and you can never answer',
-  ].join('\n'),
-  'use-interrupt': [
-    'useInterrupt - findings #19 #20 #47',
-    '',
-    'browser page says antigravity does not support interrupts',
-    'but the hitl overview documents experimental_interrupt() and it works',
-    'the .md export ships a langgraph agent and reads event.value',
-    'which is empty for an antigravity interrupt',
-    'so the card says "a call" instead of the topic, run still resumes',
-  ].join('\n'),
   components: [
-    'components and surfaces - findings #41 #42',
-    '',
-    'importing standardUI breaks the build, maplibre-gl is not in the install step',
-    '(harness installs it so the demo can run)',
-    'page says do step 3 only, your runtime needs no change',
-    'on antigravity no component renders at all',
-    'the agent just answers with a markdown table as plain text',
+    'page says already have copilotkit running,do step 3 only,your runtime needs no change',
+    'so just the provider with standardUI on the antigravity agent',
+    'asked to compare starter team enterprise plans in a table',
+    'no standardUI component renders at all,no table card nothing',
+    'the actual walkthrough on the page is tanstack openai not antigravity',
   ].join('\n'),
   subagents: [
     'sub-agents - finding #49',
@@ -51,26 +30,24 @@ export const FINDING_NOTES: Record<string, string> = {
     'the page never tells you to install httpx',
   ].join('\n'),
   'clf-reasoning-messages': [
-    'page says models like gpt-6-luna emit reasoning tokens and copilotkit shows a reasoning card',
-    'but it only shows frontend code, agent reasoning-default is never registered anywhere',
-    'no antigravity backend or reasoning model on the page at all',
-    'pointed it at the quickstart agent, chat answers fine',
+    'page says models like gpt-6-luna emit reasoning tokens and copilotkit shows them',
+    'code tab backend reasoning.py imports REASONING_MODEL and build from agents._common',
+    'that module isnt published anywhere so u dont know which model to use',
+    'ran it on the quickstart antigravity agent,chat answers fine',
     'but no reasoning message ever shows up,just the plain reply',
   ].join('\n'),
   voice: [
     'page.tsx imports VoiceChat from ./voice-chat',
-    'that file is never shown anywhere on the page',
+    'code tab has page.tsx sample-audio-button transcription-service route.ts but no voice-chat',
     'next dev fails with module not found cant resolve ./voice-chat',
     'and that build error blanks every route of the app not just voice',
-    'also no install step for @copilotkit/voice and no backend serving /voice',
     'harness has a stub voice-chat so the other pages load,voice page still dead',
   ].join('\n'),
   reasoning: [
-    'reasoning page only shows the frontend',
-    'useReasoningCustomSuggestions is called but never defined',
-    'agent reasoning-custom never registered, no imports in page.tsx either',
-    'no backend or model that sends reasoning events for antigravity',
-    'with the quickstart agent the chat replies but no reasoning block renders',
+    'reasoning page imports useReasoningCustomSuggestions from ./suggestions',
+    'the only suggestions file shown defines the default hook,custom one is never defined',
+    'backend reasoning.py needs REASONING_MODEL from agents._common,not published',
+    'with the quickstart antigravity agent the chat replies but no reasoning block renders',
   ].join('\n'),
   a2ui: [
     'a2ui page passes catalog myCatalog to CopilotKit',
@@ -150,35 +127,24 @@ export const FINDING_NOTES: Record<string, string> = {
 };
 
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
-  // In the browser these two pages hide their code behind "Not supported" banners; the code the
-  // clip runs comes from the page's .md export (FINDINGS.md #47). Point at the banners.
-  'headless-interrupts': [
-    { text: 'Not available for Google Antigravity yet', caption: 'Browser page says the feature is not available for Antigravity' },
-    { text: 'Not supported on Google Antigravity', caption: 'Code hidden here; the .md export still ships it and it crashes' },
-  ],
-  'use-interrupt': [
-    { text: 'Not available for Google Antigravity yet', caption: 'Browser page: not available for Antigravity' },
-    { text: 'Not supported on Google Antigravity', caption: 'Yet experimental_interrupt() works for Antigravity' },
-  ],
   components: [
-    { text: 'npm install @copilotkit/react-core @copilotkit/runtime @tanstack/ai', caption: 'No maplibre-gl, but standardUI needs it' },
-    { text: 'Already have CopilotKit running? Do step 3 only.', caption: 'Step 3 alone renders no component on Antigravity' },
+    { text: 'Already have CopilotKit running? Do step 3 only.', caption: 'Step 3 alone renders no component on Antigravity (FINDINGS.md #42)' },
   ],
   subagents: [
     { text: 'pip install ag-ui-antigravity google-antigravity', caption: 'Install step: no httpx' },
     { text: 'import httpx', caption: 'The code needs httpx (FINDINGS.md #49)' },
   ],
   'clf-reasoning-messages': [
-    { text: 'Some models (like gpt-6-luna) emit reasoning tokens', caption: 'Promises a reasoning card; no Antigravity backend/model shown' },
-    { text: 'const AGENT_ID = "reasoning-default";', caption: 'Agent never registered (FINDINGS.md #61)' },
+    { text: 'Some models (like gpt-6-luna) emit reasoning tokens', caption: 'Promises reasoning; the Code tab backend needs the unpublished agents._common.REASONING_MODEL (FINDINGS.md #61)' },
+    { text: 'const AGENT_ID = "reasoning-default";', caption: 'Agent backed by reasoning.py, which needs agents._common' },
   ],
   voice: [
-    { text: 'import { VoiceChat } from "./voice-chat";', caption: 'voice-chat.tsx never shown: Module not found (FINDINGS.md #63)' },
+    { text: 'import { VoiceChat } from "./voice-chat";', caption: 'voice-chat.tsx in no tab: Module not found (FINDINGS.md #63)' },
     { text: 'import { TranscriptionServiceOpenAI } from "@copilotkit/voice";', caption: 'No install step for @copilotkit/voice' },
   ],
   reasoning: [
-    { text: 'useReasoningCustomSuggestions();', caption: 'Hook never defined (FINDINGS.md #64)' },
-    { text: 'const AGENT_ID = "reasoning-custom";', caption: 'Agent never registered, no reasoning backend shown' },
+    { text: 'import { useReasoningCustomSuggestions } from "./suggestions";', caption: 'The only suggestions.ts shown defines the default hook (FINDINGS.md #64)' },
+    { text: 'useReasoningCustomSuggestions();', caption: 'Backend needs the unpublished agents._common.REASONING_MODEL' },
   ],
   a2ui: [
     { text: 'a2ui={{ catalog: myCatalog }}', caption: 'myCatalog never defined, no agent named (FINDINGS.md #71)' },
@@ -203,7 +169,7 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
  * Level 2 pages (QA-RULES §8a): already reported in the team doc and failing the same way.
  * Short clip: the take ends after the demo (no doc highlight, no Notepad); the voice-over says it.
  */
-export const KNOWN_ISSUE = new Set<string>(['use-interrupt']);
+export const KNOWN_ISSUE = new Set<string>([]);
 
 /** Type a page's finding into Notepad at the end of its take, after showing it on the doc. */
 export async function writeFinding(page: Page, id: string, config?: PageRecordConfig): Promise<void> {

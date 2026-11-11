@@ -17,7 +17,7 @@
   },
   {
    "at": "+",
-   "text": "And yeah, the chat answers, but umm, no reasoning card ever shows up. Just the plain reply."
+   "text": "So uh, on the Antigravity agent you never get a reasoning message."
   },
   {
    "at": "evidence#1",
@@ -25,11 +25,11 @@
   },
   {
    "at": "evidence#2",
-   "text": "And this agent ID is never registered anywhere."
+   "text": "And this agent is backed by the reasoning dot p y file in the code tab."
   },
   {
    "at": "notepad",
-   "text": "So basically, the page only shows frontend code. There's no Antigravity backend or reasoning model on it at all."
+   "text": "So basically, that backend imports its reasoning model from agents underscore common, and that module isn't published, so you don't know which model to use."
   },
   {
    "at": "+",

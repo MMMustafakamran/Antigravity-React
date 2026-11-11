@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the custom suggestions hook is never defined. And the backend, reasoning dot p y, takes its reasoning model from agents underscore common, which umm, isn't published anywhere.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 14.118,
+ "file": "39d46892d9575598c9ba38cf75644184.mp3",
+ "clip": "ANTIGRAVITY-react-25-Reasoning",
+ "at": "notepad"
+}

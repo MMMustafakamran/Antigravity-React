@@ -1,6 +1,5 @@
-// HARNESS: copied from showcase/integrations/google-antigravity (CopilotKit 4f0e86d). The doc imports this file but never shows it. FINDINGS.md
 "use client";
-
+// Doc: https://docs.copilotkit.ai/google-antigravity/human-in-the-loop -- Code tab, src/app/demos/hitl-in-chat/time-picker-card.tsx (verbatim)
 import React, { useState } from "react";
 
 export interface TimeSlot {

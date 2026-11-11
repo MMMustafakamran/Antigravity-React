@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the code tab shows the page, the sample audio button, the transcription service and the route, but no voice chat file. Next fails with module not found, and umm, that build error blanks every route of the app, not just this one.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 16.951,
+ "file": "d2582411877c98ea981bfc743a5c83d5.mp3",
+ "clip": "ANTIGRAVITY-react-24-Voice",
+ "at": "notepad"
+}

@@ -6,7 +6,7 @@ import { shopUI } from "./catalog";
 
 export default function Page() {
   return (
-    <CopilotKitProvider runtimeUrl="/api/copilotkit" generativeUI={{ ui: shopUI }}>
+    <CopilotKitProvider runtimeUrl="/api/copilotkit-gui" /* HARNESS: doc says "/api/copilotkit"; the doc's own [[...slug]] runtime (GET+POST) is served at /api/copilotkit-gui, see app/api/copilotkit-gui */ generativeUI={{ ui: shopUI }}>
       <CopilotChat agentId="antigravity_agent" />
     </CopilotKitProvider>
   );

@@ -1,12 +1,26 @@
-"use client"; // HARNESS: the doc snippet has no "use client"; CopilotKit/CopilotChat need it in an App Router page.
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/generative-ui/reasoning -- Code tab, src/app/demos/reasoning-custom/page.tsx (verbatim)
+// Reasoning — Custom
+//
+// Pairs with `reasoning-default` so users can compare default vs custom
+// reasoning rendering side by side. Both demos share the same backend
+// (`reasoning_agent` graph) and runtime URL (/api/copilotkit). This cell
+// overrides the `reasoningMessage` slot on the `messageView` slot with
+// `ReasoningBlock` — a tagged amber banner that emphasizes the agent's
+// thinking chain.
+//
+// Reasoning is a first-class message type in v2: see
+// packages/react-core/src/v2/components/chat/CopilotChatMessageView.tsx,
+// which discriminates messages by `message.role === "reasoning"` and
+// renders them via the `reasoningMessage` slot (default component:
+// `CopilotChatReasoningMessage`). The slot override below is the public,
+// stable way to customize that output.
 
-// HARNESS: the page.tsx tab shows no imports at all. Added the minimum so the snippet compiles.
-import { CopilotKit, CopilotChat, CopilotChatReasoningMessage } from "@copilotkit/react-core/v2";
+import type { CopilotChatReasoningMessage } from "@copilotkit/react-core/v2";
+import { CopilotKit, CopilotChat } from "@copilotkit/react-core/v2";
 import { ReasoningBlock } from "./reasoning-block";
 import { useReasoningCustomSuggestions } from "./suggestions";
 
-// --- Doc: https://docs.copilotkit.ai/google-antigravity/generative-ui/reasoning (Custom reasoning rendering, page.tsx tab, verbatim) ---
-// src/app/demos/reasoning-custom/page.tsx
 const AGENT_ID = "reasoning-custom";
 
 export default function ReasoningCustomDemo() {

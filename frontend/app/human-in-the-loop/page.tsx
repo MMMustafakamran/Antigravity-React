@@ -1,7 +1,5 @@
-"use client"; // HARNESS: the doc snippet omits it.
-
-// --- Doc: https://docs.copilotkit.ai/google-antigravity/human-in-the-loop (verbatim from here) ---
-// src/app/demos/hitl-in-chat/page.tsx
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/human-in-the-loop -- Code tab, src/app/demos/hitl-in-chat/page.tsx (verbatim)
 import React from "react";
 import {
   CopilotKit,
@@ -71,8 +69,6 @@ function Chat() {
       />
     ),
   });
-// --- Doc snippet ends here, mid-function ---
 
-  // HARNESS: minimal completion; the page never shows Chat's return.
-  return <CopilotChat agentId="hitl-in-chat" />;
+  return <CopilotChat agentId="hitl-in-chat" className="h-full rounded-2xl" />;
 }

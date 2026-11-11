@@ -1,25 +1,28 @@
-"use client"; // HARNESS: CopilotChat with props needs a client component in the App Router.
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/custom-look-and-feel/css -- Code tab, src/app/demos/chat-customization-css/page.tsx (verbatim)
+// Chat Customization (CSS) — every visual choice in this demo lives in
+// theme.css and is scoped to the `.chat-css-demo-scope` wrapper. The page
+// intentionally stays minimal so the contrast against the default look
+// comes entirely from the stylesheet.
+//
+// https://docs.copilotkit.ai/custom-look-and-feel/customize-built-in-ui-components
 
-// --- Doc: https://docs.copilotkit.ai/google-antigravity/custom-look-and-feel/css ---
-// src/app/demos/chat-customization-css/page.tsx
+import React from "react";
+import { CopilotKit, CopilotChat } from "@copilotkit/react-core/v2";
 import "./theme.css";
-// --- doc import ends ---
 
-// HARNESS: the page never shows the component that applies `.chat-css-demo-scope`; minimal wrapper
-// around <CopilotChat>, as the prose describes ("applies it only to the wrapper div holding <CopilotChat>").
-import { CopilotChat } from "@copilotkit/react-core/v2";
-
-export default function ChatCustomizationCssPage() {
+export default function ChatCustomizationCssDemo() {
   return (
-    <div className="chat-css-demo-scope" style={{ height: "100vh" }}>
-      {/* Doc: "Custom Labels" snippet, verbatim */}
-      <CopilotChat
-        labels={{
-          welcomeMessageText: "Hello! How can I help you today?",
-          modalHeaderTitle: "My Copilot",
-          chatInputPlaceholder: "Ask me anything!",
-        }}
-      />
-    </div>
+    <CopilotKit runtimeUrl="/api/copilotkit" agent="chat-customization-css">
+      <div className="flex justify-center items-center h-screen w-full bg-white p-6">
+        <div className="chat-css-demo-scope h-full w-full max-w-4xl">
+          <CopilotChat
+            agentId="chat-customization-css"
+            className="h-full"
+            attachments={{ enabled: true }}
+          />
+        </div>
+      </div>
+    </CopilotKit>
   );
 }

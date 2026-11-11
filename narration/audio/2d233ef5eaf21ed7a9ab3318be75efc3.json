@@ -1,0 +1,9 @@
+{
+ "text": "So basically, that backend imports its reasoning model from agents underscore common, and that module isn't published, so you don't know which model to use.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 10.635,
+ "file": "2d233ef5eaf21ed7a9ab3318be75efc3.mp3",
+ "clip": "ANTIGRAVITY-react-40-ReasoningMessages",
+ "at": "notepad"
+}

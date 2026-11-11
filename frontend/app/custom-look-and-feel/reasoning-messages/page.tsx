@@ -1,13 +1,20 @@
-"use client"; // HARNESS: the snippet omits it.
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/custom-look-and-feel/reasoning-messages -- Code tab, src/app/demos/reasoning-default/page.tsx (verbatim)
+// Reasoning — Default
+//
+// Pairs with `reasoning-custom` (the Custom variant) so users can
+// compare default vs custom reasoning rendering side by side. This cell
+// renders <CopilotChat> with NO slot override — reasoning messages are
+// rendered by the built-in `CopilotChatReasoningMessage` component
+// (Thinking… / Thought for X header with an expandable content region).
+//
+// Both demos share the same backend (`reasoning_agent` graph) and the
+// same runtime URL (/api/copilotkit). The only difference is whether the
+// `messageView.reasoningMessage` slot is overridden.
 
-// HARNESS: the snippet shows no imports.
 import { CopilotKit, CopilotChat } from "@copilotkit/react-core/v2";
+import { useReasoningDefaultSuggestions } from "./suggestions";
 
-// HARNESS: useReasoningDefaultSuggestions is never shown on the page; no-op stand-in.
-function useReasoningDefaultSuggestions() {}
-
-// --- Doc: https://docs.copilotkit.ai/google-antigravity/custom-look-and-feel/reasoning-messages (verbatim) ---
-// src/app/demos/reasoning-default/page.tsx
 const AGENT_ID = "reasoning-default";
 
 export default function ReasoningDefaultDemo() {

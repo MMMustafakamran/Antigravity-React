@@ -1,2 +1,3 @@
-// HARNESS: useReasoningCustomSuggestions is called on the doc page but never shown or imported. No-op stand-in.
+// HARNESS: suggestions.ts imported but not shown on the page: the only suggestions.ts on the page
+// (reasoning-default) defines useReasoningDefaultSuggestions, not useReasoningCustomSuggestions (FINDINGS.md #64). No-op stand-in.
 export function useReasoningCustomSuggestions() {}

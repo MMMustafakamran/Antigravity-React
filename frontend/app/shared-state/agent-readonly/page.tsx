@@ -1,5 +1,5 @@
-"use client"; // HARNESS: needed in the App Router; the doc file omits it.
-// --- Doc (verbatim): src/app/demos/readonly-state-agent-context/page.tsx ---
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/shared-state/agent-readonly -- Code tab, src/app/demos/readonly-state-agent-context/page.tsx (verbatim)
 import React, { useState } from "react";
 import {
   CopilotKit,
@@ -33,8 +33,7 @@ function DemoContent() {
     ACTIVITIES[0],
     ACTIVITIES[2],
   ]);
-  // --- end doc (the doc's DemoContent stops here) ---
-  // --- Doc (verbatim, second snippet) ---
+
   useAgentContext({
     description: "The currently logged-in user's display name",
     value: userName,
@@ -47,8 +46,25 @@ function DemoContent() {
     description: "The user's recent activity in the app, newest first",
     value: recentActivity,
   });
-  // --- end doc ---
-  // HARNESS: the rest of DemoContent is never shown.
+
   useReadonlyStateAgentContextSuggestions();
-  return <DemoLayout userName={userName} userTimezone={userTimezone} recentActivity={recentActivity} />;
+
+  const toggleActivity = (activity: string) => {
+    setRecentActivity((prev) =>
+      prev.includes(activity)
+        ? prev.filter((a) => a !== activity)
+        : [...prev, activity],
+    );
+  };
+
+  return (
+    <DemoLayout
+      userName={userName}
+      userTimezone={userTimezone}
+      recentActivity={recentActivity}
+      onUserNameChange={setUserName}
+      onUserTimezoneChange={setUserTimezone}
+      onToggleActivity={toggleActivity}
+    />
+  );
 }

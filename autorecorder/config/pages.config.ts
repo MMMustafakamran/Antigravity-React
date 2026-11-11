@@ -16,6 +16,10 @@ import { definePages } from '../core/types';
 export const SKIP_RECORDING: Record<string, string> = {
   'tool-rendering-default':
     'Not a separate doc page: the default catch-all is a section of generative-ui/tool-rendering, whose row links the ToolRendering clip (no assignment.json row for this clip).',
+  'use-interrupt':
+    'N/A: the rendered page says "Not supported on Google Antigravity: Google Antigravity doesn\'t support Human in the Loop: Interrupts" (owner rule 2026-11-11: banner pages get no test and no clip).',
+  'headless-interrupts':
+    'N/A: the rendered page says "Not supported on Google Antigravity: Google Antigravity doesn\'t support Human in the Loop: Headless Interrupts" (owner rule 2026-11-11: banner pages get no test and no clip).',
 };
 
 export const PAGES = definePages([

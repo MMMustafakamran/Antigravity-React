@@ -4,7 +4,14 @@ export const ACTIVITIES = [
   "Commented on the launch plan",
   "Booked a flight to Berlin",
 ];
-export function DemoLayout(props: { userName: string; userTimezone: string; recentActivity: string[] }) {
+export function DemoLayout(props: {
+  userName: string;
+  userTimezone: string;
+  recentActivity: string[];
+  onUserNameChange?: (v: string) => void;
+  onUserTimezoneChange?: (v: string) => void;
+  onToggleActivity?: (a: string) => void;
+}) {
   return (
     <div style={{ padding: 24 }}>
       <p>User: {props.userName}</p>

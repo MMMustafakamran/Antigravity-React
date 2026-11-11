@@ -25,11 +25,11 @@
   },
   {
    "at": "notepad",
-   "text": "So basically, the voice chat file is never shown on the page. Next fails with module not found, and umm, that build error blanks every route of the app, not just this one."
+   "text": "So basically, the code tab shows the page, the sample audio button, the transcription service and the route, but no voice chat file. Next fails with module not found, and umm, that build error blanks every route of the app, not just this one."
   },
   {
    "at": "+",
-   "text": "There's also no backend serving the voice endpoint. I only added a stub so the other pages load."
+   "text": "I only added a stub so the other pages load, the voice page is still dead."
   },
   {
    "at": "+",

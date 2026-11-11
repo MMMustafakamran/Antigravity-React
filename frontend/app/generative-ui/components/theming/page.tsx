@@ -8,7 +8,7 @@ export default function Page() {
     // --- Doc: https://docs.copilotkit.ai/google-antigravity/generative-ui/components/theming first snippet (verbatim) ---
     // HARNESS: agentId="antigravity_agent" on CopilotChat added (the page never names the Antigravity agent).
     <CopilotKitProvider
-      runtimeUrl="/api/copilotkit"
+      runtimeUrl="/api/copilotkit-gui" /* HARNESS: doc says "/api/copilotkit"; the doc's own [[...slug]] runtime (GET+POST) is served at /api/copilotkit-gui, see app/api/copilotkit-gui */
       generativeUI={{
         ui: standardUI,
         theme: {

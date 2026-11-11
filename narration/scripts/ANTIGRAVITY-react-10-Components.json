@@ -19,19 +19,15 @@
   },
   {
    "at": "+",
-   "text": "So the reply is just a markdown table, as text. No standard UI component at all, and ahh, the header cells are even shifted."
+   "text": "So no standard UI component renders at all. No table, no card, uh, nothing from the catalog."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. This standard UI import needs maplibre GL, and the install step doesn't add it, so the build breaks."
-  },
-  {
-   "at": "evidence#2",
-   "text": "And here it says, do step three only. But on Antigravity, umm, nothing renders."
+   "text": "Back on the doc, it says do step three only, your runtime needs no change. But on Antigravity, umm, nothing renders."
   },
   {
    "at": "notepad",
-   "text": "So noting it. Importing standard UI breaks the build, because maplibre GL isn't installed. And with Antigravity, the agent just replies with a markdown table, and uh, no component is rendered at all. The page's actual walkthrough is a built in agent with OpenAI, not Antigravity. That's the problem here, please have a look."
+   "text": "So noting it. The page says do step three only, and with the Antigravity agent no component is rendered at all. The page's actual walkthrough is a built in agent with OpenAI, umm, not Antigravity. Alright, that's the issue, kindly sort it out."
   }
  ]
 }

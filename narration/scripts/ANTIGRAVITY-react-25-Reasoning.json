@@ -17,19 +17,19 @@
   },
   {
    "at": "+",
-   "text": "The chat replies, but uh, no reasoning block ever renders."
+   "text": "So on the Antigravity agent the chat replies, but uh, no reasoning block ever renders."
   },
   {
    "at": "evidence#1",
-   "text": "Back on the doc, this suggestions hook is never defined."
+   "text": "Back on the doc, this suggestions hook is imported from a suggestions file."
   },
   {
    "at": "evidence#2",
-   "text": "And this agent ID is never registered."
+   "text": "But the only suggestions file on the page defines the default hook, not this one."
   },
   {
    "at": "notepad",
-   "text": "So basically, the page only shows the frontend. No imports, no backend, and no model that sends reasoning events for Antigravity."
+   "text": "So basically, the custom suggestions hook is never defined. And the backend, reasoning dot p y, takes its reasoning model from agents underscore common, which umm, isn't published anywhere."
   },
   {
    "at": "+",

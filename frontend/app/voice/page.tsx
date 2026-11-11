@@ -1,5 +1,5 @@
-// --- Doc: https://docs.copilotkit.ai/google-antigravity/voice (Frontend, verbatim) ---
-// src/app/demos/voice/page.tsx
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/voice -- Code tab, src/app/demos/voice/page.tsx (verbatim)
 import { CopilotKit } from "@copilotkit/react-core/v2";
 import { VoiceChat } from "./voice-chat";
 

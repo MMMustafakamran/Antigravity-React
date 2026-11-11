@@ -1,7 +1,5 @@
-"use client"; // HARNESS: the doc snippet omits it; without it useState fails in an App Router page.
-
-// --- Doc: https://docs.copilotkit.ai/google-antigravity/frontend-tools (verbatim from here) ---
-// src/app/demos/frontend-tools/page.tsx
+"use client";
+// Doc: https://docs.copilotkit.ai/google-antigravity/frontend-tools -- Code tab, src/app/demos/frontend-tools/page.tsx (verbatim)
 import React, { useState } from "react";
 import {
   CopilotKit,
@@ -29,18 +27,20 @@ function Chat() {
       return { status: "success" };
     },
   });
-// --- Doc snippet ends here, mid-function ---
 
-  // HARNESS: the rest of Chat is not on the page. Minimal completion that uses the doc's own imports.
   useFrontendToolsSuggestions();
+
   return (
     <Background background={background}>
-      <CopilotSidebar defaultOpen />
+      <CopilotSidebar agentId="frontend_tools" defaultOpen />
     </Background>
   );
 }
 
-// HARNESS: the page shows no export. Rendered under the root layout's <CopilotKit agent="antigravity_agent">.
-export default function FrontendToolsPage() {
-  return <Chat />;
+export default function FrontendToolsDemo() {
+  return (
+    <CopilotKit runtimeUrl="/api/copilotkit" agent="frontend_tools">
+      <Chat />
+    </CopilotKit>
+  );
 }
