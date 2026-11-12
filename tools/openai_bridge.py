@@ -105,6 +105,34 @@ def to_openai(g: dict) -> tuple[dict, list[str]]:
                 msgs.append({"role": "user", "content": ([{"type": "text", "text": "\n".join(texts)}] if texts else []) + images})
             elif texts:
                 msgs.append({"role": "user", "content": "\n".join(texts)})
+    # HARNESS (Antigravity-React): the Antigravity harness can send a model functionCall whose
+    # functionResponse arrives under another id, or not at all (a frontend tool such as render_ui that
+    # the browser answers). OpenAI rejects a tool_call with no tool message (400), so pair each
+    # tool_call with the next tool message, remapping a stray id or adding an empty result.
+    fixed = []
+    i = 0
+    while i < len(msgs):
+        m = msgs[i]
+        fixed.append(m)
+        i += 1
+        if m.get("role") == "assistant" and m.get("tool_calls"):
+            want = [tc["id"] for tc in m["tool_calls"]]
+            tool_msgs = []
+            while i < len(msgs) and msgs[i].get("role") == "tool":
+                tool_msgs.append(msgs[i])
+                i += 1
+            have = {t["tool_call_id"] for t in tool_msgs}
+            stray = [t for t in tool_msgs if t["tool_call_id"] not in want]
+            for cid in want:
+                if cid in have:
+                    continue
+                if stray:
+                    stray.pop(0)["tool_call_id"] = cid
+                else:
+                    tool_msgs.append({"role": "tool", "tool_call_id": cid, "content": json.dumps({"result": None})})
+                    notes.append("added empty tool result")
+            fixed.extend(t for t in tool_msgs if t["tool_call_id"] in want)
+    msgs[:] = fixed
     tools = []
     for t in g.get("tools", []) or []:
         for fd in t.get("functionDeclarations") or t.get("function_declarations") or []:
