@@ -488,15 +488,29 @@ export const runHeadlessThreadsAction: PageActionHandler = async (page, config, 
  * no closing text (CI 2026-11-12 takes 3-4: diagram drawn, recorder waited 120 s for text). When
  * the iframe is on screen that silence is not a page failure; with no iframe it still fails.
  */
-export const runMcpAppsAction: PageActionHandler = async (page, config, root, ctx) => {
-  try {
-    await runStandardAction(page, config, root, ctx);
-  } catch (e) {
-    const frame = page.locator('iframe').last();
-    const drawn = await frame.isVisible({ timeout: 2000 }).catch(() => false);
-    if (!(e instanceof AgentSilentError) || !drawn) throw e;
-    console.log('   ✅ MCP App iframe rendered; the agent ended without closing text.');
-    void checkpoint('mcp-app', 'MCP App iframe rendered', () => drawn);
-    await glideTo(page, frame, 2500);
+export const runMcpAppsAction: PageActionHandler = async (page, config, _root, ctx) => {
+  const before = await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
+  const frame = page.locator('iframe').last();
+  const drawn = await frame
+    .waitFor({ state: 'visible', timeout: ctx.timeouts.replyStartMs })
+    .then(() => true)
+    .catch(() => false);
+  void checkpoint('mcp-app', 'MCP App iframe rendered', () => drawn);
+  if (!drawn) {
+    // No iframe: judge the turn the standard way (silence or text without a diagram).
+    await waitForAgentResponseCompletion(page, config.waitAfterPromptMs ?? 4000, before, undefined, {
+      startTimeoutMs: 20000,
+      streamTimeoutMs: ctx.timeouts.replyStreamMs,
+    });
+    ctx.fail('No MCP App rendered: the agent reply came without the Excalidraw iframe.');
+    return;
   }
+  await glideTo(page, frame, 1500);
+  // The model may close with a sentence, or end right after the tool call: wait briefly for either.
+  await waitForAgentResponseCompletion(page, 6000, before, undefined, { startTimeoutMs: 25000, streamTimeoutMs: ctx.timeouts.replyStreamMs })
+    .catch((e) => {
+      if (!(e instanceof AgentSilentError)) throw e;
+      console.log('   ✅ MCP App iframe rendered; the agent ended without closing text.');
+    });
+  await glideTo(page, frame, 4000);
 };
