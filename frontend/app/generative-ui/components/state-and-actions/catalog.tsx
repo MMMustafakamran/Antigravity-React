@@ -19,7 +19,7 @@ function ProductCard({ productId, name, onAddToCart }: GenerativeUIComponentProp
       <button
         onClick={async () => {
           const result = await onAddToCart?.({ productId });
-          if (result && !result.ok) setError(result.error.message);
+          if (result) setError(result.ok ? undefined : result.error.message);
         }}
       >
         Add to cart

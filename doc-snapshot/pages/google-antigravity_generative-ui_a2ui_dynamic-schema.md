@@ -297,8 +297,8 @@ export const myRenderers: CatalogRenderers<MyDefinitions> = {
 
   Metric: ({ props }) => {
     const trendColors: Record<string, string> = {
-      up: "#059669",
-      down: "#dc2626",
+      up: "light-dark(#059669, #34d399)",
+      down: "light-dark(#dc2626, #f87171)",
       neutral: c.muted,
     };
     const trendIcons: Record<string, string> = {
@@ -480,6 +480,7 @@ export const myRenderers: CatalogRenderers<MyDefinitions> = {
                   innerRadius={40}
                   outerRadius={80}
                   paddingAngle={2}
+                  stroke="var(--card)"
                 >
                   {data.map((_, i) => (
                     <Cell
@@ -488,7 +489,7 @@ export const myRenderers: CatalogRenderers<MyDefinitions> = {
                     />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip contentStyle={tooltipStyle} />
               </RechartsPieChart>
             </ResponsiveContainer>
           </div>
@@ -537,7 +538,7 @@ export const myRenderers: CatalogRenderers<MyDefinitions> = {
                 <CartesianGrid strokeDasharray="3 3" stroke={c.divider} />
                 <XAxis dataKey="label" tick={{ fontSize: 11, fill: c.muted }} />
                 <YAxis tick={{ fontSize: 11, fill: c.muted }} />
-                <Tooltip />
+                <Tooltip contentStyle={tooltipStyle} cursor={barCursor} />
                 <Bar dataKey="value" fill="#3b82f6" radius={[4, 4, 0, 0]} />
               </RechartsBarChart>
             </ResponsiveContainer>

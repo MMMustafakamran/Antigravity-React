@@ -723,8 +723,7 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    36,
-    38
+    36
    ],
    "notes": [
     "Note: prose says roll_dice, the tool is roll_d20; the backend imports the unpublished agents._common."
@@ -1567,12 +1566,9 @@
    "reachable": "sidebar",
    "status": "✅",
    "findings": [
-    34,
     35
    ],
-   "notes": [
-    "Note: Agent pane says \"No agent selected\" although the agent is connected"
-   ],
+   "notes": [],
    "block": null,
    "links": [
     {

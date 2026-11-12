@@ -1,6 +1,6 @@
 {
  "root": "google-antigravity",
- "savedAt": "2026-11-11",
+ "savedAt": "2026-11-12",
  "pages": {
   "/google-antigravity/prebuilt-components/sidebar": [
    "/google-antigravity/custom-look-and-feel/slots",
@@ -94,27 +94,36 @@
    "/google-antigravity/generative-ui/components/surfaces",
    "/google-antigravity/generative-ui/components/theming",
    "/google-antigravity/generative-ui/components/transports",
-   "/google-antigravity/inspector"
+   "/google-antigravity/inspector",
+   "/google-antigravity/react-native"
   ],
   "/google-antigravity/generative-ui/components/surfaces": [
    "/google-antigravity/generative-ui/components",
-   "/google-antigravity/generative-ui/components/catalogs"
+   "/google-antigravity/generative-ui/components/catalogs",
+   "/google-antigravity/react-native"
   ],
   "/google-antigravity/generative-ui/components/catalogs": [
+   "/google-antigravity/generative-ui/components",
    "/google-antigravity/generative-ui/components/state-and-actions"
   ],
   "/google-antigravity/generative-ui/components/standard-catalog": [
    "/google-antigravity/generative-ui/components/catalogs",
-   "/google-antigravity/generative-ui/components/theming"
+   "/google-antigravity/generative-ui/components/theming",
+   "/google-antigravity/react-native"
   ],
-  "/google-antigravity/generative-ui/components/state-and-actions": [],
-  "/google-antigravity/generative-ui/components/theming": [],
+  "/google-antigravity/generative-ui/components/state-and-actions": [
+   "/google-antigravity/react-native"
+  ],
+  "/google-antigravity/generative-ui/components/theming": [
+   "/google-antigravity/react-native"
+  ],
   "/google-antigravity/generative-ui/components/transports": [
    "/google-antigravity/generative-ui/components/markdown-mode"
   ],
   "/google-antigravity/generative-ui/components/markdown-mode": [
    "/google-antigravity/generative-ui/components/state-and-actions",
-   "/google-antigravity/generative-ui/components/surfaces"
+   "/google-antigravity/generative-ui/components/surfaces",
+   "/google-antigravity/generative-ui/components/transports"
   ],
   "/google-antigravity/generative-ui/a2ui": [
    "/google-antigravity/generative-ui/a2ui/dynamic-schema",

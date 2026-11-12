@@ -234,9 +234,9 @@ jobs:
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       CPK_INTELLIGENCE_API_KEY: ${{ secrets.CPK_INTELLIGENCE_API_KEY }}
-      # HARNESS: Gemini key/model pool (tools/gemini_pool.py on :8049), as in the Google ADK repo. The Gemini key is
-      # out of credit (402); GEMINI_POOL_KEYS may be empty, OpenAI is the last-resort fallback.
-      GEMINI_POOL_KEYS: ${{ secrets.GEMINI_POOL_KEYS }}
+      # HARNESS: Gemini key/model pool (tools/gemini_pool.py on :8049), as in the Google ADK repo. Gemini has credit
+      # again (2026-11-12): pool keys, else GEMINI_API_KEY; OpenAI stays the last-resort fallback.
+      GEMINI_POOL_KEYS: ${{ secrets.GEMINI_POOL_KEYS || secrets.GEMINI_API_KEY }}
       GEMINI_POOL_OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
       # The agents' own overrides (backend/agents/_common.py): the defaults live under /data,
       # which a GitHub runner can't write. Not a doc change.

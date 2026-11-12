@@ -2,6 +2,24 @@
 
 What each `drift.mjs --sync` took into the snapshot (newest first).
 
+## 2026-11-12 (generative-ui/a2ui/dynamic-schema, generative-ui/a2ui/fixed-schema, generative-ui/components, generative-ui/components/catalogs, generative-ui/components/from-a2ui, generative-ui/components/markdown-mode, generative-ui/components/standard-catalog, generative-ui/components/state-and-actions, generative-ui/components/surfaces, generative-ui/components/theming, generative-ui/components/transports, generative-ui/reasoning, human-in-the-loop/headless, multi-agent/subagents, shared-state)
+
+- generative-ui/a2ui/fixed-schema: HIGH code (+8 / -8)
+- generative-ui/components/markdown-mode: HIGH code, structure, banner (+30 / -2)
+- generative-ui/components/from-a2ui: HIGH code, structure (+79 / -6)
+- generative-ui/components/catalogs: HIGH code, structure (+224 / -8)
+- generative-ui/a2ui/dynamic-schema: HIGH code (+5 / -4)
+- generative-ui/components: HIGH code, install, structure (+506 / -12)
+- generative-ui/components/standard-catalog: HIGH code, structure (+62 / -5)
+- generative-ui/components/state-and-actions: HIGH code, structure, banner (+235 / -12)
+- generative-ui/components/surfaces: HIGH code, structure (+230 / -13)
+- generative-ui/components/theming: HIGH code, structure (+50 / -3)
+- generative-ui/components/transports: HIGH code, structure, banner (+40 / -7)
+- generative-ui/reasoning: HIGH code (+5 / -5)
+- human-in-the-loop/headless: HIGH code (+2 / -2)
+- multi-agent/subagents: HIGH code (+16 / -14)
+- shared-state: HIGH code (+5 / -5)
+
 ## 2026-11-11 (custom-look-and-feel/css, custom-look-and-feel/headless-ui, custom-look-and-feel/markdown, custom-look-and-feel/reasoning-messages, custom-look-and-feel/slots, generative-ui/a2ui/dynamic-schema, generative-ui/a2ui/fixed-schema, generative-ui/components/catalogs, generative-ui/components/from-a2ui, generative-ui/components/markdown-mode, generative-ui/components/standard-catalog, generative-ui/components/state-and-actions, generative-ui/components/surfaces, generative-ui/components/theming, generative-ui/components/transports, generative-ui/hashbrown, generative-ui/json-render, generative-ui/open-generative-ui, generative-ui/reasoning, generative-ui/tool-based, headless-threads, human-in-the-loop/governed-actions, multimodal-attachments, prebuilt-components/chat, prebuilt-components/chat-controls, prebuilt-components/copilot-threads-drawer, prebuilt-components/popup, prebuilt-components/sidebar, shared-state/agent-readonly, shared-state/rendering-in-app, voice)
 
 - custom-look-and-feel/slots: NEW new (+278 / -0)

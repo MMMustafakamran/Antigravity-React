@@ -1,16 +1,56 @@
 # Adopt from A2UI
 
-> Move an app from the a2ui renderer (A2UI v0.9) to components and surfaces (A2UI 1.0): the provider, the catalog, the operations, and what the agent receives.
+> Move an app from the a2ui renderer to components and surfaces: the provider, the catalog, the operations, and what the agent receives.
 
 ## What is this?
 
-The `a2ui` provider option and `@copilotkit/a2ui-renderer` render A2UI v0.9: you build a catalog with `createCatalog`, and the agent streams a fixed or a generated schema into it. Components and surfaces is the A2UI 1.0 engine. The idea is the same: the agent writes operations, and the browser renders your components. The engine adds typed catalogs, the [standard catalog](/generative-ui/components/standard-catalog), areas of the page as targets, two transports, dynamic values that compute in the browser, and functions the agent can call. This page maps one to the other.
+The `a2ui` provider option and `@copilotkit/a2ui-renderer` render A2UI v0.9 by default, with explicit A2UI 1.0 support in React: you build a catalog with `createCatalog`, and the agent streams a fixed or a generated schema into it. Components and surfaces is a separate A2UI 1.0 engine. The idea is the same: the agent writes operations, and the browser renders your components. The engine adds typed catalogs, the [standard catalog](/generative-ui/components/standard-catalog), areas of the page as targets, two transports, dynamic values that compute in the browser, and functions the agent can call. This page maps one to the other.
+
+## Use 1.0 with the React a2ui renderer
+
+You can keep the `a2ui` provider option and opt into the native 1.0 basic catalog:
+
+```tsx
+import { basicCatalogV1 } from "@copilotkit/a2ui-renderer";
+
+<CopilotKit runtimeUrl="/api/copilotkit" a2ui={{ catalog: basicCatalogV1 }}>
+  {/* Your app */}
+</CopilotKit>
+```
+
+For a custom catalog, choose its protocol explicitly and use the matching binding schemas:
+
+```tsx
+import { z } from "zod";
+import {
+  createCatalog,
+  DynamicStringSchemaV1,
+} from "@copilotkit/a2ui-renderer";
+
+const myCatalog = createCatalog(
+  { Greeting: { props: z.object({ name: DynamicStringSchemaV1 }) } },
+  { Greeting: ({ props }) => <p>Hello {props.name}</p> },
+  {
+    catalogId: "acme/greetings@1",
+    protocolVersion: "1.0",
+    includeBasicCatalog: true,
+  },
+);
+```
+
+The package also exports `DynamicNumberSchemaV1`, `DynamicBooleanSchemaV1`, `DynamicStringListSchemaV1`, `DataBindingSchemaV1`, `ChildListSchemaV1`, `ActionSchemaV1`, and `CheckRuleSchemaV1`. Bound values use `{ "@path": "/name" }` and function values use `{ "@call": "formatNumber", "args": { ... } }`. Repeating children keep the structural form `{ componentId: "row", path: "/items" }`. Omitting `protocolVersion` from `createCatalog` keeps the existing v0.9 behavior.
+
+Default basic-catalog cards using v0.9 and 1.0 can remain in the same chat history. Each surface keeps its original protocol; create a new surface to change versions. Retaining several historical custom catalogs is not automatic. After an app upgrades its generation catalog, updating an older card may need app-side handling: the renderer forwards its actions but does not switch the agent's catalog for that run.
+
+Your agent integration must also emit native 1.0 `a2ui_operations` through the `a2ui-surface` activity. Selecting this catalog does not upgrade backend packages or establish support in every adapter and streaming mode. This path continues to use the `a2ui` contract; migrating to the `render_ui` contract below is a separate choice.
 
 ## Before and after
 
 The provider takes a UI instead of a catalog, and the runtime needs no A2UI option:
 
-<Tabs groupId="frontend_framework" items={["React", "Angular"]} persist>
+The examples below start from a v0.9 catalog. If your React a2ui renderer already uses 1.0, its values already use the 1.0 binding syntax; the provider and catalog migration still applies.
+
+<Tabs groupId="frontend_framework" items={["React", "Angular", "Vue"]} persist>
   <Tab value="React">
     ```tsx title="Before"
     <CopilotKit runtimeUrl="/api/copilotkit" a2ui={{ catalog: myCatalog }}>
@@ -28,6 +68,15 @@ The provider takes a UI instead of a catalog, and the runtime needs no A2UI opti
     ```ts title="After"
     provideCopilotKit({ runtimeUrl: "/api/copilotkit" }),
     provideGenerativeUI({ ui: appUI }),
+    ```
+  </Tab>
+  <Tab value="Vue">
+    ```vue title="Before"
+    <CopilotKitProvider runtime-url="/api/copilotkit" :a2ui="{ catalog: vueBasicCatalog }">
+    ```
+
+    ```vue title="After"
+    <CopilotKitProvider runtime-url="/api/copilotkit" :generativeUI="{ ui: appUI }">
     ```
   </Tab>
 </Tabs>
@@ -51,7 +100,7 @@ The chat renders surfaces on its own. For an area of the page, mount [`<Generati
 
 Before, a catalog was definitions plus renderers, and a bound prop had to be declared as a union with the binding object:
 
-<Tabs groupId="frontend_framework" items={["React", "Angular"]} persist>
+<Tabs groupId="frontend_framework" items={["React", "Angular", "Vue"]} persist>
   <Tab value="React">
     ```ts title="Before"
     import { createCatalog, DynamicStringSchema } from "@copilotkit/a2ui-renderer";
@@ -86,11 +135,14 @@ Before, a catalog was definitions plus renderers, and a bound prop had to be dec
     });
     ```
   </Tab>
+  <Tab value="Vue">
+    In Vue, the `a2ui` option takes `vueBasicCatalog`. `@copilotkit/vue` has no function that builds a custom v0.9 catalog, so there is no custom catalog to convert. Declare your components as shown in the After tab.
+  </Tab>
 </Tabs>
 
 After, each component is one entry, with the component, a description and plain prop types:
 
-<Tabs groupId="frontend_framework" items={["React", "Angular"]} persist>
+<Tabs groupId="frontend_framework" items={["React", "Angular", "Vue"]} persist>
   <Tab value="React">
     ```ts title="After"
     import {
@@ -133,6 +185,27 @@ After, each component is one entry, with the component, a description and plain 
     });
     ```
   </Tab>
+  <Tab value="Vue">
+    ```ts title="After"
+    import {
+      createGenerativeUI,
+      standardUI,
+    } from "@copilotkit/vue/v2/generative-ui";
+
+    export const appUI = createGenerativeUI({
+      id: "acme/flights@1",
+      extends: [standardUI],
+      components: {
+        Airport: {
+          component: Airport,
+          description: "An airport by IATA code, with its city under it.",
+          props: z.object({ code: z.string(), city: z.string() }),
+        },
+        Arrow: { component: Arrow, description: "An arrow between two airports." },
+      },
+    });
+    ```
+  </Tab>
 </Tabs>
 
 What to change:
@@ -144,7 +217,7 @@ What to change:
 - **The catalog id** is `id`. A surface with no `catalogId` pins to it. The run also lists the ids of the catalogs in `extends`, so an operation or a component can name `copilotkit/standard@1` or the id of any other base. Any other `catalogId` is rejected.
 - **Actions and app state** become `functions` with `useGenerativeUIFunction`, and `state` with `useGenerativeUIState`; in Angular, `registerGenerativeUIFunction` and `connectGenerativeUIState`. See [Connect app state and actions](/google-antigravity/generative-ui/components/state-and-actions).
 
-Your renderers stay as they are, apart from the props they read: a bound prop arrives resolved, and a slot or a child reference arrives as a React node, or as a `GenerativeUIChildren` handle in Angular.
+Your renderers stay as they are, apart from the props they read: a bound prop arrives resolved, and a slot or a child reference arrives as a React node, or as a `GenerativeUIChildren` handle in Angular. In Vue, a slot arrives as a named slot, and a child reference as a `VNode`.
 
 ## Bindings and actions
 
