@@ -1071,7 +1071,7 @@
     71
    ],
    "notes": [
-    "Issue: the page only shows fragments; myCatalog is never defined and no agent is named, and with the guessed setup the chat never replies."
+    "Issue: the page only shows fragments; myCatalog is never defined and no agent is named, and with the guessed setup the chat shows \"Couldn't generate the UI\" instead of the dashboard."
    ],
    "block": null,
    "links": [

@@ -17,7 +17,7 @@
   },
   {
    "at": "+",
-   "text": "And the chat just never replies. Nothing comes back at all."
+   "text": "And the chat shows a couldn't generate the UI error, and then just a plain table. No dashboard renders."
   },
   {
    "at": "evidence#1",
@@ -29,7 +29,7 @@
   },
   {
    "at": "+",
-   "text": "And even with that, the chat never replied over two runs."
+   "text": "And even with that, no A two UI dashboard renders, only that error card."
   },
   {
    "at": "+",

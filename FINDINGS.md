@@ -30,9 +30,9 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 - **Result:** on the Antigravity quickstart agent the chat answers the train problem in plain step-by-step text; no reasoning block renders.
 
 ### [A2UI](https://docs.copilotkit.ai/google-antigravity/generative-ui/a2ui)
-**#71 The page only shows fragments; `myCatalog` is never defined and no agent is named, and with the guessed setup the chat never replies.**
+**#71 The page only shows fragments; `myCatalog` is never defined and no agent is named, and with the guessed setup no A2UI surface renders.**
 - **Doc:** `<CopilotKit ... a2ui={{ catalog: myCatalog }}>` with `myCatalog` never defined and no agent named (no Code tab).
-- **Result:** the chat never replies (2 runs, 240 s; probe reply empty).
+- **Result:** the chat shows a "Couldn't generate the UI" card (console: `render_a2ui` has no renderer registered), then a plain markdown table. Re-checked 2026-11-12 (CI 43216049376); earlier runs got no reply at all.
 
 ### [Dynamic Schema](https://docs.copilotkit.ai/google-antigravity/generative-ui/a2ui/dynamic-schema)
 **#72 No dashboard renders; the chat shows "A2UI render error: Cannot read properties of undefined (reading 'map')".**

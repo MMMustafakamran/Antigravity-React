@@ -53,8 +53,8 @@ export const FINDING_NOTES: Record<string, string> = {
     'a2ui page passes catalog myCatalog to CopilotKit',
     'myCatalog is never defined on the page and no agent is named',
     'took the catalog from the dynamic schema page and the default agent',
-    'sent the prompt and the chat just never replies',
-    'waited 4 min over 2 runs,nothing',
+    'sent the prompt and got couldnt generate the ui card',
+    'then just a plain table,no a2ui dashboard renders',
   ].join('\n'),
   'a2ui-dynamic-schema': [
     'dynamic schema page says thats all the default path needs',
