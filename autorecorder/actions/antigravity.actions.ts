@@ -1,6 +1,6 @@
 import { type Page } from 'playwright';
 import { type PageActionHandler, type PageRecordConfig, type ActionContext } from '../core/types';
-import { sendPrompt, waitForAgentResponseCompletion } from '../core/actions';
+import { sendPrompt, waitForAgentResponseCompletion, AgentSilentError } from '../core/actions';
 import { sleep } from '../core/overlays/cursor';
 import { glideClick, glideTo } from './glide-click';
 import { runStandardAction } from '../core/actions';
@@ -480,4 +480,23 @@ export const runHeadlessThreadsAction: PageActionHandler = async (page, config, 
   void checkpoint('replay', 'selecting the thread replays its history', () => probeText(page.getByText(config.prompt, { exact: false })));
   if (!replayed) ctx.fail('Selecting the thread in the sidebar did not replay its conversation.');
   await sleep(4000);
+};
+
+/**
+ * HARNESS (2026-11-13): MCP Apps. The thing under test is the Excalidraw iframe the built-in
+ * MCPAppsActivityRenderer draws. The model sometimes ends the run right after the tool call with
+ * no closing text (CI 2026-11-12 takes 3-4: diagram drawn, recorder waited 120 s for text). When
+ * the iframe is on screen that silence is not a page failure; with no iframe it still fails.
+ */
+export const runMcpAppsAction: PageActionHandler = async (page, config, root, ctx) => {
+  try {
+    await runStandardAction(page, config, root, ctx);
+  } catch (e) {
+    const frame = page.locator('iframe').last();
+    const drawn = await frame.isVisible({ timeout: 2000 }).catch(() => false);
+    if (!(e instanceof AgentSilentError) || !drawn) throw e;
+    console.log('   ✅ MCP App iframe rendered; the agent ended without closing text.');
+    void checkpoint('mcp-app', 'MCP App iframe rendered', () => drawn);
+    await glideTo(page, frame, 2500);
+  }
 };
