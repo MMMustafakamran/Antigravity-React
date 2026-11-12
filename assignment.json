@@ -218,7 +218,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-01-Quickstart",
-     "loom": "https://www.loom.com/share/1764e7c6d51542a6b12c333620b8f8f6",
+     "loom": "https://www.loom.com/share/674628dc7f4a4d33acae3cff1ecff7a3",
      "narration": null
     }
    ],
@@ -248,7 +248,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-15-CopilotChat",
-     "loom": "https://www.loom.com/share/7cb36407baca44b687898b74e299dcad",
+     "loom": "https://www.loom.com/share/6b7206f6fbac49d9a8ea8515725ceef8",
      "narration": null
     }
    ],
@@ -279,7 +279,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-16-CopilotSidebar",
-     "loom": "https://www.loom.com/share/7ee0698a7fc142bd9c35f63d3e69fcff",
+     "loom": "https://www.loom.com/share/c04da33a12dd4b68985dd070bb803e72",
      "narration": null
     }
    ],
@@ -310,7 +310,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-17-CopilotPopup",
-     "loom": "https://www.loom.com/share/e0337330b16947eda1bdce54746654f2",
+     "loom": "https://www.loom.com/share/e7bd2539d7c44311ab89b471ce9bff28",
      "narration": null
     }
    ],
@@ -341,7 +341,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-18-ChatControls",
-     "loom": null,
+     "loom": "https://www.loom.com/share/b662109311fa4bc3831d3a2e2572a372",
      "narration": null
     }
    ],
@@ -404,7 +404,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-37-Slots",
-     "loom": null,
+     "loom": "https://www.loom.com/share/c328c4c4d8a74d7a8143179c7b4e8b22",
      "narration": null
     }
    ],
@@ -431,7 +431,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-38-MarkdownRendering",
-     "loom": null,
+     "loom": "https://www.loom.com/share/f5b86dd30047456485997181b30ff9b2",
      "narration": null
     }
    ],
@@ -462,7 +462,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-39-HeadlessUI",
-     "loom": null,
+     "loom": "https://www.loom.com/share/0cacf2e3194648fdb56de46500335fdd",
      "narration": null
     }
    ],
@@ -524,7 +524,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-23-MultimodalAttachments",
-     "loom": null,
+     "loom": "https://www.loom.com/share/65f9cb7d1cd24738805860c2e85e177f",
      "narration": null
     }
    ],
@@ -671,7 +671,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-02-FrontendTools",
-     "loom": "https://www.loom.com/share/7891e9083e3c4004a5e6f490811c9a06",
+     "loom": "https://www.loom.com/share/23d19b33da33452f9799011a06cc02ba",
      "narration": null
     }
    ],
@@ -702,7 +702,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-19-ComponentsAsTools",
-     "loom": "https://www.loom.com/share/31c84ea3946840f288a162700b67bc3e",
+     "loom": "https://www.loom.com/share/6236a0b5fc51423599d589677e17335f",
      "narration": null
     }
    ],
@@ -733,7 +733,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-08-ToolRendering",
-     "loom": "https://www.loom.com/share/7aef8a59eaa64a12bf807d30e16512ef",
+     "loom": "https://www.loom.com/share/4009e79aa643432cbf9f9dc9bbb3f6c2",
      "narration": null
     }
    ],
@@ -764,7 +764,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-07-StateRendering",
-     "loom": "https://www.loom.com/share/a8deef3c368b4e07ad9134b5e1f9af14",
+     "loom": "https://www.loom.com/share/745f8de1133347979ff4a9a50ea55749",
      "narration": null
     }
    ],
@@ -1071,7 +1071,7 @@
     71
    ],
    "notes": [
-    "Issue: the page only shows fragments; myCatalog is never defined and no agent is named, and with the guessed setup the chat shows \"Couldn't generate the UI\" instead of the dashboard."
+    "Issue: the page only shows fragments; myCatalog is never defined and no agent is named, and with the guessed setup no A2UI dashboard renders."
    ],
    "block": null,
    "links": [
@@ -1169,7 +1169,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-44-JSONRender",
-     "loom": null,
+     "loom": "https://www.loom.com/share/c4788daa30fa463fb53d30e203389ccb",
      "narration": null
     }
    ],
@@ -1198,7 +1198,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-45-Hashbrown",
-     "loom": null,
+     "loom": "https://www.loom.com/share/c814ab9e866443259fb07053324df314",
      "narration": null
     }
    ],
@@ -1255,7 +1255,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-46-OpenGenerativeUI",
-     "loom": null,
+     "loom": "https://www.loom.com/share/6a3a7fc979394f2e83716af15e67ef0c",
      "narration": null
     }
    ],
@@ -1287,7 +1287,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-06-SharedState",
-     "loom": "https://www.loom.com/share/6f1926633bcc41ceaf379edf6781370a",
+     "loom": "https://www.loom.com/share/a1d6222aa46d49c8bfa9be6a57db9847",
      "narration": null
     }
    ],
@@ -1318,7 +1318,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-20-RenderingInApp",
-     "loom": null,
+     "loom": "https://www.loom.com/share/b9e69b51229849de946af896c8c2d25d",
      "narration": null
     }
    ],
@@ -1410,7 +1410,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-03-HumanInTheLoop",
-     "loom": "https://www.loom.com/share/81a96dd6dac14a678c53ff39b11aa556",
+     "loom": "https://www.loom.com/share/6b36b4a0674c4382a5aea9b241e59f89",
      "narration": null
     }
    ],
@@ -1484,7 +1484,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-22-GovernedActions",
-     "loom": null,
+     "loom": "https://www.loom.com/share/5fa7dd3fa9064a70b5e2b1df20444514",
      "narration": null
     }
    ],
@@ -1515,7 +1515,7 @@
     {
      "text": null,
      "clip": "ANTIGRAVITY-react-13-WebMCP",
-     "loom": "https://www.loom.com/share/dd91582209e44123a6c64034a7536f8f",
+     "loom": "https://www.loom.com/share/1cbfc616aad342aeafc34c5aac07eb31",
      "narration": null
     }
    ],

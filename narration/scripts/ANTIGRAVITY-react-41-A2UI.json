@@ -17,7 +17,7 @@
   },
   {
    "at": "+",
-   "text": "And the chat shows a couldn't generate the UI error, and then just a plain table. No dashboard renders."
+   "text": "And no dashboard renders at all, I only get text or an error back."
   },
   {
    "at": "evidence#1",
@@ -29,7 +29,7 @@
   },
   {
    "at": "+",
-   "text": "And even with that, no A two UI dashboard renders, only that error card."
+   "text": "And even with that, no A two UI dashboard ever renders."
   },
   {
    "at": "+",
