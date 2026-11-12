@@ -789,7 +789,7 @@
     42
    ],
    "notes": [
-    "Issue: \"Do step 3 only\" with the Antigravity agent renders no component (latest run: empty reply). Re-check pending on the doc's own [[...slug]] runtime."
+    "Issue: \"Do step 3 only\" with the Antigravity agent renders no component; the agent answers in plain text."
    ],
    "block": null,
    "links": [
@@ -804,8 +804,7 @@
     "verdict": null,
     "approvedAt": null,
     "by": null
-   },
-   "recheck": "marked for re-check 2026-11-11 (finding unverifiable from saved evidence)"
+   }
   },
   {
    "id": "gui-surfaces",
@@ -837,8 +836,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-catalogs",
@@ -869,8 +867,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-standard-catalog",
@@ -901,8 +898,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-state-and-actions",
@@ -934,8 +930,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-theming",
@@ -966,8 +961,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-transports",
@@ -999,8 +993,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-markdown-mode",
@@ -1032,8 +1025,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "gui-from-a2ui",
@@ -1065,8 +1057,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "harness now serves the doc's own [[...slug]] runtime (GET+POST) at /api/copilotkit-gui; old probes 404ed GET /api/copilotkit/info. Re-check in CI."
+   "added": "2026-11-10"
   },
   {
    "id": "a2ui",
@@ -1159,8 +1150,7 @@
     "approvedAt": null,
     "by": null
    },
-   "added": "2026-11-10",
-   "recheck": "marked for re-check 2026-11-11 (finding unverifiable from saved evidence)"
+   "added": "2026-11-10"
   },
   {
    "id": "json-render",

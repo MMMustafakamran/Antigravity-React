@@ -143,8 +143,8 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
     { text: 'import { TranscriptionServiceOpenAI } from "@copilotkit/voice";', caption: 'No install step for @copilotkit/voice' },
   ],
   reasoning: [
-    { text: 'import { useReasoningCustomSuggestions } from "./suggestions";', caption: 'The only suggestions.ts shown defines the default hook (FINDINGS.md #64)' },
-    { text: 'useReasoningCustomSuggestions();', caption: 'Backend needs the unpublished agents._common.REASONING_MODEL' },
+    { text: 'useReasoningCustomSuggestions();', caption: 'Never defined: the only suggestions.ts shown defines the default hook (FINDINGS.md #64)' },
+    { text: 'const AGENT_ID = "reasoning-custom";', caption: 'Backed by reasoning.py, which needs the unpublished agents._common.REASONING_MODEL' },
   ],
   a2ui: [
     { text: 'a2ui={{ catalog: myCatalog }}', caption: 'myCatalog never defined, no agent named (FINDINGS.md #71)' },

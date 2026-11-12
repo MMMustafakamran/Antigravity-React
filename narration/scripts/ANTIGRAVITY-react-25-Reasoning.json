@@ -21,11 +21,11 @@
   },
   {
    "at": "evidence#1",
-   "text": "Back on the doc, this suggestions hook is imported from a suggestions file."
+   "text": "Back on the doc, this suggestions hook is called here."
   },
   {
    "at": "evidence#2",
-   "text": "But the only suggestions file on the page defines the default hook, not this one."
+   "text": "And this agent runs on reasoning dot p y, umm, from the code tab."
   },
   {
    "at": "notepad",
