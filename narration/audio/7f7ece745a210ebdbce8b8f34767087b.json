@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the page shows no backend at all, and it never says the agent needs the get shared state tool, so the agent just can't see the canvas.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 11.935,
+ "file": "7f7ece745a210ebdbce8b8f34767087b.mp3",
+ "clip": "ANTIGRAVITY-react-20-RenderingInApp",
+ "at": "notepad"
+}

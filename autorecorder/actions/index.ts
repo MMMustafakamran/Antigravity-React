@@ -21,6 +21,7 @@ import {
   runThreadsDrawerAction,
   runHeadlessThreadsAction,
   runMcpAppsAction,
+  runVoiceAction,
 } from './antigravity.actions';
 
 /** Keys are page ids from `config/pages.config.ts`. Doctor flags any orphans. */
@@ -37,7 +38,8 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   'chat-controls': runChatControlsAction,
   // 2026-11-10 pages (level 1): standard take, then doc evidence + Notepad.
   'clf-reasoning-messages': runStandardWithFinding,
-  voice: runStandardWithFinding,
+  voice: runVoiceAction,
+  'rendering-in-app': runStandardWithFinding,
   reasoning: runStandardWithFinding,
   a2ui: runStandardWithFinding,
   'a2ui-dynamic-schema': runStandardWithFinding,

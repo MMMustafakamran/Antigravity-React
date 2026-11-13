@@ -913,7 +913,7 @@
     92
    ],
    "notes": [
-    "Issue: no product card renders; the run errors (AntigravityExecutionError: Model produced invalid output) or the tab crashes."
+    "Issue: no product card ever renders; the run ends with an empty reply or fails."
    ],
    "block": null,
    "links": [
@@ -976,7 +976,7 @@
     96
    ],
    "notes": [
-    "Issue: no Antigravity agent setup on the page (only LangGraph CopilotKitMiddleware); with the Antigravity agent no UI renders."
+    "Issue: no Antigravity agent setup on the page (only LangGraph CopilotKitMiddleware); with the Antigravity agent no generated UI shows up, just a plain text answer or a failed run."
    ],
    "block": null,
    "links": [
@@ -1008,7 +1008,7 @@
     98
    ],
    "notes": [
-    "Issue: no a2ui block or UI; the Antigravity agent writes html files instead. The page doesn't say how to pass the context to an Antigravity agent."
+    "Issue: no a2ui block or generated UI ever shows up (empty reply, failed run, or html files instead). The page doesn't say how to pass the context to an Antigravity agent."
    ],
    "block": null,
    "links": [
@@ -1040,7 +1040,7 @@
     100
    ],
    "notes": [
-    "Issue: no Airport/Arrow UI renders; the run ends in an AntigravityExecutionError."
+    "Issue: no Airport/Arrow UI renders; the run ends with an empty reply or fails."
    ],
    "block": null,
    "links": [
@@ -1305,21 +1305,21 @@
    "child": true,
    "docPath": "shared-state/rendering-in-app",
    "reachable": "sidebar",
-   "status": "✅",
+   "status": "❌",
    "findings": [
     79,
     80
    ],
    "notes": [
-    "Note: canvas renders from agent.state as shown; page assumes an agent named default."
+    "Issue: the canvas shows, but the agent never sees its state: asked about the canvas title and done items it can't answer. The page shows no backend and never says the agent needs get_shared_state."
    ],
    "block": null,
    "links": [
     {
-     "text": null,
+     "text": "Issue",
      "clip": "ANTIGRAVITY-react-20-RenderingInApp",
      "loom": "https://www.loom.com/share/b9e69b51229849de946af896c8c2d25d",
-     "narration": null
+     "narration": "narration/scripts/ANTIGRAVITY-react-20-RenderingInApp.json"
     }
    ],
    "review": {

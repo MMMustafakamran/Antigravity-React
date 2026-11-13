@@ -1,0 +1,14 @@
+{
+ "clip": "ANTIGRAVITY-react-20-RenderingInApp",
+ "finding": "antigravity-react 80",
+ "level": 1,
+ "segments": [
+  {"at": "doc", "text": "Ok so, this is the render agent state in your app page in the CopilotKit docs, for Google Antigravity with React. And I have implemented this page in my project."},
+  {"at": "ide", "text": "This is my project, this is the exact code from the doc."},
+  {"at": "demo", "text": "Moving on to the demo. So the canvas shows up, but umm, that's just the initial state from the UI."},
+  {"at": "+", "text": "When I asked the agent about the canvas title and the done items, it couldn't tell me. It never sees the canvas state."},
+  {"at": "evidence#1", "text": "The page says the agent reads this state on its next turn."},
+  {"at": "notepad", "text": "So basically, the page shows no backend at all, and it never says the agent needs the get shared state tool, so the agent just can't see the canvas."},
+  {"at": "+", "text": "Alright, that's the issue, kindly sort it out."}
+ ]
+}

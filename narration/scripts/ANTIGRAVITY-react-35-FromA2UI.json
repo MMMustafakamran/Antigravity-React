@@ -17,7 +17,7 @@
   },
   {
    "at": "+",
-   "text": "No airport or arrow UI renders, the run ends in an execution error."
+   "text": "No airport or arrow UI shows up, just an empty reply or a failed run."
   },
   {
    "at": "evidence#1",

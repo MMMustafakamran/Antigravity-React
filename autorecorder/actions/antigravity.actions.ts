@@ -12,6 +12,13 @@ import { checkpoint, mark, probeText } from '../core/timeline';
  * typed into Notepad in casual words (REPOS.md Rule 6). No boxes or labels drawn on the page.
  */
 export const FINDING_NOTES: Record<string, string> = {
+  'rendering-in-app': [
+    'render agent state page,canvas + sidebar on the default agent like the page shows',
+    'canvas shows the title and items but thats only the ui initial state',
+    'asked the agent about my canvas title and done items',
+    'agent never sees the canvas state,it asks what canvas or goes looking for files',
+    'page shows no backend at all,never says the agent needs get_shared_state',
+  ].join('\n'),
   components: [
     'page says already have copilotkit running,do step 3 only,your runtime needs no change',
     'so just the provider with standardUI on the antigravity agent',
@@ -95,9 +102,9 @@ export const FINDING_NOTES: Record<string, string> = {
   'gui-state-and-actions': [
     "state and actions page,product card with add to cart",
     "asked for the trail runner card",
-    "no product card renders",
-    "run errors antigravityexecutionerror model produced invalid output",
-    "or the tab just crashes",
+    "no product card ever shows up",
+    "only an empty reply or the run fails",
+    "so the cart state and the action cant be tried at all",
   ].join('\n'),
   'gui-theming': [
     "theming page sets a2ui colors like the accent",
@@ -108,25 +115,28 @@ export const FINDING_NOTES: Record<string, string> = {
   'gui-transports': [
     "transports page only shows langgraph setup copilotkitmiddleware",
     "nothing for an antigravity agent",
-    "used the antigravity agent anyway",
-    "asked for the plans table,no ui renders",
+    "used the antigravity agent anyway,asked for the plans table",
+    "no generated ui ever shows up,just a plain text answer or a failed run",
   ].join('\n'),
   'gui-markdown-mode': [
     "markdown mode page says any other agent just needs the context in its system prompt",
     "doesnt say how to do that for antigravity",
     "asked for a seat estimator with a slider",
-    "no a2ui block,no ui",
-    "agent writes html files instead",
+    "no a2ui block,no ui ever shows up",
+    "reply is empty or just text,sometimes it writes html files instead",
   ].join('\n'),
   'gui-from-a2ui': [
     "adopt from a2ui page, airport and arrow components",
     "asked for my flight sfo to jfk",
-    "no airport or arrow ui renders",
-    "run ends in antigravityexecutionerror",
+    "no airport or arrow ui ever shows up",
+    "only an empty reply or the run fails",
   ].join('\n'),
 };
 
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
+  'rendering-in-app': [
+    { text: 'A click handler in the main view can push a new value that the', caption: 'No backend shown; the default agent never sees agent.state (FINDINGS.md #80)' },
+  ],
   components: [
     { text: 'Already have CopilotKit running? Do step 3 only.', caption: 'Step 3 alone renders no component on Antigravity (FINDINGS.md #42)' },
   ],
@@ -513,4 +523,33 @@ export const runMcpAppsAction: PageActionHandler = async (page, config, _root, c
       console.log('   ✅ MCP App iframe rendered; the agent ended without closing text.');
     });
   await glideTo(page, frame, 4000);
+};
+
+/**
+ * Voice (FINDINGS.md #63). HARNESS: the stub `voice-chat.tsx` keeps the rest of the app alive, so the
+ * real "Module not found" error never reached the server log and the end-of-clip terminal showed
+ * unrelated lines. Before the take, the stub is moved aside for one real request to /voice, so the
+ * dev server prints the genuine build error into logs/frontend-3040.log, then put back.
+ */
+export const runVoiceAction: PageActionHandler = async (page, config, root, ctx) => {
+  const { renameSync, existsSync } = await import('node:fs');
+  const { join } = await import('node:path');
+  const repo = existsSync(join(root, 'frontend')) ? root : join(root, '..');
+  const stub = join(repo, 'frontend', 'app', 'voice', 'voice-chat.tsx');
+  const aside = stub + '.aside';
+  if (existsSync(stub)) {
+    renameSync(stub, aside);
+    try {
+      await sleep(1500);
+      await fetch('http://localhost:3040/voice').catch(() => null);
+      await sleep(2000);
+    } finally {
+      renameSync(aside, stub);
+    }
+    await sleep(2000);
+    await page.reload().catch(() => null);
+    await sleep(3000);
+  }
+  await runStandardWithFinding(page, config, root, ctx);
+  ctx.fail("Module not found: Can't resolve './voice-chat' (page.tsx imports a file the doc never shows).");
 };

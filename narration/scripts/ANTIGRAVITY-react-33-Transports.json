@@ -17,7 +17,7 @@
   },
   {
    "at": "+",
-   "text": "No UI renders, just a text answer."
+   "text": "No UI shows up, just a plain text answer or a failed run."
   },
   {
    "at": "evidence#1",

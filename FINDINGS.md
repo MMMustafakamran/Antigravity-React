@@ -24,6 +24,11 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 - **Doc:** `import { VoiceChat } from "./voice-chat";`. The Code tab has `chat.py`, `page.tsx`, `sample-audio-button.tsx`, `transcription-service.ts` and `route.ts`, but no `voice-chat`. No install command for `@copilotkit/voice` / `openai`.
 - **Error:** `Module not found: Can't resolve './voice-chat'` (Turbopack build error shown on every route of the dev server, not only /voice). Confirmed by harness: a placeholder `voice-chat.tsx` lets the other routes load again.
 
+### [Render agent state in your app](https://docs.copilotkit.ai/google-antigravity/shared-state/rendering-in-app)
+**#80 No backend shown; the default agent never sees the canvas state, so the two-way channel the page promises doesn't work.**
+- **Doc:** "A click handler in the main view can push a new value that the agent reads on its next turn"; "If the backend owns the initial state, define it in the shared-state setup for that framework." The page shows only `Canvas.tsx` and `page.tsx` on the default agent, and never says the Antigravity agent needs `experimental_app_state=True` / `get_shared_state`.
+- **Result:** the canvas shows only the UI-owned `INITIAL_CANVAS_STATE`; the agent never writes it. Asked "What is the title of my canvas and which items are done?", the agent never names the canvas title (3/3 probes 2026-11-13: it asks which canvas, or runs file commands, once `AntigravityExecutionError: Cannot view file .../canvas.md`). Confirmed by harness: pointed at the Shared State page's `experimental_app_state` agent, it answered "Project launch" in 1 of 2 runs.
+
 ### [Reasoning](https://docs.copilotkit.ai/google-antigravity/generative-ui/reasoning)
 **#64 No reasoning block renders; `useReasoningCustomSuggestions` is never defined and the backend needs the unpublished `agents._common`.**
 - **Doc:** Code tab `page.tsx`: `import { useReasoningCustomSuggestions } from "./suggestions";`. The only `suggestions.ts` on the page (reasoning-default) defines `useReasoningDefaultSuggestions`. `reasoning.py` imports `REASONING_MODEL, build` from `agents._common`, which no tab shows.
@@ -62,7 +67,7 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 ### [State and actions](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/state-and-actions)
 **#91 No product card renders.**
 - **Doc:** `shopUI` with `state: { cart: cartSchema }`, `bind: { inCart }`, `functions: { addToCart }` + `useGenerativeUIState` / `useGenerativeUIFunction`.
-- **Result:** latest probe: empty reply, no ProductCard. Earlier runs: the tab crashed after `render_ui`, or `AntigravityExecutionError: Model produced invalid output`. Same on the doc's own runtime shape (re-checked 2026-11-12).
+- **Result:** no ProductCard ever shows up; every run ends in an empty reply or an "Agent run failed" toast (3 probes 2026-11-13). Same on the doc's own runtime shape (re-checked 2026-11-12).
 
 ### [Theming](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/theming)
 **#94 Nothing renders, so the theme can't be seen.**
@@ -72,17 +77,17 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 ### [Transports](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/transports)
 **#95 No Antigravity agent setup on the page (only LangGraph `CopilotKitMiddleware`); with the Antigravity agent no UI renders.**
 - **Doc:** "Your agent must use the tools and the context entries of the run. The built-in agent does this. For a LangGraph Python agent, add CopilotKitMiddleware."
-- **Result:** tool transport with the Antigravity agent gives a plain Markdown table, no generated UI. Same on the doc's own runtime shape (re-checked 2026-11-12).
+- **Result:** with the Antigravity agent no generated UI ever shows up; the agent answers with a plain Markdown table (probes 2026-11-13) or the run fails with an "Agent run failed" toast (CI 2026-11-12). Same on the doc's own runtime shape (re-checked 2026-11-12).
 
 ### [Markdown mode](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/markdown-mode)
-**#97 No a2ui block or UI; the page doesn't say how to pass the context to an Antigravity agent.**
+**#97 No generated UI; the page doesn't say how to pass the context to an Antigravity agent.**
 - **Doc:** `generativeUI={{ ui: standardUI, transport: "markdown" }}`; "Any other agent needs one thing: put the run's context entries into its system prompt."
-- **Result:** the Antigravity agent writes `index.html`/`style.css`/`script.js` and links them as `[blocked]`; no a2ui block, no surface. Same on the doc's own runtime shape (re-checked 2026-11-12).
+- **Result:** no a2ui block or surface ever shows up (3/3 probes 2026-11-13): the reply is empty, the run fails ("Agent run failed", CI 2026-11-12), or the agent writes `index.html`/`style.css`/`script.js` instead. Same on the doc's own runtime shape (re-checked 2026-11-12).
 
 ### [Adopt from A2UI](https://docs.copilotkit.ai/google-antigravity/generative-ui/components/from-a2ui)
 **#99 No Airport/Arrow UI renders.**
 - **Doc:** `createGenerativeUI({ id: "acme/flights@1", extends: [standardUI], components: { Airport, Arrow } })` + `generativeUI={{ ui: appUI }}`.
-- **Result:** latest probe: empty reply. Earlier run: the agent called `generate_image` and the run ended with `AntigravityExecutionError ... Multimodal function responses are not supported for this model`. Same on the doc's own runtime shape (re-checked 2026-11-12).
+- **Result:** no Airport/Arrow UI ever shows up; runs end in an empty reply or a failed run (3 probes 2026-11-13). Same on the doc's own runtime shape (re-checked 2026-11-12).
 
 ## Minor notes
 - #1 Quickstart: `main.py` reads `os.environ["GEMINI_API_KEY"]` but nothing loads the `.env` the page creates (no `load_dotenv`, start command has no `--env-file`): `KeyError: 'GEMINI_API_KEY'` on start. Harness starts it with `uv run --env-file .env`.
@@ -134,7 +139,6 @@ Stack: `@copilotkit/react-core`/`runtime` 1.85.0, `@ag-ui/client` 1.0.4, `next` 
 - #75 Hashbrown: `@hashbrownai/core` / `@hashbrownai/react` are beta (0.5.0-beta.4).
 - #78 Components as Tools: `gen_ui_tool_based.py` imports `build` from the unpublished `agents._common`.
 - #79 Render agent state in your app: the page relies on an agent named "default"; the Antigravity quickstart registers `antigravity_agent`.
-- #80 Render agent state in your app: no backend shown; with the quickstart agent the model can't see `agent.state` (no `get_shared_state`), so asking about the canvas makes it run shell commands.
 - #81 Agent Read-Only Context: `app_context.py` imports `build` from the unpublished `agents._common`.
 - #82 Agent Read-Only Context: Code tab `page.tsx` imports `./demo-layout` and `./suggestions`, which no tab shows.
 - #83 Agent Read-Only Context: the text says entries are surfaced by `CopilotKitMiddleware` into message history, contradicting the Antigravity `get_app_context()` step above.
